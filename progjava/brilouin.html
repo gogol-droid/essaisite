@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marche Aléatoire en 2D</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 1rem;
+            font-family: sans-serif;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        #controls {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 0;
+            background: white;
+        }
+
+        #steps {
+            width: 7rem;
+        }
+
+        #graph-container {
+            width: min(100%, 700px);
+            aspect-ratio: 1;
+        }
+
+        canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>Marche Aléatoire en 2D</h2>
+    <div id="controls">
+        <label for="steps">Nombre de pas :</label>
+        <input type="number" id="steps" value="100" min="1" max="100000" step="1" />
+        <button type="button" onclick="genererMarche()">Lancer la marche</button>
+    </div>
+
+    <div id="graph-container">
+        <canvas id="graph"></canvas>
+    </div>
+    <p id="resultats"></p>
+
+    <script>
+        function genererMarche() {
+            const stepsInput = document.getElementById("steps");
+            const resultats = document.getElementById("resultats");
+            const numSteps = Number(stepsInput.value);
+
+            if (!Number.isInteger(numSteps) || numSteps < 1 || numSteps > 100000) {
+                resultats.innerText = "Entrez un nombre entier entre 1 et 100000.";
+                stepsInput.focus();
+                return;
+            }
+
+            const x_values = [0];
+            const y_values = [0];
+            let distances = [0];
+            let Rmax = 0;
+
+            // Génération de la marche
+            for (let i = 0; i < numSteps; i++) {
+                const directions = [[1,0], [-1,0], [0,1], [0,-1]];
+                const dir = directions[Math.floor(Math.random() * 4)];
+                const newX = x_values[x_values.length - 1] + dir[0];
+                const newY = y_values[y_values.length - 1] + dir[1];
+
+                x_values.push(newX);
+                y_values.push(newY);
+
+                const R = Math.sqrt(newX**2 + newY**2);
+                distances.push(R);
+                if (R > Rmax) Rmax = R;
+            }
+
+            const R_final = distances[distances.length - 1];
+
+            // Préparation des données pour Chart.js
+            const dataPoints = x_values.map((x, i) => ({x: x, y: y_values[i]}));
+
+            const ctx = document.getElementById('graph').getContext('2d');
+            if (window.myChart) window.myChart.destroy(); // Nettoyer l'ancien graphique
+
+            window.myChart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Trajectoire',
+                        data: dataPoints,
+                        showLine: true,
+                        borderColor: 'blue',
+                        backgroundColor: 'blue',
+                        pointRadius: 1
+                    },
+                    {
+                        label: 'Origine',
+                        data: [{x: 0, y: 0}],
+                        backgroundColor: 'red',
+                        pointRadius: 6
+                    },
+                    {
+                        label: `Position finale (R=${R_final.toFixed(2)})`,
+                        data: [{x: x_values[x_values.length - 1], y: y_values[y_values.length - 1]}],
+                        backgroundColor: 'green',
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { type: 'linear', position: 'bottom', title: {display: true, text: 'X'} },
+                        y: { type: 'linear', title: {display: true, text: 'Y'} }
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        title: {
+                            display: true,
+                            text: 'Marche Aléatoire en 2D'
+                        }
+                    }
+                }
+            });
+
+            resultats.innerText = `Distance maximale (Rmax) : ${Rmax.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
