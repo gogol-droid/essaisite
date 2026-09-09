@@ -1,5 +1,23 @@
 # Toute la Physique
 
+## Publier sur GitHub Pages
+
+Le site est configuré pour être publié automatiquement avec GitHub Actions.
+
+1. Créez un dépôt GitHub, puis associez-le à ce dossier local :
+
+   ```powershell
+   git remote add origin https://github.com/VOTRE-NOM/VOTRE-DEPOT.git
+   git add .
+   git commit -m "Configurer GitHub Pages"
+   git push -u origin main
+   ```
+
+2. Dans GitHub, ouvrez **Settings > Pages** et choisissez **GitHub Actions** comme source de déploiement.
+3. Après le premier déploiement, le site sera disponible à l'adresse affichée dans l'onglet **Actions** ou **Settings > Pages**.
+
+Chaque `push` sur `main` régénère les pages et republie le site.
+
 Les pages sont statiques : chaque page indique explicitement les fichiers qu'elle utilise. Pour changer une illustration ou un texte, modifiez le fichier HTML de la page correspondante.
 
 La liste de l'accueil est construite à partir des fichiers HTML présents dans `pages`. Pour ajouter ou retirer une page, ajoutez ou supprimez son fichier HTML, puis régénérez `index.html` :
