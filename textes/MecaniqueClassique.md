@@ -15,7 +15,7 @@ Le reste n'est que des conséquences.
 
 \## Trois outils pour voir
 
-1\.  \*\*Le pendule\*\* : l'exemple parfait où l'énergie passe de potentielle à cinétique. \[progjava/pendule.html]
+1\.  \*\*Le pendule\*\* : l'exemple parfait où l'énergie passe de potentielle à cinétique. \[progjava/Pendule.html]
 
 2\.  \*\*La chute libre\*\* : pourquoi une plume et un marteau tombent pareil sans air.
 
