@@ -1,23 +1,5 @@
 # Toute la Physique
 
-## Publier sur GitHub Pages
-
-Le site est configuré pour être publié automatiquement avec GitHub Actions.
-
-1. Créez un dépôt GitHub, puis associez-le à ce dossier local :
-
-   ```powershell
-   git remote add origin https://github.com/VOTRE-NOM/VOTRE-DEPOT.git
-   git add .
-   git commit -m "Configurer GitHub Pages"
-   git push -u origin main
-   ```
-
-2. Dans GitHub, ouvrez **Settings > Pages** et choisissez **GitHub Actions** comme source de déploiement.
-3. Après le premier déploiement, le site sera disponible à l'adresse affichée dans l'onglet **Actions** ou **Settings > Pages**.
-
-Chaque `push` sur `main` régénère les pages et republie le site.
-
 Les pages sont statiques : chaque page indique explicitement les fichiers qu'elle utilise. Pour changer une illustration ou un texte, modifiez le fichier HTML de la page correspondante.
 
 La liste de l'accueil est construite à partir des fichiers HTML présents dans `pages`. Pour ajouter ou retirer une page, ajoutez ou supprimez son fichier HTML, puis régénérez `index.html` :
@@ -76,7 +58,19 @@ Les textes peuvent être écrits dans les fichiers Markdown du dossier `textes`.
 
 Ce script ne surveille pas les fichiers et ne lance aucune mise à jour automatique. Il transforme les titres Markdown (`#`, `##`, `###`), les paragraphes et le gras en HTML.
 
+### Formules LaTeX
+
+Les formules doivent être écrites entre `$...$` pour une formule en ligne, ou entre `$$...$$` pour une formule centrée. Utilisez un seul antislash dans le fichier Markdown :
+
+```text
+$\vec{F} = m \vec{a}$
+```
+
+Le générateur accepte aussi les fichiers exportés par certains éditeurs qui contiennent `\\vec` et des caractères Markdown échappés comme `\#` ou `\*`. MarkText sert à rédiger les fichiers ; il ne suffit pas à lui seul pour afficher les formules dans le navigateur. Les pages chargent MathJax pour effectuer ce rendu.
+
 Une mention explicite comme `progjava\brilouin.html` dans un fichier Markdown devient automatiquement un lien vers le fichier local correspondant. Le programme doit exister dans le dossier `progjava`.
+
+Le programme Brilouin utilise une copie locale et versionnée de Chart.js dans `progjava/js/chart.umd.min.js`. Il ne dépend donc plus d'un CDN externe. Cette copie correspond à Chart.js 4.4.4 ; son empreinte SHA-256 est `B38076762F7363BC9E912B68B8E034826798DB5DF26BB61F000EC2E7A3137BC7`.
 
 Associations actuelles :
 

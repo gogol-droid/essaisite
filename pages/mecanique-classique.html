@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>M&#233;canique classique — Toute la Physique</title>
     <link rel="stylesheet" href="../styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <main class="container">
@@ -16,6 +23,15 @@
           <figcaption>Illustration de M&#233;canique classique.</figcaption>
         </figure>
         <div class="topic-content"><p>Cin&#233;matique : &#233;tude des mouvements sans se soucier de leurs causes. Dynamique : &#233;tude des forces et des mouvements des objets. Loi de Newton : les trois lois du mouvement. Loi de conservation de l&#39;&#233;nergie m&#233;canique. Gravitation : &#233;tude de l&#39;attraction gravitationnelle. Loi de la gravitation universelle de Newton.</p>
+<h2>Le principe qui contient tout</h2>
+<p>La m&#233;canique classique tient en une id&#233;e : si je connais la position et la vitesse d&#39;un objet maintenant, et toutes les forces qui agissent dessus, je peux pr&#233;dire o&#249; il sera apr&#232;s.</p>
+<p>**C&#39;est ce que dit Newton :\   $\vec{F} = m \vec{a}$</p>
+<p>Le reste n&#39;est que des cons&#233;quences.</p>
+<h3>Trois outils pour voir</h3>
+<p>1.  <strong>Le pendule</strong> : l&#39;exemple parfait o&#249; l&#39;&#233;nergie passe de potentielle &#224; cin&#233;tique. [<a href="../progjava/pendule.html">pendule.html</a>]</p>
+<p>2.  <strong>La chute libre</strong> : pourquoi une plume et un marteau tombent pareil sans air.</p>
+<p>3.  <strong>Le rebond</strong> : o&#249; part l&#39;&#233;nergie quand &#231;a ne rebondit pas &#224; la m&#234;me hauteur ?</p>
+<p>L&#39;image ci-dessus montre la trajectoire dans l&#39;espace des phases, la fa&#231;on la plus compacte de voir tout le mouvement d&#39;un coup.</p>
 <h4>les trois lois de Newton:</h4>
 <p>Premi&#232;re loi : Le principe d&#39;inertie: Un objet reste au repos ou garde un mouvement rectiligne uniforme si la somme des forces qui s&#39;exercent sur lui est nulle.</p>
 <p>Deuxi&#232;me loi : La loi fondamentale de la dynamique: La somme des forces ext&#233;rieures appliqu&#233;es &#224; un solide est &#233;gale au produit de sa masse par son acc&#233;l&#233;ration.</p>

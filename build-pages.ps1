@@ -15,10 +15,20 @@ $pages = @(
 )
 
 function Convert-Paragraph([string]$text) {
-  $encoded = [System.Net.WebUtility]::HtmlEncode($text.Trim())
-  $encoded = [Regex]::Replace($encoded, "\*\*(.+?)\*\*", "<strong>`$1</strong>")
-  $programPattern = '(?i)(?:[a-z]:[\\/]+Users[\\/]+[^\\/\r\n]+[\\/]+(?:OneDrive[\\/]+Documents[\\/]+)?PagePerso[\\/]+)?progjava[\\/]+([a-z0-9._-]+\.html)'
+  # 1. On protège les formules LaTeX avant tout encodage
+  $latexBlocks = [Collections.Generic.List[string]]::new()
+  $protected = [Regex]::Replace($text, '\$\$.+?\$\$|\$.+?\$', {
+    param($m)
+    $formula = [Regex]::Replace($m.Value, '\\\\', '\')
+    $latexBlocks.Add($formula)
+    return "___LATEX$($latexBlocks.Count-1)___"
+  })
 
+  $encoded = [System.Net.WebUtility]::HtmlEncode($protected.Trim())
+  $encoded = [Regex]::Replace($encoded, "\*\*(.+?)\*\*", "<strong>`$1</strong>")
+
+  # 2. Gestion des liens progjava (ton code d'origine)
+  $programPattern = '(?i)(?:[a-z]:[\\/]+Users[\\/]+[^\\/\r\n]+[\\/]+(?:OneDrive[\\/]+Documents[\\/]+)?PagePerso[\\/]+)?progjava[\\/]+([a-z0-9._-]+\.html)'
   foreach ($match in [Regex]::Matches($text, $programPattern)) {
     $fileName = $match.Groups[1].Value
     $programPath = Join-Path $root "progjava\$fileName"
@@ -29,12 +39,22 @@ function Convert-Paragraph([string]$text) {
     $link = "<a href=`"../progjava/$fileName`">$fileName</a>"
     $encoded = $encoded.Replace($encodedMention, $link)
   }
+
+  # 3. On restaure les formules LaTeX sans les encoder
+  for ($i = 0; $i -lt $latexBlocks.Count; $i++) {
+    $encoded = $encoded.Replace("___LATEX${i}___", $latexBlocks[$i])
+  }
+
   return "<p>$encoded</p>"
 }
 
 function Convert-Markdown([string]$content) {
   $result = [Collections.Generic.List[string]]::new()
   $paragraph = [Collections.Generic.List[string]]::new()
+  $content = [Regex]::Replace($content, '\\([#*_{}\[\]().])', {
+    param($m)
+    $m.Groups[1].Value
+  })
 
   function Write-Paragraph {
     if ($paragraph.Count -eq 0) { return }
@@ -49,6 +69,7 @@ function Convert-Markdown([string]$content) {
       Write-Paragraph
       $level = [Math]::Min($Matches[1].Length + 1, 6)
       $heading = [System.Net.WebUtility]::HtmlEncode($Matches[2].Trim("* ").Trim())
+      # On ne doit pas encoder le LaTeX dans les titres non plus
       $result.Add("<h$level>$heading</h$level>")
     } elseif ([string]::IsNullOrWhiteSpace($line)) {
       Write-Paragraph
@@ -87,6 +108,13 @@ foreach ($entry in $pages) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>$title — Toute la Physique</title>
     <link rel="stylesheet" href="../styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['`$','`$'], ['\\(','\\)']], displayMath: [['`$`$','`$`$'], ['\\[','\\]']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <main class="container">
@@ -104,4 +132,4 @@ foreach ($entry in $pages) {
   [IO.File]::WriteAllText((Join-Path $root "pages\$($entry.Page)"), $output, [Text.UTF8Encoding]::new($false))
 }
 
-Write-Host "Pages générées depuis les fichiers textes/*.md."
+Write-Host "Pages générées depuis les fichiers textes/*.md avec support LaTeX."
