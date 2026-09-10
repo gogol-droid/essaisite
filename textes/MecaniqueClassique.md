@@ -1,48 +1,25 @@
-Cinématique : étude des mouvements sans se soucier de leurs causes.
-Dynamique : étude des forces et des mouvements des objets.
-Loi de Newton : les trois lois du mouvement.
-Loi de conservation de l'énergie mécanique.
-Gravitation : étude de l'attraction gravitationnelle.
-Loi de la gravitation universelle de Newton.
+# Mécanique classique
 
-\# Le principe qui contient tout
+La mécanique classique décrit le mouvement des objets à notre échelle. Son idée directrice est simple : connaître l'état d'un système et les forces qui agissent sur lui permet de prévoir son évolution.
 
-La mécanique classique tient en une idée : si je connais la position et la vitesse d'un objet maintenant, et toutes les forces qui agissent dessus, je peux prédire où il sera après.
+## Repérer le mouvement
 
-\*\*C'est ce que dit Newton :\   $\\vec{F} = m \\vec{a}$
+La cinématique décrit position, vitesse et accélération sans chercher encore la cause du mouvement. Le choix d'un référentiel est essentiel : une trajectoire et une vitesse n'ont de sens qu'en précisant depuis quel observateur on les mesure.
 
-Le reste n'est que des conséquences.
+La dynamique relie ce mouvement aux interactions. La relation fondamentale est $\vec{F}=m\vec{a}$ : la résultante des forces impose une accélération proportionnelle et de même direction.
 
-\## Trois outils pour voir
+## Les trois lois de Newton
 
-1\.  \*\*Le pendule\*\* : l'exemple parfait où l'énergie passe de potentielle à cinétique. \[progjava/Pendule.html]
+Le principe d'inertie affirme qu'un objet conserve son repos ou son mouvement rectiligne uniforme lorsque la somme des forces est nulle. La deuxième loi quantifie la réponse d'un objet à une force. Enfin, le principe d'action-réaction rappelle que toute interaction est réciproque : les forces ont même intensité et directions opposées, mais s'appliquent sur deux objets distincts.
 
-2\.  \*\*La chute libre\*\* : pourquoi une plume et un marteau tombent pareil sans air.
+## Les grandeurs conservées
 
-3\.  \*\*Le rebond\*\* : où part l'énergie quand ça ne rebondit pas à la même hauteur ?
+L'énergie mécanique associe l'énergie cinétique au mouvement et l'énergie potentielle à la position. En l'absence de frottements, elle se conserve : un pendule échange ainsi continuellement énergie potentielle et énergie cinétique.
 
-L'image ci-dessus montre la trajectoire dans l'espace des phases, la façon la plus compacte de voir tout le mouvement d'un coup.
+La quantité de mouvement $\vec{p}=m\vec{v}$ se conserve pour un système isolé. Le moment cinétique joue un rôle analogue pour les rotations : il explique notamment la stabilité d'une toupie ou l'accélération d'un patineur qui rapproche ses bras.
 
-### **les trois lois de Newton:**
+## Une méthode pour résoudre un problème
 
-Première loi : Le principe d'inertie: Un objet reste au repos ou garde un mouvement rectiligne uniforme si la somme des forces qui s'exercent sur lui est nulle.
+Commencer par isoler le système et dessiner les forces. Choisir un référentiel et des axes, écrire la deuxième loi de Newton dans ces axes, puis utiliser les conditions initiales. Vérifier enfin les unités et la cohérence physique du résultat.
 
-Deuxième loi : La loi fondamentale de la dynamique: La somme des forces extérieures appliquées à un solide est égale au produit de sa masse par son accélération.
-
-Troisième loi : Le principe d'action réaction: Si un corps A exerce une force sur un corps B, alors B exerce simultanément sur A une force de même valeur, de même direction, mais de sens opposé
-
-# 
-
-# **Lois de conservation:**
-
-## energie:
-
-tatati tatata
-
-## Quantité de mouvement:
-
-**patati patata**
-
-## Moment cinetique:
-
-**patin, couffin**
+Pour expérimenter l'échange d'énergie dans un système simple, voir : progjava/Pendule.html
