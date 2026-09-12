@@ -1,6 +1,59 @@
 $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
 $pagesPath = Join-Path $root "pages"
+$introPath = Join-Path $root "textes\intro.md"
+
+function Convert-Paragraph([string]$text) {
+  $latexBlocks = [Collections.Generic.List[string]]::new()
+  $protected = [Regex]::Replace($text, '\$\$.+?\$\$|\$.+?\$', {
+    param($m)
+    $latexBlocks.Add($m.Value)
+    return "___LATEX$($latexBlocks.Count-1)___"
+  })
+
+  $encoded = [System.Net.WebUtility]::HtmlEncode($protected.Trim())
+  $encoded = [Regex]::Replace($encoded, "\*\*(.+?)\*\*", "<strong>`$1</strong>")
+
+  for ($i = 0; $i -lt $latexBlocks.Count; $i++) {
+    $encoded = $encoded.Replace("___LATEX${i}___", $latexBlocks[$i])
+  }
+
+  return "<p>$encoded</p>"
+}
+
+function Convert-Markdown([string]$content) {
+  $result = [Collections.Generic.List[string]]::new()
+  $paragraph = [Collections.Generic.List[string]]::new()
+
+  function Write-Paragraph {
+    if ($paragraph.Count -eq 0) { return }
+    $result.Add((Convert-Paragraph ($paragraph -join " ")))
+    $paragraph.Clear()
+  }
+
+  foreach ($line in ($content -split "`r?`n")) {
+    if ($line -match "^\s*#{1,3}\s*$") {
+      Write-Paragraph
+    } elseif ($line -match "^\s*(#{1,3})\s+(.+?)\s*$") {
+      Write-Paragraph
+      $level = [Math]::Min($Matches[1].Length + 1, 6)
+      $heading = [System.Net.WebUtility]::HtmlEncode($Matches[2].Trim("* ").Trim())
+      $result.Add("<h$level>$heading</h$level>")
+    } elseif ([string]::IsNullOrWhiteSpace($line)) {
+      Write-Paragraph
+    } else {
+      $paragraph.Add($line.Trim())
+    }
+  }
+  Write-Paragraph
+  return ($result -join "`n")
+}
+
+if (-not (Test-Path -LiteralPath $introPath -PathType Leaf)) {
+  throw "Texte introuvable : $introPath"
+}
+$intro = Convert-Markdown (Get-Content -Raw -LiteralPath $introPath)
+
 $entries = Get-ChildItem -LiteralPath $pagesPath -Filter "*.html" -File |
   Sort-Object Name |
   ForEach-Object {
@@ -28,6 +81,13 @@ $output = @"
     <meta name="description" content="Une page locale pour organiser des ressources de physique.">
     <title>Toute la Physique</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['`$','`$'], ['\\(','\\)']], displayMath: [['`$`$','`$`$'], ['\\[','\\]']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -38,6 +98,11 @@ $output = @"
       </div>
     </header>
     <main class="container">
+      <section class="panel intro-content" aria-labelledby="intro-title">
+        <p class="eyebrow">Point de départ</p>
+        <h2 id="intro-title">Avant de commencer</h2>
+        $intro
+      </section>
       <section class="panel" aria-labelledby="topics-title">
         <div class="section-heading">
           <div><p class="eyebrow">Les domaines</p><h2 id="topics-title">Pages de physique</h2></div>

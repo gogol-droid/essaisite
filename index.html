@@ -6,6 +6,13 @@
     <meta name="description" content="Une page locale pour organiser des ressources de physique.">
     <title>Toute la Physique</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -16,6 +23,63 @@
       </div>
     </header>
     <main class="container">
+      <section class="panel intro-content" aria-labelledby="intro-title">
+        <p class="eyebrow">Point de départ</p>
+        <h2 id="intro-title">Avant de commencer</h2>
+        <h2>juste un mot</h2>
+<p>mot ...      (ne pas commencer par les lois particuli&#232;res — Newton, Maxwell, Schr&#246;dinger, etc.) — mais par ce que nous exigeons d&#39;une description physique du monde</p>
+<p><strong>ce qui ne doit pas d&#233;pendre de notre mani&#232;re de d&#233;crire le monde</strong> → sym&#233;tries</p>
+<p><strong>ce qui doit &#234;tre identique pour des observateurs ou des descriptions physiquement &#233;quivalentes</strong> → principes d&#39;&#233;quivalence</p>
+<p><strong>ce qui peut effectivement &#234;tre dit du monde &#224; partir d&#39;exp&#233;riences</strong> → principes op&#233;rationnels et informationnels</p>
+<h3>1. Premier principe : la physique ne doit pas d&#233;pendre de conventions arbitraires</h3>
+<p>Supposons que je d&#233;crive un syst&#232;me avec des coordonn&#233;es , puis que je change de coordonn&#233;es. Je n&#39;ai &#233;videmment pas chang&#233; le syst&#232;me physique. Donc : Une transformation qui ne change pas la situation physique ne doit pas changer les pr&#233;dictions physiques. C&#39;est le principe g&#233;n&#233;ral d&#39;invariance. Il faut alors pouvoir distinguer les transformations qui change r&#233;ellement le syst&#232;me et les transformations qui changent sa description. Cette distinction devient fondamentale en relativit&#233; et en th&#233;orie des jauges. invariances: Si je fais tourner tout mon laboratoire, les lois de la physique doivent &#234;tre les m&#234;mes. C&#39;est la sym&#233;trie de rotation. Si je d&#233;place tout le laboratoire, les lois fondamentales ne doivent pas changer. C&#39;est l&#39;invariance par translation spatiale. Si je r&#233;alise aujourd&#39;hui une exp&#233;rience ou demain dans les m&#234;mes conditions les lois doivent &#234;tre encore les m&#234;mes. C&#39;est l&#39;invariance par translation temporelle. Et c&#39;est ici que Emmy Noether a fait un travail m&#233;morable</p>
+<h3>2. Principe de Noether : les sym&#233;tries produisent les lois de conservation</h3>
+<p>Pour un syst&#232;me d&#233;crit par une action S=∫L(q,q˙​,t)dt, si l&#39;action poss&#232;de une sym&#233;trie continue, alors il existe une quantit&#233; conserv&#233;e. Sch&#233;matiquement: sym&#233;trie⟹conservation​ Ainsi : translation dans le temps &lt;-&gt; &#233;nergie translation dans l&#39;espace &lt;-&gt; quantit&#233; de mouvement rotation &lt;-&gt; moment cin&#233;tique sym&#233;trie de jauge&lt;-&gt;charge &#233;lectrique</p>
+<p>Cela donne une vision beaucoup plus profonde des lois de conservation.L&#39;&#233;nergie n&#39;est pas simplement une &#171; quantit&#233; myst&#233;rieusement conserv&#233;e &#187;, elle est li&#233;e au fait que les lois de la physique ne changent pas avec le temps. et la quantit&#233; de mouvement est li&#233;e au fait que les lois ne privil&#233;gient aucun endroit particulier de l&#39;espace.</p>
+<h3>3. principe d&#39;&#233;quivalence: Tous les observateurs doivent obtenir la m&#234;me physique</h3>
+<p>Selon Eistein, la description d&#39;un ph&#233;nom&#232;ne peut d&#233;pendre de l&#39;observateur, mais pas le ph&#233;nom&#232;ne physique lui-m&#234;me. Deux observateurs inertiels peuvent mesurer des temps diff&#233;rents, des longueurs diff&#233;rentes, des vitesses diff&#233;rentes, mais ils doivent &#234;tre capables de traduire leurs observations l&#39;une dans l&#39;autre sans contradiction. La structure math&#233;matique qui r&#233;alise cette exigence est le groupe de Lorentz. Et l&#39;invariant fondamental devient ds^2=c^2.dt^2−dx^2−dy^2−dz^2. ce n&#39;est pas t, ni x, ni m&#234;me la vitesse qui sont absolus. C&#39;est : ds^2 qui l&#39;est. C&#39;est une r&#233;volution conceptuelle : La physique ne porte pas n&#233;cessairement sur les grandeurs que nous mesurons directement, mais sur les relations qui restent invariantes lorsque nous changeons de description. En relativit&#233; g&#233;n&#233;rale, Einstein fait quelque chose d&#39;encore plus audacieux. Localement, un observateur en chute libre ne peut pas distinguer : GRAVITATION de ACCELERATION par une exp&#233;rience locale suffisamment petite. Cela conduit &#224; une id&#233;e profonde : Certaines forces apparentes peuvent &#234;tre &#233;limin&#233;es par un changement appropri&#233; de r&#233;f&#233;rentiel. Cela nous oblige &#224; revoir ce qu&#39;est la gravitation. La gravitation n&#39;est plus fondamentalement une force au sens newtonien, elle devient une propri&#233;t&#233; de la g&#233;om&#233;trie de l&#39;espace-temps : <strong>G</strong>μν​=(8πG​T/c^4).<strong>T</strong>μν​. On peut presque lire cette &#233;quation comme: la distribution de mati&#232;re-&#233;nergie d&#233;termine la g&#233;om&#233;trie, et la g&#233;om&#233;trie d&#233;termine le mouvement libre.</p>
+<h3>4. les lois doivent &#234;tre locales</h3>
+<p>On peut ensuite ajouter une exigence tr&#232;s forte : Les interactions physiques doivent &#234;tre formulables en termes de grandeurs d&#233;finies localement. Cela conduit naturellement aux champs, au lieu de dire que &#171; La particule A agit instantan&#233;ment sur B &#187;, on introduit un champ ϕ(x,t) qui existe en chaque point de l&#39;espace-temps. Le champ &#233;lectromagn&#233;tique des &#233;quations de Maxwell devient une r&#233;alit&#233; physique locale. La relativit&#233; restreinte impose en outre une structure causale : pas&#160;d’influence&#160;physique&#160;observable&#160;plus&#160;rapide&#160;que&#160;c​</p>
+<h3>5. la physique doit &#234;tre ind&#233;pendante des redondances de description</h3>
+<p>C&#39;est ici qu&#39;appara&#238;t la th&#233;orie de jauge, on peut d&#233;crire l&#39;&#233;lectromagn&#233;tisme avec le potentiel A&#181; mais plusieurs potentiels diff&#233;rents correspondent au m&#234;me champ physique Aμ​→Aμ​+∂μ​Λ, Le champ Fμν​=∂μ​Aν​−∂ν​Aμ​ ne change pas. Toutes les variables utilis&#233;es dans une th&#233;orie ne correspondent pas n&#233;cessairement &#224; des degr&#233;s de libert&#233; physiques. Certaines sont de la redondance math&#233;matique. La th&#233;orie doit donc poss&#233;der une structure de jauge. Et on retrouve une id&#233;e qui ressemble beaucoup au principe philosophique pr&#233;c&#233;dent :</p>
+<p>description &lt;&gt; r&#233;alit&#233;&#160;physique​</p>
+<h3>6 la r&#233;alit&#233; accessible est limit&#233;e par l&#39;information disponible</h3>
+<p>Il existe des limites structurelles &#224; ce que l&#39;on peut simultan&#233;ment attribuer &#224; un syst&#232;me et &#224; ce que l&#39;on peut extraire exp&#233;rimentalement de celui-ci. Par exemple : [<strong>x</strong>,<strong>p</strong>​]=iℏ. Donc ΔxΔp≥2ℏ​. Ce n&#39;est pas simplement une limitation instrumentale. M&#234;me avec un appareil parfait, la th&#233;orie ne permet pas un &#233;tat poss&#233;dant simultan&#233;ment une position et une quantit&#233; de mouvement parfaitement d&#233;finies.</p>
+<p>​etat&#160;physique​ <strong>&lt; &gt;</strong> information&#160;accessible</p>
+<p>En m&#233;canique classique, on peut id&#233;alement imaginer (x,p) comme donnant une description compl&#232;te de l&#39;&#233;tat. En m&#233;canique quantique, l&#39;&#233;tat est plut&#244;t ∣ψ⟩et une mesure de A fournit certains r&#233;sultats avec des probabilit&#233;s P(a)=∣⟨a∣ψ⟩∣2.La th&#233;orie ne nous donne donc pas n&#233;cessairement &#171; la valeur cach&#233;e &#187; de toutes les propri&#233;t&#233;s.Elle nous donne une structure permettant de calculer :</p>
+<p>P(r&#233;sultat∣pr&#233;paration)​</p>
+<p>C&#39;est une diff&#233;rence conceptuelle &#233;norme.</p>
+<h3>7. Et cela nous conduit &#224; un principe informationnel</h3>
+<p>On pourrait proposer : Une th&#233;orie physique doit distinguer ce qui est physiquement diff&#233;rent de ce qui est seulement diff&#233;rent dans notre description. Et m&#234;me, une propri&#233;t&#233; physique n&#39;a de contenu exp&#233;rimental que si elle peut, au moins en principe, &#234;tre reli&#233;e &#224; une proc&#233;dure de pr&#233;paration ou de mesure.</p>
+<p>C&#39;est une formulation assez proche de l&#39;esprit op&#233;rationnel de Bohr, mais elle &#233;vite de tomber dans l&#39;affirmation &#171; la conscience cr&#233;e la r&#233;alit&#233; &#187;. La m&#233;canique quantique n&#39;exige pas cela.</p>
+<h3>8 Le principe de correspondance</h3>
+<p>Il faut ensuite ajouter une contrainte extr&#234;mement importante : Une nouvelle th&#233;orie doit reproduire les pr&#233;dictions d&#39;une ancienne th&#233;orie dans le domaine o&#249; celle-ci fonctionne. Ainsi : m&#233;canique&#160;quantique⟶m&#233;canique&#160;classique&#160;pour&#160;S≫ℏ et relativiteˊ⟶m&#233;canique&#160;newtonienne&#160;pour&#160;v≪c, GM/(rc2)≪1. Cela donne une sorte de hi&#233;rarchie : th&#233;orie&#160;plus&#160;fondamentale ⊃ th&#233;orie&#160;effective.</p>
+<h4>I — Principe de r&#233;alit&#233; exp&#233;rimentale</h4>
+<p>Une affirmation physique doit pouvoir, directement ou indirectement, &#234;tre reli&#233;e &#224; une exp&#233;rience concevable.</p>
+<h4>II — Principe d&#39;invariance</h4>
+<p>Les pr&#233;dictions physiques ne doivent pas d&#233;pendre des conventions arbitraires utilis&#233;es pour d&#233;crire le syst&#232;me.</p>
+<h4>III — Principe de relativit&#233;</h4>
+<p>Les observateurs appartenant &#224; des classes physiquement &#233;quivalentes doivent disposer de lois compatibles entre elles.</p>
+<h4>IV — Principe de sym&#233;trie</h4>
+<p>Lorsqu&#39;aucune exp&#233;rience ne distingue pas deux transformations, la th&#233;orie ne doit pas les distinguer.</p>
+<h4>V — Principe de localit&#233;</h4>
+<p>Les interactions fondamentales doivent pouvoir &#234;tre formul&#233;es &#224; partir de structures physiques d&#233;finies localement dans l&#39;espace-temps.</p>
+<h4>VI — Principe de causalit&#233;</h4>
+<p>Les effets physiques doivent respecter la structure causale de l&#39;espace-temps.</p>
+<h4>VII — Principe de jauge</h4>
+<p>La description peut poss&#233;der des degr&#233;s de libert&#233; redondants ; seules les quantit&#233;s invariantes sous ces transformations repr&#233;sentent des observables physiques.</p>
+<h4>VIII — Principe quantique</h4>
+<p>Les r&#233;sultats des exp&#233;riences sont d&#233;crits par des amplitudes et des probabilit&#233;s, et certaines observables ne peuvent &#234;tre simultan&#233;ment repr&#233;sent&#233;es par des valeurs parfaitement d&#233;finies.</p>
+<p>[<strong>A</strong>,<strong>B</strong>]=0 est alors le signal math&#233;matique de cette incompatibilit&#233;.</p>
+<h4>IX — Principe informationnel</h4>
+<p>La th&#233;orie doit distinguer l&#39;&#233;tat physique, la pr&#233;paration exp&#233;rimentale et l&#39;information accessible par une mesure.</p>
+<p>- intrication ;</p>
+<p>- Bell ;</p>
+<p>- la cryptographie quantique ;</p>
+<p>- la th&#233;orie quantique de l&#39;information.</p>
+<h4>X — Principe de correspondance</h4>
+<p>Toute th&#233;orie plus g&#233;n&#233;rale doit retrouver les th&#233;ories &#233;tablies dans leurs domaines de validit&#233;.</p>
+      </section>
       <section class="panel" aria-labelledby="topics-title">
         <div class="section-heading">
           <div><p class="eyebrow">Les domaines</p><h2 id="topics-title">Pages de physique</h2></div>
