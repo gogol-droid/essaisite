@@ -1,140 +1,131 @@
-# juste un mot
+# Quelques principes pour commencer
 
-(mot)
-... (ne pas commencer par les lois particulières, Newton, Maxwell, Schrödinger, etc.), mais par ce que nous exigeons d'une description physique du monde
+Il est tentant de commencer la physique par des lois particulières : Newton, Maxwell ou Schrödinger. On peut aussi partir d'une question plus générale : qu'exige-t-on d'une description physique du monde ?
 
-**ce qui ne doit pas dépendre de notre manière de décrire le monde** (symétries)
+Une description physique devrait distinguer :
 
-**ce qui doit être identique pour des observateurs ou des descriptions physiquement équivalentes** (principe d'équivalence)
+**ce qui ne dépend pas de nos conventions de description**, ce qui conduit aux symétries et aux invariances ;
 
-**ce qui peut effectivement être dit du monde à partir d'expériences** (principes opérationnels et informationnels)
+**ce qui doit être commun à des observateurs physiquement équivalents**, ce qui conduit aux principes de relativité et d'équivalence ;
+
+**ce qui peut être relié à une expérience**, ce qui conduit aux principes opérationnels et informationnels.
 
 ## 1. La physique ne doit pas dépendre de conventions arbitraires
 
-Supposons que je décrive un système avec des coordonnées , puis que je change de coordonnées. Je n'ai évidemment pas changé le système physique.
-Donc : Une transformation qui ne change pas la situation physique ne doit pas changer les prédictions physiques.
-C'est le principe général d'invariance.
-Il faut alors pouvoir distinguer les transformations qui change réellement le système et les transformations qui changent sa description.
-Cette distinction devient fondamentale en relativité et en théorie des jauges.
-invariances:
-Si je fais tourner tout mon laboratoire, les lois de la physique doivent être les mêmes. C'est la symétrie de rotation.
-Si je déplace tout le laboratoire, les lois fondamentales ne doivent pas changer. C'est l'invariance par translation spatiale.
-Si je réalise aujourd'hui une expérience ou demain dans les mêmes conditions les lois doivent être encore les mêmes. C'est l'invariance par translation temporelle.
-Et c'est ici que Emmy Noether a fait un travail mémorable
+Supposons que je décrive un système avec des coordonnées, puis que je change de coordonnées. Je n'ai pas changé le système physique. Une transformation qui ne change pas la situation physique ne doit donc pas changer les prédictions physiques.
 
-## 2. Emmy Noether : les symétries produisent les lois de conservation
+Il faut distinguer les transformations qui changent réellement le système de celles qui ne changent que sa description. Cette distinction devient fondamentale en relativité et en théorie des jauges.
 
-Pour un système décrit par une action S=∫L(q,q˙​,t)dt, si l'action possède une symétrie continue, alors il existe une quantité conservée.
-Schématiquement une symétrie impose une loi de conservation​, Ainsi une translation dans le temps implique conservation de l'énergie;
-une translation dans l'espace implique la conservation de la quantité de mouvement: une invariance par rotation impose la conservation du moment cinétique et une symétrie de jauge donne la conservation de la charge électrique. C'est une vision plus abstraite des lois de conservation. L'énergie n'est pas simplement une « quantité mystérieusement conservée », elle est liée au fait que les lois de la physique ne changent pas avec le temps. et la quantité de mouvement est liée au fait que les lois ne privilégient aucun endroit particulier de l'espace.
+Si je fais tourner ou déplace tout mon laboratoire, les lois fondamentales ne doivent pas changer. De même, une expérience réalisée aujourd'hui ou demain dans les mêmes conditions doit obéir aux mêmes lois. On parle respectivement d'invariance par rotation, de translation spatiale et de translation temporelle.
 
-## 3. Einstein : Tous les observateurs doivent obtenir la même physique
+## 2. Emmy Noether et les lois de conservation
 
-Selon Eistein, la description d'un phénomène peut dépendre de l'observateur, mais pas le phénomène physique lui-même.
-Deux observateurs inertiels peuvent mesurer des temps différents, des longueurs différentes, des vitesses différentes, mais ils doivent être capables de traduire leurs observations l'une dans l'autre sans contradiction.
-La structure mathématique qui réalise cette exigence est le groupe de Lorentz.
-Et l'invariant fondamental devient ds^2=c^2.dt^2−dx^2−dy^2−dz^2.
-ce n'est pas t, ni x, ni même la vitesse qui sont absolus. C'est : ds^2 qui l'est.
-C'est une révolution conceptuelle :
-La physique ne porte pas nécessairement sur les grandeurs que nous mesurons directement, mais sur les relations qui restent invariantes lorsque nous changeons de description.
-En relativité générale, Einstein fait quelque chose d'encore plus audacieux.
-Localement, un observateur en chute libre ne peut pas distinguer un champ de gravitation dans lequel il est plongé d'une accélération qu'il subit.
-par une expérience locale suffisamment petite.
-Cela conduit à une idée profonde Certaines forces apparentes peuvent être éliminées par un changement approprié de référentiel. Cela nous oblige à revoir ce qu'est la gravitation. La gravitation n'est plus fondamentalement une force au sens newtonien, elle devient une propriété de la géométrie de l'espace-temps **G**μν​=(8πG​T/c^4).**T**μν​. ce qui se lit comme:
-la distribution de matière-énergie détermine la géométrie, et la géométrie détermine le mouvement libre.
+Le théorème de Noether établit que, sous des hypothèses précises, toute symétrie continue de l'action est associée à une quantité conservée. Pour une action
 
-## 4. les lois doivent être locales
+$$S = \int L(q, \dot{q}, t)\,dt,$$
 
-On peut ensuite ajouter une exigence très forte, les interactions physiques doivent être formulables en termes de grandeurs définies localement. Cela conduit naturellement aux champs, au lieu de dire que « La particule A agit instantanément sur B », on introduit un champ ϕ(x,t) qui existe en chaque point de l'espace-temps. Le champ électromagnétique des équations de Maxwell devient une réalité physique locale. La relativité restreinte impose en outre une structure causale pas d’influence physique plus rapide que c.​
+une invariance par translation temporelle est associée à la conservation de l'énergie, une invariance par translation spatiale à celle de la quantité de mouvement, et une invariance par rotation à celle du moment cinétique.
 
-## 5. la physique doit être indépendante des redondances de description
+La charge électrique est associée à la symétrie globale $U(1)$ de la théorie électromagnétique. Il faut distinguer cette symétrie globale de l'invariance de jauge locale, qui exprime notamment une redondance de description du potentiel électromagnétique.
 
-C'est ici qu'apparaît la théorie de jauge, on peut décrire l'électromagnétisme avec le potentiel Aµ mais plusieurs potentiels différents correspondent au même champ physique Aμ​→Aμ​+∂μ​Λ, Le champ Fμν​=∂μ​Aν​−∂ν​Aμ​ ne change pas.
-Toutes les variables utilisées dans une théorie ne correspondent pas nécessairement à des degrés de liberté physiques. Certaines sont de la redondance mathématique.
-La théorie doit donc posséder une structure de jauge. Et on retrouve une idée qui ressemble beaucoup au principe philosophique précédent :
+## 3. Relativité : les descriptions doivent être compatibles
 
-description <> réalité physique​
+Selon Einstein, la description d'un phénomène peut dépendre de l'observateur, mais les descriptions d'un même phénomène doivent pouvoir être reliées sans contradiction. Pour deux observateurs inertiels, le groupe de Lorentz transforme les coordonnées tout en préservant l'intervalle, avec la convention de signature choisie ici :
 
-## 6 la réalité accessible est limitée par l'information disponible
+$$ds^2 = c^2\,dt^2 - dx^2 - dy^2 - dz^2.$$
 
-Il existe des limites structurelles à ce que l'on peut simultanément attribuer à un système et à ce que l'on peut extraire expérimentalement de celui-ci.
-Par exemple :
-[**x**,**p**​]=iℏ. Donc ΔxΔp≥2ℏ​.
-Ce n'est pas simplement une limitation instrumentale.
-Même avec un appareil parfait, la théorie ne permet pas un état possédant simultanément une position et une quantité de mouvement parfaitement définies.
+Ce ne sont donc ni $t$, ni $x$, ni la vitesse qui sont invariants séparément. C'est la structure de l'espace-temps et, notamment, l'intervalle entre deux événements.
 
-​etat physique​ **< >** information accessible
+En relativité générale, le principe d'équivalence affirme localement qu'un observateur en chute libre ne peut pas distinguer, par une expérience suffisamment petite, la gravitation d'une accélération appropriée. La gravitation est alors décrite par la géométrie de l'espace-temps :
 
-En mécanique classique, on peut idéalement imaginer (x,p) comme donnant une description complète de l'état. En mécanique quantique, l'état est plutôt ∣ψ⟩et une mesure de A fournit certains résultats avec des probabilités P(a)=∣⟨a∣ψ⟩∣2.La théorie ne nous donne donc pas nécessairement « la valeur cachée » de toutes les propriétés.Elle nous donne une structure permettant de calculer :
+$$G_{\mu\nu} = \frac{8\pi G}{c^4}\,T_{\mu\nu}.$$
 
-P(résultat∣préparation)​
+La distribution de matière et d'énergie détermine la géométrie, et la géométrie détermine le mouvement libre.
 
-C'est une différence conceptuelle énorme.
+## 4. Les lois doivent respecter la causalité
 
-## 7. Et cela nous conduit à un principe informationnel
+Les interactions fondamentales peuvent être formulées à partir de champs définis localement dans l'espace-temps. Au lieu de dire qu'une particule agit instantanément sur une autre, on introduit par exemple un champ $\phi(x,t)$.
 
-On pourrait proposer :
-Une théorie physique doit distinguer ce qui est physiquement différent de ce qui est seulement différent dans notre description.
-Et même, une propriété physique n'a de contenu expérimental que si elle peut, au moins en principe, être reliée à une procédure de préparation ou de mesure.
+La relativité restreinte impose une structure causale : aucune influence permettant de transmettre une information ne peut se propager plus vite que la lumière dans le vide. La mécanique quantique ajoute toutefois des corrélations non locales, comme l'intrication, sans permettre pour autant une communication supraluminique.
 
-C'est une formulation assez proche de l'esprit opérationnel de Bohr, mais elle évite de tomber dans l'affirmation « la conscience crée la réalité ».
-La mécanique quantique n'exige pas cela.
+## 5. La physique doit distinguer la description de la réalité
 
-## 8 Le cadre des modèles
+En electromagnetisme, plusieurs potentiels peuvent representer le meme champ physique. Une transformation de jauge s'ecrit
 
-Il faut ensuite ajouter une contrainte extrêmement importante :
-Une nouvelle théorie doit reproduire les prédictions d'une ancienne théorie dans le domaine où celle-ci fonctionne.
-Ainsi : mécanique quantique => mécanique classique pour S≫ℏ
-et relativiteˊ => mécanique newtonienne pour v≪c, GM/(rc2)≪1.
-Cela donne une sorte de hiérarchie :
-théorie plus fondamentale ⊃ théorie effective.
+$$A_\mu \longrightarrow A_\mu + \partial_\mu\Lambda,$$
 
-### I — Le principe de réalité expérimentale
+et laisse invariant le tenseur
 
-Une affirmation physique doit pouvoir, directement ou indirectement, être reliée à une expérience concevable.
+$$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.$$
 
-### II — Principe d'invariance
+Toutes les variables d'une theorie ne representent donc pas necessairement des degres de liberte physiques. Certaines sont des redondances mathematiques ; les observables doivent etre independantes de ces redondances.
 
-Les prédictions physiques ne doivent pas dépendre des conventions arbitraires utilisées pour décrire le système.
+## 6. La connaissance physique est limitee par l'information accessible
 
-### III — Principe de relativité
+En mecanique quantique, les observables position et quantite de mouvement obeissent a
 
-Les observateurs appartenant à des classes physiquement équivalentes doivent disposer de lois compatibles entre elles.
+$$[\hat{x},\hat{p}] = i\hbar,$$
 
-### IV — Principe de symétrie
+ce qui implique
 
-Lorsqu'aucune expérience ne distingue pas deux transformations, la théorie ne doit pas les distinguer.
+$$\Delta x\,\Delta p \geq \frac{\hbar}{2}.$$
 
-### V — Principe de localité
+Ce n'est pas une simple limitation instrumentale. La structure des etats quantiques ne permet pas de donner simultanement une position et une quantite de mouvement parfaitement definies.
 
-Les interactions fondamentales doivent pouvoir être formulées à partir de structures physiques définies localement dans l'espace-temps.
+En mecanique classique, on peut idealement decrire un etat par $(x,p)$. En mecanique quantique, un etat est represente par un vecteur $|\psi\rangle$, et une mesure de l'observable $A$ fournit des resultats avec des probabilites determinees par la regle de Born, par exemple
 
-### VI — Principe de causalité
+$$P(a) = |\langle a|\psi\rangle|^2.$$
+
+La theorie ne fournit donc pas necessairement une valeur preexistante pour chaque propriete. Elle permet de calculer des probabilites conditionnelles du type $P(\text{resultat}\mid\text{preparation})$.
+
+## 7. Un principe operationnel et informationnel
+
+On peut proposer qu'une theorie physique distingue ce qui est physiquement different de ce qui ne differe que dans la description. Une propriete physique a un contenu experimental si elle peut, au moins en principe, etre reliee a une procedure de preparation ou de mesure.
+
+Cette formulation s'inspire de l'approche operationnelle, sans impliquer que la conscience creerait la realite. La mecanique quantique n'exige pas cette interpretation.
+
+## 8. Le cadre de validite des theories
+
+Une theorie plus generale doit retrouver les predictions d'une theorie etablie dans le domaine ou celle-ci fonctionne. La limite classique de la mecanique quantique depend notamment du regime d'action, de la decoherence et des observables considerees. La limite newtonienne de la relativite generale exige un champ faible, $GM/(rc^2) \ll 1$, et des vitesses faibles devant $c$, $v \ll c$.
+
+On peut ainsi voir les theories comme une hierarchie de descriptions, dans laquelle une theorie plus fondamentale contient une theorie effective comme approximation dans un domaine determine.
+
+### I — Realite experimentale
+
+Une affirmation physique doit pouvoir, directement ou indirectement, etre reliee a une experience concevable.
+
+### II — Invariance
+
+Les predictions physiques ne doivent pas dependre des conventions arbitraires utilisees pour decrire le systeme.
+
+### III — Relativite
+
+Les observateurs appartenant a des classes physiquement equivalentes doivent disposer de lois compatibles entre elles.
+
+### IV — Symetrie
+
+Lorsqu'aucune experience pertinente ne distingue deux transformations, la theorie ne doit pas les distinguer sans raison physique.
+
+### V — Localite et champs
+
+Les interactions doivent pouvoir etre formulees a partir de structures physiques definies localement dans l'espace-temps, sous reserve des nuances apportees par les correlations quantiques.
+
+### VI — Causalite
 
 Les effets physiques doivent respecter la structure causale de l'espace-temps.
 
-### VII — Principe de jauge
+### VII — Jauge
 
-La description peut posséder des degrés de liberté redondants ; seules les quantités invariantes sous ces transformations représentent des observables physiques.
+La description peut posseder des degres de liberte redondants ; les observables physiques doivent etre invariantes sous les transformations de jauge.
 
 ### VIII — Principe quantique
 
-Les résultats des expériences sont décrits par des amplitudes et des probabilités, et certaines observables ne peuvent être simultanément représentées par des valeurs parfaitement définies.
+Les resultats des experiences sont decrits par des amplitudes et des probabilites. Deux observables incompatibles sont caracterisees par une non-commutation, $[A,B] \neq 0$, tandis que $[A,B]=0$ exprime leur compatibilite dans le cadre considere.
 
-[**A**,**B**]=0 est alors le signal mathématique de cette incompatibilité.
+### IX — Information
 
-### IX — Principe informationnel
+La theorie doit distinguer l'etat physique, la preparation experimentale et l'information accessible par une mesure. Cette question conduit notamment a l'etude de l'intrication, des inegalites de Bell, de la cryptographie quantique et de la theorie quantique de l'information.
 
-La théorie doit distinguer l'état physique, la préparation expérimentale et l'information accessible par une mesure.
+### X — Correspondance
 
-- intrication ;
-  
-- Bell ;
-  
-- la cryptographie quantique ;
-  
-- la théorie quantique de l'information.
-  
-### X — Principe de correspondance
-
-Toute théorie plus générale doit retrouver les théories établies dans leurs domaines de validité.
+Toute theorie plus generale doit retrouver les theories etablies dans leurs domaines de validite.
