@@ -1,4 +1,4 @@
-# Quelques principes pour commencer
+# Quelques principes
 
 Il est tentant de commencer la physique par des lois particulières : Newton, Maxwell ou Schrödinger. On peut aussi partir d'une question plus générale : qu'exige-t-on d'une description physique du monde ?
 
