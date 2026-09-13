@@ -45,8 +45,7 @@ la distribution de matière-énergie détermine la géométrie, et la géométri
 
 ## 4. les lois doivent être locales
 
-On peut ensuite ajouter une exigence très forte :
-Les interactions physiques doivent être formulables en termes de grandeurs définies localement. Cela conduit naturellement aux champs, au lieu de dire que « La particule A agit instantanément sur B », on introduit un champ ϕ(x,t) qui existe en chaque point de l'espace-temps. Le champ électromagnétique des équations de Maxwell devient une réalité physique locale. La relativité restreinte impose en outre une structure causale pas d’influence physique observable plus rapide que c​
+On peut ensuite ajouter une exigence très forte, les interactions physiques doivent être formulables en termes de grandeurs définies localement. Cela conduit naturellement aux champs, au lieu de dire que « La particule A agit instantanément sur B », on introduit un champ ϕ(x,t) qui existe en chaque point de l'espace-temps. Le champ électromagnétique des équations de Maxwell devient une réalité physique locale. La relativité restreinte impose en outre une structure causale pas d’influence physique plus rapide que c.​
 
 ## 5. la physique doit être indépendante des redondances de description
 
