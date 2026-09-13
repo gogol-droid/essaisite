@@ -1,15 +1,15 @@
 # juste un mot
 
-mot
-...      (ne pas commencer par les lois particulières — Newton, Maxwell, Schrödinger, etc.) — mais par ce que nous exigeons d'une description physique du monde
+(mot)
+... (ne pas commencer par les lois particulières, Newton, Maxwell, Schrödinger, etc.), mais par ce que nous exigeons d'une description physique du monde
 
-**ce qui ne doit pas dépendre de notre manière de décrire le monde** → symétries
+**ce qui ne doit pas dépendre de notre manière de décrire le monde** (symétries)
 
-**ce qui doit être identique pour des observateurs ou des descriptions physiquement équivalentes** → principes d'équivalence
+**ce qui doit être identique pour des observateurs ou des descriptions physiquement équivalentes** (principe d'équivalence)
 
-**ce qui peut effectivement être dit du monde à partir d'expériences** → principes opérationnels et informationnels
+**ce qui peut effectivement être dit du monde à partir d'expériences** (principes opérationnels et informationnels)
 
-## 1. Premier principe : la physique ne doit pas dépendre de conventions arbitraires
+## 1. La physique ne doit pas dépendre de conventions arbitraires
 
 Supposons que je décrive un système avec des coordonnées , puis que je change de coordonnées. Je n'ai évidemment pas changé le système physique.
 Donc : Une transformation qui ne change pas la situation physique ne doit pas changer les prédictions physiques.
@@ -22,19 +22,13 @@ Si je déplace tout le laboratoire, les lois fondamentales ne doivent pas change
 Si je réalise aujourd'hui une expérience ou demain dans les mêmes conditions les lois doivent être encore les mêmes. C'est l'invariance par translation temporelle.
 Et c'est ici que Emmy Noether a fait un travail mémorable
 
-## 2. Principe de Noether : les symétries produisent les lois de conservation
+## 2. Emmy Noether : les symétries produisent les lois de conservation
 
 Pour un système décrit par une action S=∫L(q,q˙​,t)dt, si l'action possède une symétrie continue, alors il existe une quantité conservée.
-Schématiquement: symétrie⟹conservation​
-Ainsi :
-translation dans le temps <-> énergie
-translation dans l'espace <-> quantité de mouvement
-rotation <-> moment cinétique
-symétrie de jauge<->charge électrique
+Schématiquement une symétrie impose une loi de conservation​, Ainsi une translation dans le temps implique conservation de l'énergie;
+une translation dans l'espace implique la conservation de la quantité de mouvement: une invariance par rotation impose la conservation du moment cinétique et une symétrie de jauge donne la conservation de la charge électrique. C'est une vision plus abstraite des lois de conservation. L'énergie n'est pas simplement une « quantité mystérieusement conservée », elle est liée au fait que les lois de la physique ne changent pas avec le temps. et la quantité de mouvement est liée au fait que les lois ne privilégient aucun endroit particulier de l'espace.
 
-Cela donne une vision beaucoup plus profonde des lois de conservation.L'énergie n'est pas simplement une « quantité mystérieusement conservée », elle est liée au fait que les lois de la physique ne changent pas avec le temps. et la quantité de mouvement est liée au fait que les lois ne privilégient aucun endroit particulier de l'espace.
-
-## 3. principe d'équivalence: Tous les observateurs doivent obtenir la même physique
+## 3. Einstein : Tous les observateurs doivent obtenir la même physique
 
 Selon Eistein, la description d'un phénomène peut dépendre de l'observateur, mais pas le phénomène physique lui-même.
 Deux observateurs inertiels peuvent mesurer des temps différents, des longueurs différentes, des vitesses différentes, mais ils doivent être capables de traduire leurs observations l'une dans l'autre sans contradiction.
@@ -44,19 +38,15 @@ ce n'est pas t, ni x, ni même la vitesse qui sont absolus. C'est : ds^2 qui l'e
 C'est une révolution conceptuelle :
 La physique ne porte pas nécessairement sur les grandeurs que nous mesurons directement, mais sur les relations qui restent invariantes lorsque nous changeons de description.
 En relativité générale, Einstein fait quelque chose d'encore plus audacieux.
-Localement, un observateur en chute libre ne peut pas distinguer :
-GRAVITATION de ACCELERATION
+Localement, un observateur en chute libre ne peut pas distinguer un champ de gravitation dans lequel il est plongé d'une accélération qu'il subit.
 par une expérience locale suffisamment petite.
-Cela conduit à une idée profonde :
-Certaines forces apparentes peuvent être éliminées par un changement approprié de référentiel. Cela nous oblige à revoir ce qu'est la gravitation.
-La gravitation n'est plus fondamentalement une force au sens newtonien, elle devient une propriété de la géométrie de l'espace-temps : **G**μν​=(8πG​T/c^4).**T**μν​. On peut presque lire cette équation comme:
+Cela conduit à une idée profonde Certaines forces apparentes peuvent être éliminées par un changement approprié de référentiel. Cela nous oblige à revoir ce qu'est la gravitation. La gravitation n'est plus fondamentalement une force au sens newtonien, elle devient une propriété de la géométrie de l'espace-temps **G**μν​=(8πG​T/c^4).**T**μν​. ce qui se lit comme:
 la distribution de matière-énergie détermine la géométrie, et la géométrie détermine le mouvement libre.
 
 ## 4. les lois doivent être locales
 
 On peut ensuite ajouter une exigence très forte :
-Les interactions physiques doivent être formulables en termes de grandeurs définies localement.
-Cela conduit naturellement aux champs, au lieu de dire que « La particule A agit instantanément sur B », on introduit un champ ϕ(x,t) qui existe en chaque point de l'espace-temps. Le champ électromagnétique des équations de Maxwell devient une réalité physique locale. La relativité restreinte impose en outre une structure causale : pas d’influence physique observable plus rapide que c​
+Les interactions physiques doivent être formulables en termes de grandeurs définies localement. Cela conduit naturellement aux champs, au lieu de dire que « La particule A agit instantanément sur B », on introduit un champ ϕ(x,t) qui existe en chaque point de l'espace-temps. Le champ électromagnétique des équations de Maxwell devient une réalité physique locale. La relativité restreinte impose en outre une structure causale pas d’influence physique observable plus rapide que c​
 
 ## 5. la physique doit être indépendante des redondances de description
 
@@ -91,16 +81,16 @@ Et même, une propriété physique n'a de contenu expérimental que si elle peut
 C'est une formulation assez proche de l'esprit opérationnel de Bohr, mais elle évite de tomber dans l'affirmation « la conscience crée la réalité ».
 La mécanique quantique n'exige pas cela.
 
-## 8 Le principe de correspondance
+## 8 Le cadre des modèles
 
 Il faut ensuite ajouter une contrainte extrêmement importante :
 Une nouvelle théorie doit reproduire les prédictions d'une ancienne théorie dans le domaine où celle-ci fonctionne.
-Ainsi : mécanique quantique⟶mécanique classique pour S≫ℏ
-et relativiteˊ⟶mécanique newtonienne pour v≪c, GM/(rc2)≪1.
+Ainsi : mécanique quantique => mécanique classique pour S≫ℏ
+et relativiteˊ => mécanique newtonienne pour v≪c, GM/(rc2)≪1.
 Cela donne une sorte de hiérarchie :
 théorie plus fondamentale ⊃ théorie effective.
 
-### I — Principe de réalité expérimentale
+### I — Le principe de réalité expérimentale
 
 Une affirmation physique doit pouvoir, directement ou indirectement, être reliée à une expérience concevable.
 
