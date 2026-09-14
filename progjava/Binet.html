@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulation gravitationnelle</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #101820;
+    color: white;
+    margin: 20px;
+  }
+  h1 { color: #7fdcff; }
+  #controls {
+    background: #1a2530;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    max-width: 900px;
+  }
+  .control-row {
+    margin-top: 8px;
+  }
+  label {
+    display: inline-block;
+    width: 110px;
+    margin-right: 4px;
+  }
+  input[type="number"] {
+    width: 85px;
+    margin-right: 18px;
+    padding: 3px;
+  }
+  button {
+    margin: 8px 6px 0 0;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  canvas {
+    background: #000;
+    border: 1px solid #555;
+    display: block;
+  }
+  #info {
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<h1>Simulation gravitationnelle (2 corps)</h1>
+
+<div id="controls">
+  <div>
+    <label for="M">M centrale</label>
+    <input id="M" type="number" value="5000" step="100">
+    <label for="m">m satellite</label>
+    <input id="m" type="number" value="1" step="0.1">
+  </div>
+  <div class="control-row">
+    <label for="x0">x initial</label>
+    <input id="x0" type="number" value="200">
+    <label for="y0">y initial</label>
+    <input id="y0" type="number" value="0">
+  </div>
+  <div class="control-row">
+    <label for="vx0">vx initial</label>
+    <input id="vx0" type="number" value="0">
+    <label for="vy0">vy initial</label>
+    <input id="vy0" type="number" value="5">
+  </div>
+  <div>
+    <button onclick="start()">Démarrer</button>
+    <button onclick="pauseSim()">Pause</button>
+    <button onclick="resetSim()">Réinitialiser</button>
+  </div>
+</div>
+
+<canvas id="canvas" width="900" height="700"></canvas>
+<div id="info">Clique sur Démarrer</div>
+
+<script>
+ 
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+ 
+const G = 1;
+const softening = 5;
+ 
+let running = false;
+ 
+let M,m;
+ 
+// corps 1
+let x1,y1,vx1,vy1;
+ 
+// corps 2
+let x2,y2,vx2,vy2;
+ 
+let trail1 = [];
+let trail2 = [];
+ 
+let centerX = 0;
+let centerY = 0;
+ 
+function resizeCanvas(){
+const rect = canvas.getBoundingClientRect();
+ 
+canvas.width = rect.width;
+canvas.height = rect.height;
+ 
+centerX = canvas.width/2;
+centerY = canvas.height/2;
+ 
+draw();
+}
+ 
+window.addEventListener("resize",resizeCanvas);
+ 
+function getInputs(){
+ 
+M = parseFloat(document.getElementById("M").value) || 5000;
+m = parseFloat(document.getElementById("m").value) || 1;
+ 
+const x0 = parseFloat(document.getElementById("x0").value) || 200;
+const y0 = parseFloat(document.getElementById("y0").value) || 0;
+ 
+const vx0 = parseFloat(document.getElementById("vx0").value) || 0;
+const vy0 = parseFloat(document.getElementById("vy0").value) || 5;
+ 
+// Centre de masse initial à l'origine
+const mtot = M + m;
+ 
+x1 = -(m/mtot)*x0;
+y1 = -(m/mtot)*y0;
+ 
+x2 = +(M/mtot)*x0;
+y2 = +(M/mtot)*y0;
+ 
+// quantité de mouvement totale nulle
+ 
+vx1 = -(m/mtot)*vx0;
+vy1 = -(m/mtot)*vy0;
+ 
+vx2 = +(M/mtot)*vx0;
+vy2 = +(M/mtot)*vy0;
+}
+ 
+function acceleration(){
+ 
+const dx = x2 - x1;
+const dy = y2 - y1;
+ 
+const r2 = dx*dx + dy*dy + softening*softening;
+const r3 = Math.pow(r2,1.5);
+ 
+return {
+ 
+ax1 : G*m*dx/r3,
+ay1 : G*m*dy/r3,
+ 
+ax2 : -G*M*dx/r3,
+ay2 : -G*M*dy/r3
+ 
+};
+}
+ 
+function step(dt){
+ 
+const a = acceleration();
+ 
+x1 += vx1*dt + 0.5*a.ax1*dt*dt;
+y1 += vy1*dt + 0.5*a.ay1*dt*dt;
+ 
+x2 += vx2*dt + 0.5*a.ax2*dt*dt;
+y2 += vy2*dt + 0.5*a.ay2*dt*dt;
+ 
+const b = acceleration();
+ 
+vx1 += 0.5*(a.ax1+b.ax1)*dt;
+vy1 += 0.5*(a.ay1+b.ay1)*dt;
+ 
+vx2 += 0.5*(a.ax2+b.ax2)*dt;
+vy2 += 0.5*(a.ay2+b.ay2)*dt;
+ 
+trail1.push([x1,y1]);
+trail2.push([x2,y2]);
+ 
+if(trail1.length>2500) trail1.shift();
+if(trail2.length>2500) trail2.shift();
+}
+ 
+function drawTrail(trail,color){
+ 
+if(trail.length<2) return;
+ 
+ctx.beginPath();
+ctx.strokeStyle = color;
+ 
+for(let i=0;i<trail.length;i++){
+ 
+const px = centerX + trail[i][0];
+const py = centerY - trail[i][1];
+ 
+if(i===0)
+ctx.moveTo(px,py);
+else
+ctx.lineTo(px,py);
+}
+ 
+ctx.stroke();
+}
+ 
+function draw(){
+ 
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ 
+drawTrail(trail1,"#ff8c42");
+drawTrail(trail2,"#00e5ff");
+ 
+// corps 1
+ 
+ctx.beginPath();
+ctx.fillStyle = "#ffd700";
+ 
+const r1 = Math.max(5,3+Math.log10(M+1)*2);
+ 
+ctx.arc(
+centerX+x1,
+centerY-y1,
+r1,
+0,
+2*Math.PI
+);
+ 
+ctx.fill();
+ 
+// corps 2
+ 
+ctx.beginPath();
+ctx.fillStyle = "#ffffff";
+ 
+const r2 = Math.max(4,3+Math.log10(m+1)*2);
+ 
+ctx.arc(
+centerX+x2,
+centerY-y2,
+r2,
+0,
+2*Math.PI
+);
+ 
+ctx.fill();
+ 
+// barycentre
+ 
+const xb = (M*x1+m*x2)/(M+m);
+const yb = (M*y1+m*y2)/(M+m);
+ 
+ctx.beginPath();
+ctx.fillStyle="red";
+ 
+ctx.arc(
+centerX+xb,
+centerY-yb,
+3,
+0,
+2*Math.PI
+);
+ 
+ctx.fill();
+ 
+const dx = x2-x1;
+const dy = y2-y1;
+ 
+const r = Math.sqrt(dx*dx+dy*dy);
+ 
+document.getElementById("info").innerHTML=
+`distance = ${r.toFixed(1)}
+&nbsp;|&nbsp;
+barycentre rouge`;
+}
+ 
+function loop(){
+ 
+if(!running) return;
+ 
+const dx=x2-x1;
+const dy=y2-y1;
+ 
+const r=Math.sqrt(dx*dx+dy*dy)+softening;
+ 
+const v=Math.max(
+Math.sqrt(vx1*vx1+vy1*vy1),
+Math.sqrt(vx2*vx2+vy2*vy2)
+)+0.1;
+ 
+const dt=Math.min(0.3,r/(200*v));
+ 
+for(let i=0;i<4;i++)
+step(dt/4);
+ 
+draw();
+ 
+requestAnimationFrame(loop);
+}
+ 
+function start(){
+ 
+getInputs();
+ 
+trail1=[];
+trail2=[];
+ 
+running=true;
+ 
+requestAnimationFrame(loop);
+}
+ 
+function pauseSim(){
+running=false;
+}
+ 
+function resetSim(){
+ 
+running=false;
+ 
+trail1=[];
+trail2=[];
+ 
+getInputs();
+ 
+draw();
+}
+ 
+resizeCanvas();
+getInputs();
+draw();
+</script>
+</body>
+</html>

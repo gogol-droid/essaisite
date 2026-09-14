@@ -8,6 +8,8 @@ La cinématique décrit position, vitesse et accélération sans chercher encore
 
 La dynamique relie ce mouvement aux interactions. La relation fondamentale est $\vec{F}=m\vec{a}$ : la résultante des forces impose une accélération proportionnelle et de même direction.
 
+Pour une visualisation du mouvement d'un satellite sous l'influence de la force de gravitation, voir: progjava/Binet.html
+
 ## Les trois lois de Newton
 
 Le principe d'inertie affirme qu'un objet conserve son repos ou son mouvement rectiligne uniforme lorsque la somme des forces est nulle. La deuxième loi quantifie la réponse d'un objet à une force. Enfin, le principe d'action-réaction rappelle que toute interaction est réciproque : les forces ont même intensité et directions opposées, mais s'appliquent sur deux objets distincts.
