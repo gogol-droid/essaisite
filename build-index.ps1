@@ -54,8 +54,21 @@ if (-not (Test-Path -LiteralPath $introPath -PathType Leaf)) {
 }
 $intro = Convert-Markdown (Get-Content -Raw -LiteralPath $introPath)
 
+$pageOrder = @(
+  "mecanique-classique.html"
+  "mecanique-des-fluides.html"
+  "thermodynamique-classique.html"
+  "thermodynamique-statistique.html"
+  "optique.html"
+  "electromagnetisme.html"
+  "relativite-restreinte.html"
+  "relativite-generale.html"
+  "mecanique-quantique.html"
+  "physique-des-particules.html"
+)
+
 $entries = Get-ChildItem -LiteralPath $pagesPath -Filter "*.html" -File |
-  Sort-Object Name |
+  Sort-Object { $pageOrder.IndexOf($_.Name) }, Name |
   ForEach-Object {
     $content = Get-Content -Raw -LiteralPath $_.FullName
     if ($content -notmatch "<h1[^>]*>\s*(?<title>.*?)\s*</h1>") {
