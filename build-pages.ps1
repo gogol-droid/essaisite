@@ -2,16 +2,16 @@ $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
 
 $pages = @(
-  @{ Page = "mecanique-classique.html"; Title = "Mécanique classique"; Text = "MecaniqueClassique.md"; Photo = "illustMecaClass.png" },
-  @{ Page = "thermodynamique-classique.html"; Title = "Thermodynamique classique"; Text = "Thermodynamique.md"; Photo = "illustThermoClass.png" },
-  @{ Page = "thermodynamique-statistique.html"; Title = "Thermodynamique statistique"; Text = "Thermostat.md"; Photo = "illustThermoStat.png" },
-  @{ Page = "mecanique-quantique.html"; Title = "Mécanique quantique"; Text = "MecaniqueQuantique.md"; Photo = "illustMecaQ.png" },
-  @{ Page = "electromagnetisme.html"; Title = "Électromagnétisme"; Text = "Electromag.md"; Photo = "illustElectromag.png" },
-  @{ Page = "relativite-restreinte.html"; Title = "Relativité restreinte"; Text = "Relativite.md"; Photo = "illustRelatRest.png" },
-  @{ Page = "relativite-generale.html"; Title = "Relativité générale"; Text = "RelativiteGen.md"; Photo = "IllustRelatGen.png" },
-  @{ Page = "optique.html"; Title = "Optique"; Text = "Optique.md"; Photo = "illustOptic.png" },
-  @{ Page = "physique-des-particules.html"; Title = "Physique des particules"; Text = "PhysPartcle.md"; Photo = "illustPhysPartcle.png" },
-  @{ Page = "mecanique-des-fluides.html"; Title = "Mécanique des fluides"; Text = "Mecafluide.md"; Photo = "Mecafluide.png" }
+  @{ Page = "mecanique-classique.html"; Title = "Mécanique classique"; Text = "MecaniqueClassique.md"; Photo = "illustMecaClass.png"; Width = 437; Height = 497 },
+  @{ Page = "thermodynamique-classique.html"; Title = "Thermodynamique classique"; Text = "Thermodynamique.md"; Photo = "illustThermoClass.png"; Width = 446; Height = 431 },
+  @{ Page = "thermodynamique-statistique.html"; Title = "Thermodynamique statistique"; Text = "ThermodynamiqueStatistique.md"; Photo = "illustThermoStat.png"; Width = 567; Height = 802 },
+  @{ Page = "mecanique-quantique.html"; Title = "Mécanique quantique"; Text = "MecaniqueQuantique.md"; Photo = "illustMecaQ.png"; Width = 1125; Height = 630 },
+  @{ Page = "electromagnetisme.html"; Title = "Électromagnétisme"; Text = "Electromag.md"; Photo = "illustElectromag.png"; Width = 818; Height = 630 },
+  @{ Page = "relativite-restreinte.html"; Title = "Relativité restreinte"; Text = "Relativite.md"; Photo = "illustRelatRest.png"; Width = 832; Height = 682 },
+  @{ Page = "relativite-generale.html"; Title = "Relativité générale"; Text = "RelativiteGen.md"; Photo = "IllustRelatGen.png"; Width = 700; Height = 487 },
+  @{ Page = "optique.html"; Title = "Optique"; Text = "Optique.md"; Photo = "illustOptic.png"; Width = 4032; Height = 3024 },
+  @{ Page = "physique-des-particules.html"; Title = "Physique des particules"; Text = "PhysParticule.md"; Photo = "illustPhysParticule.png"; Width = 612; Height = 582 },
+  @{ Page = "mecanique-des-fluides.html"; Title = "Mécanique des fluides"; Text = "Mecafluide.md"; Photo = "Mecafluide.png"; Width = 1060; Height = 790 }
 )
 
 function Convert-Paragraph([string]$text) {
@@ -95,7 +95,7 @@ foreach ($entry in $pages) {
     if (-not (Test-Path -LiteralPath $photoPath)) { throw "Photo introuvable : $photoPath" }
     $media = @"
         <figure class="topic-figure">
-          <img class="topic-image" src="../photos/$($entry.Photo)" alt="Illustration de $title">
+          <img class="topic-image" src="../photos/$($entry.Photo)" width="$($entry.Width)" height="$($entry.Height)" alt="Illustration de $title" loading="lazy">
           <figcaption>Illustration de $title.</figcaption>
         </figure>
 "@
@@ -106,6 +106,7 @@ foreach ($entry in $pages) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'">
     <title>$title — Toute la Physique</title>
     <link rel="stylesheet" href="../styles.css">
     <script>
@@ -114,7 +115,7 @@ foreach ($entry in $pages) {
         svg: { fontCache: 'global' }
       };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <main class="container">

@@ -12,8 +12,8 @@ Une horloge en mouvement est observée comme plus lente : c'est la dilatation du
 
 ## Énergie et quantité de mouvement
 
-Masse et énergie sont deux formes d'une même grandeur, résumées par $E=mc^2$. La formule ne signifie pas que toute masse est spontanément transformée en énergie, mais elle explique l'énorme énergie libérée dans certaines transformations nucléaires et les processus de création de particules.
+La relation $E_0=mc^2$ donne l'énergie de masse au repos d'un objet. Elle ne signifie pas que toute masse est spontanément transformée en énergie : lors d'une transformation, seule une variation de masse peut correspondre à une énergie libérée. La relativité restreinte décrit les référentiels inertiels et la cinématique, mais ne décrit pas la gravitation.
 
 ## Domaine de validité
 
-La relativité restreinte s'applique aux référentiels sans accélération gravitationnelle. Pour inclure la gravitation comme propriété de l'espace-temps, on utilise la relativité générale.
+La relativité restreinte s'applique localement aux référentiels inertiels, en l'absence de gravitation. La gravitation n'est pas une force ajoutée à cette théorie : en relativité générale, elle est décrite par la géométrie de l'espace-temps et par le mouvement des corps en chute libre.

@@ -78,6 +78,7 @@ $output = @"
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'">
     <meta name="description" content="Une page locale pour organiser des ressources de physique.">
     <title>Toute la Physique</title>
     <link rel="stylesheet" href="styles.css">
@@ -87,7 +88,7 @@ $output = @"
         svg: { fontCache: 'global' }
       };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -114,17 +115,19 @@ $links
       </section>
       <section class="resource-grid" aria-label="Ressources">
         <article class="panel resource-card">
-          <p class="eyebrow">À regarder</p><h2>Photos et schémas</h2>
-          <p>Quelques sources d'images libres pour illustrer les pages.</p>
+          <p class="eyebrow">À regarder</p><h2>Schémas pédagogiques</h2>
+          <p>Des sources d'images et de schémas à sélectionner pour expliquer les phénomènes.</p>
           <ul class="resource-list">
             <li><a href="https://commons.wikimedia.org/wiki/Category:Physics" target="_blank" rel="noopener noreferrer">Photos de physique sur Wikimedia Commons</a></li>
             <li><a href="https://commons.wikimedia.org/wiki/Category:Physics_diagrams" target="_blank" rel="noopener noreferrer">Schémas scientifiques</a></li>
           </ul>
         </article>
         <article class="panel resource-card">
-          <p class="eyebrow">À expérimenter</p><h2>Programmes</h2>
-          <p>Des outils externes à découvrir, sans installer quoi que ce soit ici.</p>
+          <p class="eyebrow">À expérimenter</p><h2>Simulations et outils</h2>
+          <p>Des simulations locales et des outils externes classés par usage.</p>
           <ul class="resource-list">
+            <li><a href="progjava/Pendule.html">Simulation locale : pendule simple</a></li>
+            <li><a href="progjava/brillouin.html">Simulation locale : modèle de Brillouin</a></li>
             <li><a href="https://phet.colorado.edu/fr/simulations/filter?subjects=physics" target="_blank" rel="noopener noreferrer">Simulations PhET</a></li>
             <li><a href="https://www.scilab.org/" target="_blank" rel="noopener noreferrer">Scilab</a></li>
           </ul>

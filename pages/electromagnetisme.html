@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'">
     <title>&#201;lectromagn&#233;tisme — Toute la Physique</title>
     <link rel="stylesheet" href="../styles.css">
     <script>
@@ -11,7 +12,7 @@
         svg: { fontCache: 'global' }
       };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <main class="container">
@@ -19,7 +20,7 @@
         <p class="eyebrow">Domaine de physique</p>
         <h1>&#201;lectromagn&#233;tisme</h1>
                 <figure class="topic-figure">
-          <img class="topic-image" src="../photos/illustElectromag.png" alt="Illustration de &#201;lectromagn&#233;tisme">
+          <img class="topic-image" src="../photos/illustElectromag.png" width="818" height="630" alt="Illustration de &#201;lectromagn&#233;tisme" loading="lazy">
           <figcaption>Illustration de &#201;lectromagn&#233;tisme.</figcaption>
         </figure>
         <div class="topic-content"><h2>&#201;lectromagn&#233;tisme</h2>
@@ -35,7 +36,7 @@
 <p>Lorsque le flux magn&#233;tique traversant un circuit varie, une tension est induite : c&#39;est la loi de Faraday. Le sens du ph&#233;nom&#232;ne s&#39;oppose &#224; la variation qui l&#39;a produit, id&#233;e formalis&#233;e par la loi de Lenz. Alternateurs, transformateurs et plaques &#224; induction reposent sur ce m&#233;canisme.</p>
 <h3>Le cadre unificateur</h3>
 <p>Les &#233;quations de Maxwell rassemblent ces ph&#233;nom&#232;nes : les charges sont sources de champ &#233;lectrique, les courants et les champs &#233;lectriques variables cr&#233;ent du champ magn&#233;tique, et un champ magn&#233;tique variable cr&#233;e du champ &#233;lectrique. Elles pr&#233;disent aussi les ondes &#233;lectromagn&#233;tiques, dont la lumi&#232;re est un exemple.</p>
-<p>Pour visualiser ce cadre et ses &#233;quations, voir : <a href="../progjava/maxwellpng.html">maxwellpng.html</a></p></div>
+<p>Pour visualiser ce cadre et ses &#233;quations, voir : <a href="../progjava/schema-maxwell.html">schema-maxwell.html</a></p></div>
         <p><a href="../index.html">← Retour à Toute la Physique</a></p>
       </section>
     </main>

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'">
     <title>M&#233;canique des fluides — Toute la Physique</title>
     <link rel="stylesheet" href="../styles.css">
     <script>
@@ -11,7 +12,7 @@
         svg: { fontCache: 'global' }
       };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <main class="container">
@@ -19,7 +20,7 @@
         <p class="eyebrow">Domaine de physique</p>
         <h1>M&#233;canique des fluides</h1>
                 <figure class="topic-figure">
-          <img class="topic-image" src="../photos/Mecafluide.png" alt="Illustration de M&#233;canique des fluides">
+          <img class="topic-image" src="../photos/Mecafluide.png" width="1060" height="790" alt="Illustration de M&#233;canique des fluides" loading="lazy">
           <figcaption>Illustration de M&#233;canique des fluides.</figcaption>
         </figure>
         <div class="topic-content"><h2>M&#233;canique des fluides</h2>
@@ -33,7 +34,7 @@
 <h3>&#201;coulement laminaire ou turbulent</h3>
 <p>Un &#233;coulement laminaire est organis&#233; en couches r&#233;guli&#232;res ; un &#233;coulement turbulent pr&#233;sente des tourbillons et des fluctuations. Le nombre de Reynolds compare les effets d&#39;inertie aux effets visqueux : il aide &#224; anticiper le changement de r&#233;gime, sans remplacer l&#39;observation ni les conditions r&#233;elles du probl&#232;me.</p>
 <p>Les &#233;quations de Navier-Stokes expriment l&#39;&#233;quilibre entre inertie, pression, viscosit&#233; et forces ext&#233;rieures. Elles constituent le mod&#232;le de r&#233;f&#233;rence de nombreux &#233;coulements.</p>
-<p>Pour explorer une repr&#233;sentation de ces &#233;quations, voir : <a href="../progjava/mecafluide.html">mecafluide.html</a></p></div>
+<p>Pour explorer une repr&#233;sentation de ces &#233;quations, voir : <a href="../progjava/schema-mecanique-fluides.html">schema-mecanique-fluides.html</a></p></div>
         <p><a href="../index.html">← Retour à Toute la Physique</a></p>
       </section>
     </main>

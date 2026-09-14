@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'">
     <meta name="description" content="Une page locale pour organiser des ressources de physique.">
     <title>Toute la Physique</title>
     <link rel="stylesheet" href="styles.css">
@@ -12,7 +13,7 @@
         svg: { fontCache: 'global' }
       };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -52,26 +53,26 @@
 <p>Les interactions fondamentales peuvent &#234;tre formul&#233;es &#224; partir de champs d&#233;finis localement dans l&#39;espace-temps. Au lieu de dire qu&#39;une particule agit instantan&#233;ment sur une autre, on introduit par exemple un champ $\phi(x,t)$.</p>
 <p>La relativit&#233; restreinte impose une structure causale : aucune influence permettant de transmettre une information ne peut se propager plus vite que la lumi&#232;re dans le vide. La m&#233;canique quantique ajoute toutefois des corr&#233;lations non locales, comme l&#39;intrication, sans permettre pour autant une communication supraluminique.</p>
 <h3>5. La physique doit distinguer la description de la r&#233;alit&#233;</h3>
-<p>En electromagnetisme, plusieurs potentiels peuvent representer le meme champ physique. Une transformation de jauge s&#39;ecrit</p>
+<p>En &#233;lectromagn&#233;tisme, plusieurs potentiels peuvent repr&#233;senter le m&#234;me champ physique. Une transformation de jauge s&#39;&#233;crit</p>
 <p>$$A_\mu \longrightarrow A_\mu + \partial_\mu\Lambda,$$</p>
 <p>et laisse invariant le tenseur</p>
 <p>$$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.$$</p>
-<p>Toutes les variables d&#39;une theorie ne representent donc pas necessairement des degres de liberte physiques. Certaines sont des redondances mathematiques ; les observables doivent etre independantes de ces redondances.</p>
+<p>Toutes les variables d&#39;une th&#233;orie ne repr&#233;sentent donc pas n&#233;cessairement des degr&#233;s de libert&#233; physiques. Certaines sont des redondances math&#233;matiques ; les observables doivent &#234;tre ind&#233;pendantes de ces redondances.</p>
 <h3>6. La connaissance physique est limitee par l&#39;information accessible</h3>
-<p>En mecanique quantique, les observables position et quantite de mouvement obeissent a</p>
+<p>En m&#233;canique quantique, les observables position et quantit&#233; de mouvement ob&#233;issent &#224;</p>
 <p>$$[\hat{x},\hat{p}] = i\hbar,$$</p>
 <p>ce qui implique</p>
 <p>$$\Delta x\,\Delta p \geq \frac{\hbar}{2}.$$</p>
-<p>Ce n&#39;est pas une simple limitation instrumentale. La structure des etats quantiques ne permet pas de donner simultanement une position et une quantite de mouvement parfaitement definies.</p>
-<p>En mecanique classique, on peut idealement decrire un etat par $(x,p)$. En mecanique quantique, un etat est represente par un vecteur $|\psi\rangle$, et une mesure de l&#39;observable $A$ fournit des resultats avec des probabilites determinees par la regle de Born, par exemple</p>
+<p>Ce n&#39;est pas une simple limitation instrumentale. La structure des &#233;tats quantiques ne permet pas de donner simultan&#233;ment une position et une quantit&#233; de mouvement parfaitement d&#233;finies.</p>
+<p>En m&#233;canique classique, on peut id&#233;alement d&#233;crire un &#233;tat par $(x,p)$. En m&#233;canique quantique, un &#233;tat est repr&#233;sent&#233; par un vecteur $|\psi\rangle$, et une mesure de l&#39;observable $A$ fournit des r&#233;sultats avec des probabilit&#233;s d&#233;termin&#233;es par la r&#232;gle de Born, par exemple</p>
 <p>$$P(a) = |\langle a|\psi\rangle|^2.$$</p>
-<p>La theorie ne fournit donc pas necessairement une valeur preexistante pour chaque propriete. Elle permet de calculer des probabilites conditionnelles du type $P(\text{resultat}\mid\text{preparation})$.</p>
+<p>La th&#233;orie ne fournit donc pas n&#233;cessairement une valeur pr&#233;existante pour chaque propri&#233;t&#233;. Elle permet de calculer des probabilit&#233;s conditionnelles du type $P(\text{résultat}\mid\text{préparation})$.</p>
 <h3>7. Un principe operationnel et informationnel</h3>
-<p>On peut proposer qu&#39;une theorie physique distingue ce qui est physiquement different de ce qui ne differe que dans la description. Une propriete physique a un contenu experimental si elle peut, au moins en principe, etre reliee a une procedure de preparation ou de mesure.</p>
-<p>Cette formulation s&#39;inspire de l&#39;approche operationnelle, sans impliquer que la conscience creerait la realite. La mecanique quantique n&#39;exige pas cette interpretation.</p>
+<p>On peut proposer qu&#39;une th&#233;orie physique distingue ce qui est physiquement diff&#233;rent de ce qui ne diff&#232;re que dans la description. Une propri&#233;t&#233; physique a un contenu exp&#233;rimental si elle peut, au moins en principe, &#234;tre reli&#233;e &#224; une proc&#233;dure de pr&#233;paration ou de mesure.</p>
+<p>Cette formulation s&#39;inspire de l&#39;approche op&#233;rationnelle, sans impliquer que la conscience cr&#233;erait la r&#233;alit&#233;. La m&#233;canique quantique n&#39;exige pas cette interpr&#233;tation.</p>
 <h3>8. Le cadre de validite des theories</h3>
-<p>Une theorie plus generale doit retrouver les predictions d&#39;une theorie etablie dans le domaine ou celle-ci fonctionne. La limite classique de la mecanique quantique depend notamment du regime d&#39;action, de la decoherence et des observables considerees. La limite newtonienne de la relativite generale exige un champ faible, $GM/(rc^2) \ll 1$, et des vitesses faibles devant $c$, $v \ll c$.</p>
-<p>On peut ainsi voir les theories comme une hierarchie de descriptions, dans laquelle une theorie plus fondamentale contient une theorie effective comme approximation dans un domaine determine.</p>
+<p>Une th&#233;orie plus g&#233;n&#233;rale doit retrouver les pr&#233;dictions d&#39;une th&#233;orie &#233;tablie dans le domaine o&#249; celle-ci fonctionne. La limite classique de la m&#233;canique quantique d&#233;pend notamment du r&#233;gime d&#39;action, de la d&#233;coh&#233;rence et des observables consid&#233;r&#233;es. La limite newtonienne de la relativit&#233; g&#233;n&#233;rale exige un champ faible, $GM/(rc^2) \ll 1$, et des vitesses faibles devant $c$, $v \ll c$.</p>
+<p>On peut ainsi voir les th&#233;ories comme une hi&#233;rarchie de descriptions, dans laquelle une th&#233;orie plus fondamentale contient une th&#233;orie effective comme approximation dans un domaine d&#233;termin&#233;.</p>
 <h4>I — Realite experimentale</h4>
 <p>Une affirmation physique doit pouvoir, directement ou indirectement, etre reliee a une experience concevable.</p>
 <h4>II — Invariance</h4>
@@ -113,17 +114,19 @@
       </section>
       <section class="resource-grid" aria-label="Ressources">
         <article class="panel resource-card">
-          <p class="eyebrow">À regarder</p><h2>Photos et schémas</h2>
-          <p>Quelques sources d'images libres pour illustrer les pages.</p>
+          <p class="eyebrow">À regarder</p><h2>Schémas pédagogiques</h2>
+          <p>Des sources d'images et de schémas à sélectionner pour expliquer les phénomènes.</p>
           <ul class="resource-list">
             <li><a href="https://commons.wikimedia.org/wiki/Category:Physics" target="_blank" rel="noopener noreferrer">Photos de physique sur Wikimedia Commons</a></li>
             <li><a href="https://commons.wikimedia.org/wiki/Category:Physics_diagrams" target="_blank" rel="noopener noreferrer">Schémas scientifiques</a></li>
           </ul>
         </article>
         <article class="panel resource-card">
-          <p class="eyebrow">À expérimenter</p><h2>Programmes</h2>
-          <p>Des outils externes à découvrir, sans installer quoi que ce soit ici.</p>
+          <p class="eyebrow">À expérimenter</p><h2>Simulations et outils</h2>
+          <p>Des simulations locales et des outils externes classés par usage.</p>
           <ul class="resource-list">
+            <li><a href="progjava/Pendule.html">Simulation locale : pendule simple</a></li>
+            <li><a href="progjava/brillouin.html">Simulation locale : modèle de Brillouin</a></li>
             <li><a href="https://phet.colorado.edu/fr/simulations/filter?subjects=physics" target="_blank" rel="noopener noreferrer">Simulations PhET</a></li>
             <li><a href="https://www.scilab.org/" target="_blank" rel="noopener noreferrer">Scilab</a></li>
           </ul>

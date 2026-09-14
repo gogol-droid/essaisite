@@ -68,7 +68,9 @@ $\vec{F} = m \vec{a}$
 
 Le générateur accepte aussi les fichiers exportés par certains éditeurs qui contiennent `\\vec` et des caractères Markdown échappés comme `\#` ou `\*`. MarkText sert à rédiger les fichiers ; il ne suffit pas à lui seul pour afficher les formules dans le navigateur. Les pages chargent MathJax pour effectuer ce rendu.
 
-Une mention explicite comme `progjava\brilouin.html` dans un fichier Markdown devient automatiquement un lien vers le fichier local correspondant. Le programme doit exister dans le dossier `progjava`.
+Une mention explicite comme `progjava\brillouin.html` dans un fichier Markdown devient automatiquement un lien vers le fichier local correspondant. Le programme doit exister dans le dossier `progjava`.
+
+Ressources locales : `schema-maxwell.html` et `schema-mecanique-fluides.html` sont des schémas, `gif-marche-aleatoire.html` est un GIF pédagogique, et `Pendule.html` ainsi que `brillouin.html` sont des simulations.
 
 Le programme Brilouin utilise une copie locale et versionnée de Chart.js dans `progjava/js/chart.umd.min.js`. Il ne dépend donc plus d'un CDN externe. Cette copie correspond à Chart.js 4.4.4 ; son empreinte SHA-256 est `B38076762F7363BC9E912B68B8E034826798DB5DF26BB61F000EC2E7A3137BC7`.
 
@@ -76,11 +78,11 @@ Associations actuelles :
 
 - `pages/mecanique-classique.html` : `photos/illustMecaClass.png` et `textes/MecaniqueClassique.md`
 - `pages/thermodynamique-classique.html` : `photos/illustThermoClass.png` et `textes/Thermodynamique.md`
-- `pages/thermodynamique-statistique.html` : `photos/illustThermoStat.png` et `textes/Thermostat.md`
+- `pages/thermodynamique-statistique.html` : `photos/illustThermoStat.png` et `textes/ThermodynamiqueStatistique.md`
 - `pages/mecanique-quantique.html` : `photos/illustMecaQ.png` et `textes/MecaniqueQuantique.md`
 - `pages/electromagnetisme.html` : `photos/illustElectromag.png` et `textes/Electromag.md`
 - `pages/relativite-restreinte.html` : `photos/illustRelatRest.png` et `textes/Relativite.md`
 - `pages/relativite-generale.html` : `photos/IllustRelatGen.png` et `textes/RelativiteGen.md`
 - `pages/optique.html` : `photos/illustOptic.png` et `textes/Optique.md`
-- `pages/physique-des-particules.html` : `photos/illustPhysPartcle.png` et `textes/PhysPartcle.md`
+- `pages/physique-des-particules.html` : `photos/illustPhysParticule.png` et `textes/PhysParticule.md`
 - `pages/mecanique-des-fluides.html` : `photos/Mecafluide.png` et `textes/Mecafluide.md`

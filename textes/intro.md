@@ -50,7 +50,7 @@ La relativité restreinte impose une structure causale : aucune influence permet
 
 ## 5. La physique doit distinguer la description de la réalité
 
-En electromagnetisme, plusieurs potentiels peuvent representer le meme champ physique. Une transformation de jauge s'ecrit
+En électromagnétisme, plusieurs potentiels peuvent représenter le même champ physique. Une transformation de jauge s'écrit
 
 $$A_\mu \longrightarrow A_\mu + \partial_\mu\Lambda,$$
 
@@ -58,11 +58,11 @@ et laisse invariant le tenseur
 
 $$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.$$
 
-Toutes les variables d'une theorie ne representent donc pas necessairement des degres de liberte physiques. Certaines sont des redondances mathematiques ; les observables doivent etre independantes de ces redondances.
+Toutes les variables d'une théorie ne représentent donc pas nécessairement des degrés de liberté physiques. Certaines sont des redondances mathématiques ; les observables doivent être indépendantes de ces redondances.
 
 ## 6. La connaissance physique est limitee par l'information accessible
 
-En mecanique quantique, les observables position et quantite de mouvement obeissent a
+En mécanique quantique, les observables position et quantité de mouvement obéissent à
 
 $$[\hat{x},\hat{p}] = i\hbar,$$
 
@@ -70,25 +70,25 @@ ce qui implique
 
 $$\Delta x\,\Delta p \geq \frac{\hbar}{2}.$$
 
-Ce n'est pas une simple limitation instrumentale. La structure des etats quantiques ne permet pas de donner simultanement une position et une quantite de mouvement parfaitement definies.
+Ce n'est pas une simple limitation instrumentale. La structure des états quantiques ne permet pas de donner simultanément une position et une quantité de mouvement parfaitement définies.
 
-En mecanique classique, on peut idealement decrire un etat par $(x,p)$. En mecanique quantique, un etat est represente par un vecteur $|\psi\rangle$, et une mesure de l'observable $A$ fournit des resultats avec des probabilites determinees par la regle de Born, par exemple
+En mécanique classique, on peut idéalement décrire un état par $(x,p)$. En mécanique quantique, un état est représenté par un vecteur $|\psi\rangle$, et une mesure de l'observable $A$ fournit des résultats avec des probabilités déterminées par la règle de Born, par exemple
 
 $$P(a) = |\langle a|\psi\rangle|^2.$$
 
-La theorie ne fournit donc pas necessairement une valeur preexistante pour chaque propriete. Elle permet de calculer des probabilites conditionnelles du type $P(\text{resultat}\mid\text{preparation})$.
+La théorie ne fournit donc pas nécessairement une valeur préexistante pour chaque propriété. Elle permet de calculer des probabilités conditionnelles du type $P(\text{résultat}\mid\text{préparation})$.
 
 ## 7. Un principe operationnel et informationnel
 
-On peut proposer qu'une theorie physique distingue ce qui est physiquement different de ce qui ne differe que dans la description. Une propriete physique a un contenu experimental si elle peut, au moins en principe, etre reliee a une procedure de preparation ou de mesure.
+On peut proposer qu'une théorie physique distingue ce qui est physiquement différent de ce qui ne diffère que dans la description. Une propriété physique a un contenu expérimental si elle peut, au moins en principe, être reliée à une procédure de préparation ou de mesure.
 
-Cette formulation s'inspire de l'approche operationnelle, sans impliquer que la conscience creerait la realite. La mecanique quantique n'exige pas cette interpretation.
+Cette formulation s'inspire de l'approche opérationnelle, sans impliquer que la conscience créerait la réalité. La mécanique quantique n'exige pas cette interprétation.
 
 ## 8. Le cadre de validite des theories
 
-Une theorie plus generale doit retrouver les predictions d'une theorie etablie dans le domaine ou celle-ci fonctionne. La limite classique de la mecanique quantique depend notamment du regime d'action, de la decoherence et des observables considerees. La limite newtonienne de la relativite generale exige un champ faible, $GM/(rc^2) \ll 1$, et des vitesses faibles devant $c$, $v \ll c$.
+Une théorie plus générale doit retrouver les prédictions d'une théorie établie dans le domaine où celle-ci fonctionne. La limite classique de la mécanique quantique dépend notamment du régime d'action, de la décohérence et des observables considérées. La limite newtonienne de la relativité générale exige un champ faible, $GM/(rc^2) \ll 1$, et des vitesses faibles devant $c$, $v \ll c$.
 
-On peut ainsi voir les theories comme une hierarchie de descriptions, dans laquelle une theorie plus fondamentale contient une theorie effective comme approximation dans un domaine determine.
+On peut ainsi voir les théories comme une hiérarchie de descriptions, dans laquelle une théorie plus fondamentale contient une théorie effective comme approximation dans un domaine déterminé.
 
 ### I — Realite experimentale
 

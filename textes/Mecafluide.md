@@ -20,4 +20,4 @@ Un écoulement laminaire est organisé en couches régulières ; un écoulement 
 
 Les équations de Navier-Stokes expriment l'équilibre entre inertie, pression, viscosité et forces extérieures. Elles constituent le modèle de référence de nombreux écoulements.
 
-Pour explorer une représentation de ces équations, voir : progjava/mecafluide.html
+Pour explorer une représentation de ces équations, voir : progjava/schema-mecanique-fluides.html

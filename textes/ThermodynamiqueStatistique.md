@@ -14,10 +14,10 @@ Un micro-état précise les positions et vitesses de toutes les particules ; un 
 
 Une marche aléatoire est un modèle simple où chaque pas dépend du hasard. Après de nombreux pas, la position moyenne peut rester nulle alors que l'écart typique grandit : c'est une image utile de la diffusion. Elle aide à passer de comportements microscopiques aléatoires à un transport mesurable.
 
-Pour voir une marche aléatoire, consulter : progjava\\marchealeagif.html
+Pour voir une marche aléatoire, consulter : progjava\\gif-marche-aleatoire.html
 
 ## Distribution et interprétation
 
 La distribution de Boltzmann attribue une probabilité plus faible aux états d'énergie élevée lorsque la température est fixée. Elle permet de relier énergie, température et populations de niveaux. Cette approche ne remplace pas l'expérience : elle fournit un cadre pour prévoir les résultats moyens et leurs fluctuations.
 
-Pour explorer un exemple numérique, voir : progjava\\brilouin.html
+Pour explorer un exemple numérique, voir : progjava\\brillouin.html

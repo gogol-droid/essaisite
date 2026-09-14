@@ -24,4 +24,4 @@ Lorsque le flux magnétique traversant un circuit varie, une tension est induite
 
 Les équations de Maxwell rassemblent ces phénomènes : les charges sont sources de champ électrique, les courants et les champs électriques variables créent du champ magnétique, et un champ magnétique variable crée du champ électrique. Elles prédisent aussi les ondes électromagnétiques, dont la lumière est un exemple.
 
-Pour visualiser ce cadre et ses équations, voir : progjava/maxwellpng.html
+Pour visualiser ce cadre et ses équations, voir : progjava/schema-maxwell.html

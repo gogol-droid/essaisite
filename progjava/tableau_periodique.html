@@ -27,6 +27,9 @@
       min-width: 1030px;
     }
     .element {
+      appearance: none;
+      width: 100%;
+      font: inherit;
       border: 1px solid rgba(17, 17, 17, 0.25);
       border-radius: 3px;
       padding: 4px;
@@ -36,10 +39,11 @@
       cursor: pointer;
       transition: transform 0.15s, box-shadow 0.15s;
     }
-    .element:hover {
+    .element:hover, .element:focus-visible {
       transform: translateY(-2px);
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     }
+    .element:focus-visible { outline: 3px solid #1456c0; outline-offset: 2px; }
     .element strong { display: block; font-size: 1.1rem; }
     .element small { display: block; margin-top: 3px; }
     .legend {
@@ -69,7 +73,7 @@
   <h1>Tableau Périodique des Éléments</h1>
   <div class="table-wrapper"><div class="periodic-table" id="table"></div></div>
   <div class="legend" id="legend"></div>
-  <div class="info" id="info">Cliquez sur un élément pour voir ses détails.</div>
+  <div class="info" id="info" aria-live="polite">Sélectionnez un élément pour voir ses détails.</div>
 
   <script>
     // Données reprises de TABLEAU_PERIODIQUE.py.
@@ -159,20 +163,23 @@
     });
 
     elements.forEach(el => {
-      const div = document.createElement('div');
+      const div = document.createElement('button');
       div.className = 'element';
+      div.type = 'button';
+      div.setAttribute('aria-label', `${el.nom}, numéro atomique ${el.numero}`);
       div.style.backgroundColor = categories[el.categorie][1];
       div.style.gridColumn = el.x;
       div.style.gridRow = el.y;
       div.innerHTML = `<strong>${el.symbole}</strong><br><small>${el.numero}</small>`;
-      div.addEventListener('click', () => {
+      const showDetails = () => {
         const ionisation = el.ionisation === null ? 'Non renseignée' : `${el.ionisation} eV`;
         info.innerHTML = `<strong>${el.nom}</strong> (${el.symbole})<br>
           Numéro atomique : ${el.numero}<br>
           Masse atomique : ${el.masse} u<br>
-          Énergie d'ionisation : ${ionisation}<br>
+          Énergie d’ionisation : ${ionisation}<br>
           Famille : ${categories[el.categorie][0]}`;
-      });
+      };
+      div.addEventListener('click', showDetails);
       table.appendChild(div);
     });
   </script>
