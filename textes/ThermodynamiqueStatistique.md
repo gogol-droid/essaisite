@@ -20,4 +20,4 @@ Pour voir une marche aléatoire, consulter : progjava\\gif-marche-aleatoire.html
 
 La distribution de Boltzmann attribue une probabilité plus faible aux états d'énergie élevée lorsque la température est fixée. Elle permet de relier énergie, température et populations de niveaux. Cette approche ne remplace pas l'expérience : elle fournit un cadre pour prévoir les résultats moyens et leurs fluctuations.
 
-Pour explorer un exemple numérique, voir : progjava\\Brillouin.html
+Pour explorer un exemple numérique, voir : progjava\\brillouin.html
