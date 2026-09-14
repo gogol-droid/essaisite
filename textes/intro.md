@@ -4,7 +4,7 @@ Il est tentant de commencer la physique par des lois particulières : Newton, Ma
 
 Une description physique devrait distinguer :
 
-**ce qui ne dépend pas de nos conventions de description**, ce qui conduit aux symétries et aux invariances ;
+**ce qui ne dépend pas de nos conventions de description**, ce qui conduit aux symétries et aux invariances;
 
 **ce qui doit être commun à des observateurs physiquement équivalents**, ce qui conduit aux principes de relativité et d'équivalence ;
 
