@@ -9,9 +9,12 @@
     font-family: Arial, sans-serif;
     background: #101820;
     color: white;
-    margin: 20px;
+    margin: clamp(10px, 3vw, 20px);
   }
-  h1 { color: #7fdcff; }
+  h1 {
+    color: #7fdcff;
+    font-size: clamp(1.45rem, 5vw, 2rem);
+  }
   #controls {
     background: #1a2530;
     padding: 12px 15px;
@@ -41,6 +44,8 @@
     background: #000;
     border: 1px solid #555;
     display: block;
+    width: min(900px, 100%);
+    height: auto;
   }
   #info {
     margin-top: 10px;
@@ -92,6 +97,7 @@ const G = 1;
 const softening = 5;
  
 let running = false;
+let escaped = false;
  
 let M,m;
  
@@ -278,11 +284,32 @@ const dx = x2-x1;
 const dy = y2-y1;
  
 const r = Math.sqrt(dx*dx+dy*dy);
+
+const state = getOrbitalState(r);
  
 document.getElementById("info").innerHTML=
 `distance = ${r.toFixed(1)}
 &nbsp;|&nbsp;
-barycentre rouge`;
+barycentre rouge
+<br>orbite ${state.label}`;
+}
+
+function getOrbitalState(r){
+const dvx = vx2-vx1;
+const dvy = vy2-vy1;
+const relativeEnergy = 0.5*(dvx*dvx+dvy*dvy)-G*(M+m)/r;
+const tolerance = 1e-6*Math.max(1,G*(M+m)/r);
+
+if(relativeEnergy < -tolerance)
+return {label:"liée", energy:relativeEnergy};
+if(relativeEnergy > tolerance)
+return {label:"non liée", energy:relativeEnergy};
+return {label:"parabolique", energy:relativeEnergy};
+}
+
+function isOutsideSimulation(r){
+const limit = 2*Math.hypot(canvas.width/2,canvas.height/2);
+return r > limit;
 }
  
 function loop(){
@@ -293,6 +320,11 @@ const dx=x2-x1;
 const dy=y2-y1;
  
 const r=Math.sqrt(dx*dx+dy*dy)+softening;
+
+if(escaped){
+draw();
+return;
+}
  
 const v=Math.max(
 Math.sqrt(vx1*vx1+vy1*vy1),
@@ -305,6 +337,16 @@ for(let i=0;i<4;i++)
 step(dt/4);
  
 draw();
+
+const currentDistance = Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+const state = getOrbitalState(currentDistance);
+if(state.label === "non liée" && isOutsideSimulation(currentDistance)){
+running=false;
+escaped=true;
+document.getElementById("info").innerHTML +=
+`<br>Simulation interrompue : trajectoire non liée.`;
+return;
+}
  
 requestAnimationFrame(loop);
 }
@@ -315,6 +357,7 @@ getInputs();
  
 trail1=[];
 trail2=[];
+escaped=false;
  
 running=true;
  
@@ -328,6 +371,7 @@ running=false;
 function resetSim(){
  
 running=false;
+escaped=false;
  
 trail1=[];
 trail2=[];
