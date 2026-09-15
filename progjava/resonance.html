@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Résonance d'un oscillateur masse-ressort</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    margin:20px;
+}
+
+h2{
+    text-align:center;
+}
+
+.container{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+canvas{
+    background:white;
+    border:1px solid #bbb;
+    border-radius:10px;
+}
+
+.controls{
+    text-align:center;
+    margin-top:15px;
+}
+
+label{
+    display:inline-block;
+    width:120px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Résonance d'un système masse-ressort</h2>
+
+<div class="container">
+
+    <canvas id="simu" width="400" height="450"></canvas>
+
+    <canvas id="resonance" width="450" height="450"></canvas>
+
+</div>
+
+<div class="controls">
+
+    <p>
+        <label>ω / ω₀</label>
+        <input type="range" id="freq" min="0.1" max="2.5" step="0.01" value="1">
+        <span id="freqVal">1.00</span>
+    </p>
+
+    <p>
+        <label>ζ</label>
+        <input type="range" id="damping" min="0.01" max="0.30" step="0.01" value="0.05">
+        <span id="dampVal">0.05</span>
+    </p>
+
+    <p>
+        Amplification théorique :
+        <span id="gain">0</span>
+    </p>
+
+</div>
+
+<script>
+
+// ---------- paramètres physiques ----------
+
+const w0 = 1.0;
+
+let x = 0;
+let v = 0;
+let t = 0;
+
+const dt = 0.02;
+
+const excitationAmplitude = 20;
+
+// ---------- canvas simulation ----------
+
+const canvas = document.getElementById("simu");
+const ctx = canvas.getContext("2d");
+
+// ---------- canvas résonance ----------
+
+const rCanvas = document.getElementById("resonance");
+const rctx = rCanvas.getContext("2d");
+
+// ---------- contrôles ----------
+
+const freqSlider = document.getElementById("freq");
+const dampSlider = document.getElementById("damping");
+
+const freqVal = document.getElementById("freqVal");
+const dampVal = document.getElementById("dampVal");
+const gainLabel = document.getElementById("gain");
+
+// ---------- historique ----------
+
+let trace = [];
+
+// ---------- amplification théorique ----------
+
+function amplification(r,zeta){
+
+    return (r*r) /
+        Math.sqrt(
+          Math.pow(1-r*r,2)
+          +
+          Math.pow(2*zeta*r,2)
+        );
+}
+
+// ---------- dessin ressort ----------
+
+function drawSpring(x1,y1,x2,y2,n){
+
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
+
+    let dy=(y2-y1)/(n+1);
+
+    for(let i=1;i<=n;i++){
+
+        let xx=(i%2===0)?x1+15:x1-15;
+        let yy=y1+i*dy;
+
+        ctx.lineTo(xx,yy);
+    }
+
+    ctx.lineTo(x2,y2);
+
+    ctx.strokeStyle="#333";
+    ctx.lineWidth=2;
+    ctx.stroke();
+}
+
+// ---------- graphe historique ----------
+
+function drawHistory(){
+
+    const ox=20;
+    const oy=370;
+    const W=360;
+    const H=60;
+
+    ctx.strokeStyle="#cccccc";
+    ctx.strokeRect(ox,oy,W,H);
+
+    ctx.beginPath();
+
+    trace.forEach((value,i)=>{
+
+        let X=ox+i;
+        let Y=oy+H/2-value*0.6;
+
+        if(i===0)
+            ctx.moveTo(X,Y);
+        else
+            ctx.lineTo(X,Y);
+    });
+
+    ctx.strokeStyle="royalblue";
+    ctx.stroke();
+}
+
+// ---------- simulation ----------
+
+function updatePhysics(){
+
+    const r = parseFloat(freqSlider.value);
+    const zeta = parseFloat(dampSlider.value);
+
+    const w = r*w0;
+
+    let y =
+        excitationAmplitude *
+        Math.sin(w*t);
+
+    let a =
+        -2*zeta*w0*v
+        -w0*w0*(x-y);
+
+    v += a*dt;
+    x += v*dt;
+
+    t += dt;
+
+    trace.push(x);
+
+    if(trace.length>360)
+        trace.shift();
+
+    return {r,zeta,y};
+}
+
+// ---------- dessin simulation ----------
+
+function drawSimulation(data){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const anchorX=200;
+    const anchorY=90 + data.y;
+
+    const massY=230 + x;
+
+    // plafond
+
+    ctx.fillStyle="#777";
+    ctx.fillRect(120,40,160,12);
+
+    // support vibrant
+
+    ctx.fillStyle="#444";
+    ctx.fillRect(anchorX-30,anchorY-6,60,12);
+
+    // ressort
+
+    drawSpring(anchorX,anchorY+6,anchorX,massY,12);
+
+    // masse
+
+    ctx.beginPath();
+    ctx.arc(anchorX,massY+25,20,0,Math.PI*2);
+    ctx.fillStyle="steelblue";
+    ctx.fill();
+
+    // indicateurs
+
+    ctx.fillStyle="black";
+    ctx.font="16px Arial";
+
+    ctx.fillText(
+        "Support",
+        250,
+        anchorY+5
+    );
+
+    ctx.fillText(
+        "Masse",
+        250,
+        massY+30
+    );
+
+    drawHistory();
+}
+
+// ---------- courbe résonance ----------
+
+function drawResonance(r,zeta){
+
+    rctx.clearRect(
+        0,0,
+        rCanvas.width,
+        rCanvas.height
+    );
+
+    const ox=60;
+    const oy=400;
+
+    const W=340;
+    const H=300;
+
+    rctx.strokeRect(
+        ox,
+        oy-H,
+        W,
+        H
+    );
+
+    rctx.beginPath();
+
+    for(let i=0;i<=500;i++){
+
+        let rr = 0.01 + i*(2.5/500);
+
+        let amp =
+            amplification(rr,zeta);
+
+        amp=Math.min(amp,10);
+
+        let X=
+            ox +
+            rr*(W/2.5);
+
+        let Y=
+            oy -
+            amp*(H/10);
+
+        if(i===0)
+            rctx.moveTo(X,Y);
+        else
+            rctx.lineTo(X,Y);
+    }
+
+    rctx.strokeStyle="green";
+    rctx.lineWidth=2;
+    rctx.stroke();
+
+    // ligne rouge
+
+    let xr=
+        ox +
+        r*(W/2.5);
+
+    rctx.beginPath();
+    rctx.moveTo(xr,oy);
+    rctx.lineTo(xr,oy-H);
+
+    rctx.strokeStyle="red";
+    rctx.stroke();
+
+    // étiquette
+
+    rctx.fillStyle="black";
+    rctx.font="16px Arial";
+
+    rctx.fillText("Amplitude", 20,30);
+    rctx.fillText("ω/ω₀", 350,430);
+}
+
+// ---------- boucle ----------
+
+function animate(){
+
+    let data=updatePhysics();
+
+    const gain =
+        amplification(
+            data.r,
+            data.zeta
+        );
+
+    freqVal.textContent =
+        data.r.toFixed(2);
+
+    dampVal.textContent =
+        data.zeta.toFixed(2);
+
+    gainLabel.textContent =
+        gain.toFixed(2);
+
+    drawSimulation(data);
+
+    drawResonance(
+        data.r,
+        data.zeta
+    );
+
+    requestAnimationFrame(
+        animate
+    );
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
