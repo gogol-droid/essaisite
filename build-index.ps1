@@ -140,7 +140,9 @@ $links
           <p>Des simulations locales et des outils externes classés par usage.</p>
           <ul class="resource-list">
             <li><a href="progjava/Pendule.html">Simulation locale : pendule simple</a></li>
-            <li><a href="progjava/brillouin.html">Simulation locale : modèle de Brillouin</a></li>
+            <li><a href="progjava/Brillouin.html">Simulation locale : modèle de Brillouin</a></li>
+            <li><a href="progjava/Binet.html">Simulation locale : orbites gravitationnelles</a></li>
+            <li><a href="progjava/resonance.html">Simulation locale : phénomène de résonance</a></li>
             <li><a href="https://phet.colorado.edu/fr/simulations/filter?subjects=physics" target="_blank" rel="noopener noreferrer">Simulations PhET</a></li>
             <li><a href="https://www.scilab.org/" target="_blank" rel="noopener noreferrer">Scilab</a></li>
           </ul>
