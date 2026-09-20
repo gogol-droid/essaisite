@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Équilibreur d'équations chimiques</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  .serif{font-family:"Instrument Serif", serif;}
+  .mono{font-family:"JetBrains Mono", monospace;}
+  body{background:#0a0a0b; color:#e4e4e7;}
+</style>
+</head>
+<body class="min-h-screen">
+<div class="max-w-5xl mx-auto px-6 py-10">
+  <h1 class="serif text-5xl leading-[0.9] tracking-tight">Équilibreur<br><span class="italic text-zinc-400">d'équations</span></h1>
+  <p class="mono text-[12px] text-zinc-500 mt-4">Syntaxe : CH3COOH, Ca(OH)2, H3O[+], CO3[-2], OH[-], Cr[+3] — Traduction fidèle Python → JS</p>
+
+  <div class="mt-8 grid md:grid-cols-2 gap-6">
+    <div class="rounded-[24px] bg-[#121216] border border-zinc-800 p-6">
+      <div class="mono text-[11px] tracking-widest uppercase text-zinc-500 mb-3">Réactifs</div>
+      <div id="reactifs"></div>
+      <button onclick="add('R')" class="mt-4 w-full mono text-[13px] py-3 rounded-xl bg-zinc-900 border border-dashed border-zinc-700 text-zinc-300">+ Ajouter réactif</button>
+    </div>
+    <div class="rounded-[24px] bg-[#121216] border border-zinc-800 p-6">
+      <div class="mono text-[11px] tracking-widest uppercase text-zinc-500 mb-3">Produits</div>
+      <div id="produits"></div>
+      <button onclick="add('P')" class="mt-4 w-full mono text-[13px] py-3 rounded-xl bg-zinc-900 border border-dashed border-zinc-700 text-zinc-300">+ Ajouter produit</button>
+    </div>
+  </div>
+
+  <div class="mt-6 flex flex-wrap gap-2 mono text-[11px]">
+    <span class="text-zinc-500 py-2">Exemples :</span>
+    <button onclick="loadExample(0)" class="px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800">H2 + O2 → H2O</button>
+    <button onclick="loadExample(1)" class="px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800">Fe + O2 → Fe2O3</button>
+    <button onclick="loadExample(2)" class="px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800">Redox MnO4⁻/Fe²⁺</button>
+  </div>
+
+  <button onclick="equilibrer()" class="mt-6 mono px-8 py-4 rounded-full bg-white text-black font-semibold tracking-wide">● ÉQUILIBRER ↗</button>
+
+  <div id="error" class="hidden mt-6 rounded-[20px] border border-red-900/50 bg-red-950/30 p-5 mono text-[13px] text-red-100"></div>
+  <div id="result" class="hidden mt-6 rounded-[24px] bg-[#121216] border border-zinc-800 p-6"></div>
+
+  <div class="mt-10 mono text-[11px] text-zinc-600">100% autonome • sans dépendance • Gauss-Jordan en fractions BigInt → nullspace → PPCM → PGCD</div>
+</div>
+
+<script>
+const ELEMENTS = new Set(["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"]);
+
+function bgcd(a,b){a=a<0n?-a:a; b=b<0n?-b:b; while(b!==0n){let t=b; b=a%b; a=t;} return a;}
+function blcm(a,b){if(a===0n||b===0n) return 0n; return (a/bgcd(a,b))*b;}
+class Frac{constructor(n,d=1n){let nn=typeof n==="number"?BigInt(n):n; let dd=typeof d==="number"?BigInt(d):d; if(dd===0n) throw Error("den 0"); if(dd<0n){nn=-nn; dd=-dd;} const g=bgcd(nn,dd); this.num=g===0n?0n:nn/g; this.den=g===0n?1n:dd/g; if(this.num===0n) this.den=1n;} isZero(){return this.num===0n;} add(o){return new Frac(this.num*o.den+o.num*this.den,this.den*o.den);} sub(o){return new Frac(this.num*o.den-o.num*this.den,this.den*o.den);} mul(o){return new Frac(this.num*o.num,this.den*o.den);} div(o){return new Frac(this.num*o.den,this.den*o.num);} neg(){return new Frac(-this.num,this.den);} }
+
+function parse_charge(s){s=s.trim(); if(!s) throw Error("charge vide entre crochets"); if(s==="+") return 1; if(s==="-") return -1; if((s[0]==="+"||s[0]==="-") && /^\d+$/.test(s.slice(1))){let v=parseInt(s.slice(1),10); if(v===0) throw Error("charge 0"); return (s[0]==="+"?1:-1)*v;} if((s[s.length-1]==="+"||s[s.length-1]==="-") && /^\d+$/.test(s.slice(0,-1))){let v=parseInt(s.slice(0,-1),10); if(v===0) throw Error("charge 0"); return (s[s.length-1]==="+"?1:-1)*v;} throw Error(`charge invalide '[${s}]'`);}
+function lire_nombre(f,i){let nb=""; while(i<f.length && /[0-9]/.test(f[i])){nb+=f[i]; i++;} if(!nb) return [1,i]; let v=parseInt(nb,10); if(v<=0) throw Error("indices >0"); return [v,i];}
+function lire_formule(formule){
+  let f=formule.trim(); if(!f) throw Error("formule vide"); let charge=0; let core=f;
+  if(f.includes("[")||f.includes("]")){if(!f.endsWith("]")) throw Error("charge à la fin entre []"); let idx=f.lastIndexOf("["); if(idx===-1) throw Error("] sans ["); if(f.slice(0,idx).includes("[")||f.slice(0,idx).includes("]")) throw Error("crochets mal placés"); charge=parse_charge(f.slice(idx+1,-1)); core=f.slice(0,idx).trim(); if(!core) throw Error("formule vide avant charge");}
+  function rec(start,attend){let comp={}; let i=start; while(i<core.length){let ch=core[i]; if(ch==="("){let [sous,next]=rec(i+1,true); let [fact,after]=lire_nombre(core,next); i=after; for(let [el,q] of Object.entries(sous)) comp[el]=(comp[el]||0)+q*fact;} else if(ch===")"){if(!attend) throw Error(`) inattendue pos ${i}`); if(Object.keys(comp).length===0) throw Error("() vide"); return [comp,i+1];} else if(/[A-Z]/.test(ch)){let el=ch; i++; if(i<core.length && /[a-z]/.test(core[i])){el+=core[i]; i++;} if(!ELEMENTS.has(el)) throw Error(`élément inconnu '${el}'`); let [q,ni]=lire_nombre(core,i); i=ni; comp[el]=(comp[el]||0)+q;} else throw Error(`caractère '${ch}' pos ${i}`);} if(attend) throw Error("( non refermée"); return [comp,i];}
+  let [comp,idx]=rec(0,false); if(idx!==core.length) throw Error(`non interprété pos ${idx}`); if(Object.keys(comp).length===0) throw Error("sans élément"); if(charge!==0) comp["q"]=charge; return comp;
+}
+
+function generer_systeme(cR,cP){let set=new Set(); [...cR,...cP].forEach(c=>Object.keys(c).forEach(k=>set.add(k))); let els=Array.from(set).sort(); let n=cR.length+cP.length; let m=els.length; let A=Array.from({length:m},()=>Array(n).fill(0)); for(let ei=0;ei<m;ei++){let el=els[ei]; for(let r=0;r<cR.length;r++) A[ei][r]=-(cR[r][el]||0); for(let p=0;p<cP.length;p++) A[ei][cR.length+p]=(cP[p][el]||0);} return [A,els];}
+function pgcd_liste(vals){let nonNull=vals.map(v=>Math.abs(v|0)).filter(v=>v!==0); if(nonNull.length===0) return 1; return nonNull.reduce((a,b)=>{let x=a,y=b; while(y){let t=y; y=x%y; x=t;} return x;});}
+function simplifie_solution(sol){let d=pgcd_liste(sol); return sol.map(x=>Math.trunc(x/d));}
+function entierise_vecteur(v){let dens=v.map(f=>f.den); let l=dens.reduce((a,b)=>blcm(a,b),1n); return v.map(f=>Number(f.num * (l/f.den)));}
+
+function nullspace(A){
+  let m=A.length, n=A[0].length;
+  let mat=A.map(row=>row.map(v=>new Frac(v,1)));
+  let where=new Array(n).fill(-1);
+  let r=0;
+  for(let c=0;c<n && r<m;c++){
+    let sel=r; while(sel<m && mat[sel][c].isZero()) sel++;
+    if(sel===m) continue;
+    [mat[sel],mat[r]]=[mat[r],mat[sel]];
+    where[c]=r;
+    for(let i=0;i<m;i++){ if(i!==r && !mat[i][c].isZero()){ let f=mat[i][c].div(mat[r][c]); for(let j=c;j<n;j++) mat[i][j]=mat[i][j].sub(f.mul(mat[r][j])); } }
+    for(let j=n-1;j>=c;j--) mat[r][j]=mat[r][j].div(mat[r][c]);
+    r++;
+  }
+  let freeCols=[]; for(let c=0;c<n;c++) if(where[c]===-1) freeCols.push(c);
+  let basis=[];
+  for(let fc of freeCols){
+    let vec=Array(n).fill(null).map(()=>new Frac(0));
+    vec[fc]=new Frac(1);
+    for(let c=0;c<n;c++) if(where[c]!==-1){ let row=where[c]; vec[c]=mat[row][fc].neg(); }
+    basis.push(vec);
+  }
+  return basis;
+}
+
+function chercher_solutions(base,limite=12,maximum=3){
+  let solutions=[]; let seen=new Set();
+  let k=base.length;
+  function* prod(depth,cur){ if(depth===k){ yield [...cur]; return;} for(let v=-limite; v<=limite; v++){ cur[depth]=v; yield* prod(depth+1,cur);} }
+  for(let coeffs of prod(0,Array(k).fill(0))){
+    if(coeffs.every(c=>c===0)) continue;
+    let comb=Array(base[0].length).fill(0);
+    for(let j=0;j<k;j++) for(let i=0;i<comb.length;i++) comb[i]+=coeffs[j]*base[j][i];
+    if(comb.length===0 || !comb.every(c=>c>0)) continue;
+    let s=simplifie_solution(comb); let key=s.join(","); if(seen.has(key)) continue; seen.add(key); solutions.push(s);
+  }
+  solutions.sort((a,b)=>{let sa=a.reduce((x,y)=>x+y,0), sb=b.reduce((x,y)=>x+y,0); if(sa!==sb) return sa-sb; let ma=Math.max(...a), mb=Math.max(...b); if(ma!==mb) return ma-mb; return a.join(",").localeCompare(b.join(","));});
+  return solutions.slice(0,maximum);
+}
+
+function afficher_reaction(noms,coeffs,nR){let R=[],P=[]; for(let i=0;i<coeffs.length;i++){let c=coeffs[i]; let t=(c>1?c:"")+noms[i]; if(i<nR) R.push(t); else P.push(t);} return R.join(" + ")+" -> "+P.join(" + ");}
+
+let reactifs=["H2","O2"]; let produits=["H2O"];
+function render(){
+  document.getElementById("reactifs").innerHTML=reactifs.map((v,i)=>`<div class="flex gap-2 mb-2"><input value="${v}" oninput="reactifs[${i}]=this.value" class="flex-1 mono text-[14px] px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-zinc-600 outline-none" placeholder="H2"><button onclick="reactifs.splice(${i},1); if(reactifs.length===0) reactifs=['']; render()" class="w-11 h-[46px] grid place-items-center rounded-xl bg-zinc-900 border border-zinc-800">−</button></div>`).join("");
+  document.getElementById("produits").innerHTML=produits.map((v,i)=>`<div class="flex gap-2 mb-2"><input value="${v}" oninput="produits[${i}]=this.value" class="flex-1 mono text-[14px] px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-zinc-600 outline-none" placeholder="H2O"><button onclick="produits.splice(${i},1); if(produits.length===0) produits=['']; render()" class="w-11 h-[46px] grid place-items-center rounded-xl bg-zinc-900 border border-zinc-800">−</button></div>`).join("");
+}
+function add(type){ if(type==="R") reactifs.push(""); else produits.push(""); render(); }
+function loadExample(n){
+  if(n===0){reactifs=["H2","O2"]; produits=["H2O"];}
+  if(n===1){reactifs=["Fe","O2"]; produits=["Fe2O3"];}
+  if(n===2){reactifs=["MnO4[-]","H[+]","Fe[2+]"]; produits=["Mn[2+]","Fe[3+]","H2O"];}
+  render();
+}
+function equilibrer(){
+  let errEl=document.getElementById("error"); let resEl=document.getElementById("result");
+  errEl.classList.add("hidden"); resEl.classList.add("hidden");
+  try{
+    let r=reactifs.map(s=>s.trim()).filter(s=>s); let p=produits.map(s=>s.trim()).filter(s=>s);
+    if(r.length===0||p.length===0) throw Error("Ajoute au moins un réactif et un produit");
+    let compoR=r.map(lire_formule); let compoP=p.map(lire_formule);
+    let elsR=new Set(); compoR.forEach(c=>Object.keys(c).forEach(k=>{if(k!=="q") elsR.add(k)}));
+    let elsP=new Set(); compoP.forEach(c=>Object.keys(c).forEach(k=>{if(k!=="q") elsP.add(k)}));
+    let onlyR=[...elsR].filter(x=>!elsP.has(x)); let onlyP=[...elsP].filter(x=>!elsR.has(x));
+    if(onlyR.length||onlyP.length) throw Error("Éléments non conservés. Seulement réactifs: "+onlyR.join(",")+" | Seulement produits: "+onlyP.join(","));
+    let [A,elements]=generer_systeme(compoR,compoP);
+    let baseF=nullspace(A); if(baseF.length===0) throw Error("Aucune solution non triviale (noyau vide)");
+    let baseE=baseF.map(entierise_vecteur);
+    let sols=chercher_solutions(baseE,12,3);
+    if(sols.length===0) throw Error("Aucune solution entière strictement positive dans [-12..12]");
+    let noms=[...r,...p];
+    let html=`<div class="mono text-[11px] uppercase tracking-widest text-zinc-500 mb-3">Éléments / charges: ${elements.join(", ")} — Dimension noyau: ${baseF.length}</div>`;
+    html+=`<div class="space-y-3">`+sols.map((s,i)=>`<div class="rounded-[16px] border border-emerald-900/30 bg-emerald-950/20 p-4"><div class="flex gap-3"><div class="w-6 h-6 grid place-items-center rounded-full bg-emerald-500 text-black text-[11px] font-bold">${i+1}</div><div class="text-[16px] leading-snug text-emerald-50">${afficher_reaction(noms,s,r.length)}</div></div><div class="mono text-[11px] text-zinc-500 mt-2">coeffs: [${s.join(", ")}] — somme ${s.reduce((a,b)=>a+b,0)}</div></div>`).join("")+`</div>`;
+    html+=`<details class="mt-4"><summary class="mono text-[11px] text-zinc-500 cursor-pointer">Voir compositions</summary><pre class="mono text-[11px] mt-2 text-zinc-300 whitespace-pre-wrap">${JSON.stringify({reactifs:compoR, produits:compoP},null,2)}</pre></details>`;
+    resEl.innerHTML=html; resEl.classList.remove("hidden");
+  }catch(e){ errEl.textContent="Erreur : "+(e.message||e); errEl.classList.remove("hidden"); }
+}
+render();
+</script>
+</body>
+</html>
