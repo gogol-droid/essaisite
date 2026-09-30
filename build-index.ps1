@@ -133,6 +133,7 @@ $links
           <ul class="resource-list">
             <li><a href="https://commons.wikimedia.org/wiki/Category:Physics" target="_blank" rel="noopener noreferrer">Photos de physique sur Wikimedia Commons</a></li>
             <li><a href="https://commons.wikimedia.org/wiki/Category:Physics_diagrams" target="_blank" rel="noopener noreferrer">Schémas scientifiques</a></li>
+            <li><a href="https://fr.tipeee.com/benbennymathsphysique/" target="_blank" rel="noopener noreferrer">soutenir sur tipee</a></li>
           </ul>
         </article>
         <article class="panel resource-card">
@@ -145,7 +146,6 @@ $links
             <li><a href="progjava/resonance.html">Simulation locale : phénomène de résonance</a></li>
             <li><a href="progjava/tableau_periodique.html">Simulation locale : tableau périodique</a></li>
             <li><a href="progjava/Equilibre_reaction.html">Simulation locale : équilibre chimique</a></li>
-            <li><a href="https://phet.colorado.edu/fr/simulations/filter?subjects=physics" target="_blank" rel="noopener noreferrer">Simulations PhET</a></li>
             <li><a href="https://www.scilab.org/" target="_blank" rel="noopener noreferrer">Scilab</a></li>
           </ul>
         </article>
