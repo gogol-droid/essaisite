@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self'; base-uri 'none'">
+    <meta name="site-index" content="false">
+    <title>Exemple de calcul : trajectoire gravitationnelle &#224; deux corps — Toute la Physique</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel topic-page">
+        <p class="eyebrow">Exemple de calcul</p>
+        <h1>Exemple de calcul : trajectoire gravitationnelle &#224; deux corps</h1>
+        
+        <div class="topic-content"><h2>Exemple de calcul : trajectoire gravitationnelle &#224; deux corps</h2>
+<p>Ce compl&#233;ment d&#233;taille le calcul d&#39;une orbite gravitationnelle. On commence par le cas o&#249; la masse centrale est fixe, puis on traite le probl&#232;me exact &#224; deux corps. Dans ce second cas, les deux objets se d&#233;placent autour de leur centre d&#39;inertie et le mouvement relatif s&#39;&#233;crit avec la masse r&#233;duite.</p>
+<h3>Position et base polaire</h3>
+<p>On place la masse centrale &#224; l&#39;origine $O$. Le satellite, de masse $m$, est au point $P$. Dans le plan de son mouvement, sa position s&#39;&#233;crit</p>
+<p>$$ \overrightarrow{OP}=r\,\vec e_r, $$</p>
+<p>o&#249; $r$ est la distance au centre et $\vec e_r$ le vecteur unitaire radial. On note $\vec e_\theta$ le vecteur unitaire perpendiculaire &#224; $\vec e_r$, orient&#233; dans le sens croissant de l&#39;angle polaire $\theta$.</p>
+<p>La base tourne avec le satellite. Ses d&#233;riv&#233;es sont</p>
+<p>$$ \frac{d\vec e_r}{dt}=\dot\theta\,\vec e_\theta, \qquad \frac{d\vec e_\theta}{dt}=-\dot\theta\,\vec e_r. $$</p>
+<p>Il faut tenir compte de ces d&#233;riv&#233;es lorsqu&#39;on d&#233;rive le vecteur position.</p>
+<h3>Vitesse et acc&#233;l&#233;ration</h3>
+<p>En d&#233;rivant $\overrightarrow{OP}=r\vec e_r$, on obtient la vitesse :</p>
+<p>$$ \vec v=\frac{d\overrightarrow{OP}}{dt} =\dot r\,\vec e_r+r\dot\theta\,\vec e_\theta. $$</p>
+<p>Une nouvelle d&#233;rivation donne l&#39;acc&#233;l&#233;ration :</p>
+<p>$$ \vec a=(\ddot r-r\dot\theta^2)\,\vec e_r +(r\ddot\theta+2\dot r\dot\theta)\,\vec e_\theta. $$</p>
+<p>Le terme $-r\dot\theta^2$ est l&#39;acc&#233;l&#233;ration radiale associ&#233;e au changement de direction du mouvement. Le terme $2\dot r\dot\theta$ appara&#238;t parce que la distance et la base polaire varient toutes deux avec le temps.</p>
+<h3>Deuxi&#232;me loi de Newton</h3>
+<p>La force gravitationnelle exerc&#233;e par la masse centrale est dirig&#233;e vers $O$ :</p>
+<p>$$ \vec F=-\frac{GMm}{r^2}\,\vec e_r. $$</p>
+<p>La deuxi&#232;me loi de Newton, $m\vec a=\vec F$, donne s&#233;par&#233;ment les &#233;quations radiale et angulaire :</p>
+<p>$$ \ddot r-r\dot\theta^2=-\frac{GM}{r^2}, \qquad r\ddot\theta+2\dot r\dot\theta=0. $$</p>
+<p>La masse $m$ du satellite se simplifie : dans cette approximation, elle ne change pas la trajectoire suivie pour des conditions initiales donn&#233;es.</p>
+<p>L&#39;&#233;quation angulaire se r&#233;&#233;crit</p>
+<p>$$ \frac{d}{dt}(r^2\dot\theta)=0. $$</p>
+<p>On d&#233;finit donc la constante positive ou sign&#233;e $C$ par</p>
+<p>$$ r^2\dot\theta=C. $$</p>
+<p>Sa valeur absolue est le moment cin&#233;tique par unit&#233; de masse. Cette conservation exprime aussi la loi des aires : le rayon vecteur balaie des aires &#233;gales pendant des dur&#233;es &#233;gales.</p>
+<h3>Changer la variable ind&#233;pendante : de $t$ &#224; $\theta$</h3>
+<p>Pour d&#233;crire la forme de l&#39;orbite, on cherche $r$ en fonction de $\theta$ plut&#244;t qu&#39;en fonction du temps. Comme $\dot\theta=C/r^2$, la r&#232;gle de d&#233;rivation en cha&#238;ne donne, pour toute fonction $f(\theta)$,</p>
+<p>$$ \frac{df}{dt}=\frac{C}{r^2}\frac{df}{d\theta}. $$</p>
+<p>On introduit ensuite la fonction inverse</p>
+<p>$$ u(\theta)=\frac{1}{r(\theta)}. $$</p>
+<p>Dans les calculs qui suivent, une prime d&#233;signe une d&#233;riv&#233;e par rapport &#224; $\theta$. Puisque $r=1/u$,</p>
+<p>$$ \dot r=\frac{dr}{d\theta}\dot\theta=-C u', \qquad \ddot r=-C\dot\theta u''=-C^2u^2u''. $$</p>
+<p>On a &#233;galement $r\dot\theta^2=C^2u^3$. En rempla&#231;ant ces expressions dans l&#39;&#233;quation radiale, il vient</p>
+<p>$$ -C^2u^2(u''+u)=-GMu^2, $$</p>
+<p>et, pour $C\ne0$,</p>
+<p>$$ u''+u=\frac{GM}{C^2}. $$</p>
+<p>Cette transformation, appel&#233;e &#233;quation de Binet dans ce cas, a remplac&#233; l&#39;&#233;quation du mouvement temporel par une &#233;quation diff&#233;rentielle lin&#233;aire pour l&#39;inverse du rayon.</p>
+<h3>Forme de la trajectoire</h3>
+<p>La solution g&#233;n&#233;rale est</p>
+<p>$$ u(\theta)=\frac{GM}{C^2}+A\cos(\theta-\theta_0), $$</p>
+<p>o&#249; $A$ et $\theta_0$ sont fix&#233;s par les conditions initiales. En posant $p=C^2/(GM)$ et en d&#233;finissant l&#39;excentricit&#233; $e=Ap$, on obtient l&#39;&#233;quation polaire usuelle :</p>
+<p>$$ r(\theta)=\frac{p}{1+e\cos(\theta-\theta_0)}. $$</p>
+<p>Le signe devant le cosinus peut &#234;tre absorb&#233; dans un d&#233;calage de $\pi$ de $\theta_0$. L&#39;excentricit&#233; est prise positive. Pour $C\ne0$, les formes possibles sont :</p>
+<p>- $e=0$ : un cercle ; - $0<e<1$ : une ellipse ; - $e=1$ : une parabole ; - $e>1$ : une hyperbole.</p>
+<p>Le foyer de la conique est en $O$. Une ellipse d&#233;crit une orbite ferm&#233;e ; une parabole et une hyperbole d&#233;crivent des trajectoires de passage qui repartent vers l&#39;infini.</p>
+<h3>Relier la forme &#224; l&#39;&#233;nergie</h3>
+<p>L&#39;&#233;nergie m&#233;canique totale du satellite est conserv&#233;e. En divisant par $m$, on d&#233;finit l&#39;&#233;nergie par unit&#233; de masse $\varepsilon$ :</p>
+<p>$$ \varepsilon=\frac{E}{m} =\frac{1}{2}(\dot r^2+r^2\dot\theta^2)-\frac{GM}{r} =\frac{1}{2}\dot r^2+\frac{C^2}{2r^2}-\frac{GM}{r}. $$</p>
+<p>En combinant cette expression avec l&#39;&#233;quation de l&#39;orbite, on trouve</p>
+<p>$$ e^2=1+\frac{2\varepsilon C^2}{(GM)^2}. $$</p>
+<p>Pour une orbite non circulaire et non radiale, le signe de l&#39;&#233;nergie distingue les trois r&#233;gimes :</p>
+<p>- $\varepsilon<0$ correspond &#224; $e<1$ : l&#39;orbite est li&#233;e et elliptique (le cercle est le cas particulier $e=0$) ; - $\varepsilon=0$ correspond &#224; $e=1$ : c&#39;est le cas limite parabolique, &#224; la fronti&#232;re entre orbite li&#233;e et trajectoire de passage ; - $\varepsilon>0$ correspond &#224; $e>1$ : le satellite n&#39;est pas li&#233; et suit une hyperbole.</p>
+<p>La parabole repr&#233;sente donc exactement le seuil d&#39;&#233;chappement : l&#39;objet peut atteindre une distance arbitrairement grande avec une vitesse qui tend vers z&#233;ro. Une trajectoire radiale ($C=0$) est un cas d&#233;g&#233;n&#233;r&#233; qui ne se d&#233;crit pas par le changement de variable $t\leftrightarrow\theta$ utilis&#233; ici.</p>
+<h3>Deux corps et centre d&#39;inertie</h3>
+<p>Lorsque les deux masses ne sont pas suppos&#233;es fixes, notons $m_1$ et $m_2$ leurs masses, et $\vec r_1$ et $\vec r_2$ leurs positions dans un r&#233;f&#233;rentiel galil&#233;en. On d&#233;finit la position du centre d&#39;inertie $\vec R$ et le vecteur position relative $\vec r$ par</p>
+<p>$$ \vec R=\frac{m_1\vec r_1+m_2\vec r_2}{m_1+m_2}, \qquad \vec r=\vec r_2-\vec r_1. $$</p>
+<p>La distance entre les corps est $r=|\vec r|$. La gravitation est une interaction interne au syst&#232;me : les forces exerc&#233;es par les deux corps sont oppos&#233;es. En l&#39;absence de force ext&#233;rieure, le centre d&#39;inertie suit donc un mouvement rectiligne uniforme, $\ddot{\vec R}=0$.</p>
+<p>Pour isoler le mouvement relatif, on introduit la masse r&#233;duite</p>
+<p>$$ \mu=\frac{m_1m_2}{m_1+m_2}. $$</p>
+<p>La force gravitationnelle sur le corps 2 est dirig&#233;e vers le corps 1. En soustrayant les &#233;quations de Newton des deux corps, on obtient l&#39;&#233;quation du mouvement relatif :</p>
+<p>$$ \mu\ddot{\vec r} =-\frac{Gm_1m_2}{r^2}\,\vec e_r =-\frac{Gm_1m_2}{r^3}\,\vec r. $$</p>
+<p>C&#39;est l&#39;&#233;quation d&#39;une particule fictive de masse $\mu$, attir&#233;e par un centre fixe avec une force de m&#234;me forme. En divisant par $\mu$, on voit que l&#39;acc&#233;l&#233;ration relative d&#233;pend de la somme des masses :</p>
+<p>$$ \ddot{\vec r} =-\frac{G(m_1+m_2)}{r^2}\,\vec e_r. $$</p>
+<p>Ainsi, pour calculer la forme de l&#39;orbite relative, on reprend les r&#233;sultats pr&#233;c&#233;dents en rempla&#231;ant $GM$ par $G(m_1+m_2)$. En particulier, si $C=|\vec r\times\dot{\vec r}|$ est le moment cin&#233;tique relatif par unit&#233; de masse r&#233;duite, alors</p>
+<p>$$ r(\theta)=\frac{p}{1+e\cos(\theta-\theta_0)}, \qquad p=\frac{C^2}{G(m_1+m_2)}. $$</p>
+<p>La masse r&#233;duite appara&#238;t explicitement dans l&#39;&#233;nergie m&#233;canique du mouvement relatif,</p>
+<p>$$ E_{\mathrm{rel}} =\frac{1}{2}\mu|\dot{\vec r}|^2-\frac{Gm_1m_2}{r} =\mu\left(\frac{1}{2}|\dot{\vec r}|^2-\frac{G(m_1+m_2)}{r}\right). $$</p>
+<p>En posant $\varepsilon=E_{\mathrm{rel}}/\mu$, la relation entre &#233;nergie et excentricit&#233; prend la m&#234;me forme que pr&#233;c&#233;demment :</p>
+<p>$$ e^2=1+\frac{2\varepsilon C^2}{G^2(m_1+m_2)^2}. $$</p>
+<p>Le mouvement relatif ne donne pas directement les trajectoires de chaque corps. Il faut revenir au centre d&#39;inertie en inversant les d&#233;finitions de $\vec R$ et $\vec r$ :</p>
+<p>$$ \vec r_1=\vec R-\frac{m_2}{m_1+m_2}\,\vec r, \qquad \vec r_2=\vec R+\frac{m_1}{m_1+m_2}\,\vec r. $$</p>
+<p>Dans le r&#233;f&#233;rentiel du centre d&#39;inertie, $\vec R=0$ : chaque corps d&#233;crit donc une conique autour de ce centre, avec la m&#234;me p&#233;riode et la m&#234;me excentricit&#233; que l&#39;orbite relative. Leurs distances au centre d&#39;inertie v&#233;rifient</p>
+<p>$$ \frac{|\vec r_1|}{|\vec r_2|}=\frac{m_2}{m_1}. $$</p>
+<p>Le corps le plus massif d&#233;crit ainsi la plus petite orbite. Lorsque $m_1\gg m_2$, le centre d&#39;inertie est tr&#232;s proche de $m_1$ et l&#39;approximation d&#39;un centre fixe utilis&#233;e au d&#233;but devient pertinente.</p></div>
+        <p><a href="mecanique-classique.html">← Retour à M&#233;canique classique</a></p>
+      </section>
+    </main>
+  </body>
+</html>

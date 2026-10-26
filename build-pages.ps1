@@ -2,6 +2,7 @@ $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
 
 $pages = @(
+  @{ Page = "mecanique-classique-exemples-calculs.html"; Title = "Exemple de calcul : trajectoire gravitationnelle à deux corps"; Text = "MecaniqueClassique_Gravitation.md"; Parent = "mecanique-classique.html"; ParentTitle = "Mécanique classique"; Index = $false },
   @{ Page = "mecanique-classique.html"; Title = "Mécanique classique"; Text = "MecaniqueClassique.md"; Photo = "illustMecaClass.png"; Width = 437; Height = 497 },
   @{ Page = "thermodynamique-classique.html"; Title = "Thermodynamique classique"; Text = "Thermodynamique.md"; Photo = "illustThermoClass.png"; Width = 446; Height = 431 },
   @{ Page = "thermodynamique-statistique.html"; Title = "Thermodynamique statistique"; Text = "ThermodynamiqueStatistique.md"; Photo = "illustThermoStat.png"; Width = 567; Height = 802 },
@@ -27,6 +28,17 @@ function Convert-Paragraph([string]$text) {
   $encoded = [System.Net.WebUtility]::HtmlEncode($protected.Trim())
   $encoded = [Regex]::Replace($encoded, "\*\*(.+?)\*\*", "<strong>`$1</strong>")
 
+  $pageLinks = [Collections.Generic.List[string]]::new()
+  $encoded = [Regex]::Replace($encoded, '\[(?<label>[^\]]+)\]\((?<path>mecanique-classique-exemples-calculs\.html)\)', {
+    param($m)
+    $route = $m.Groups["path"].Value
+    if (-not ($pages | Where-Object { $_.Page.Replace("\", "/") -eq $route })) {
+      throw "Lien vers une page introuvable : $route"
+    }
+    $pageLinks.Add("<a href=`"$route`">$($m.Groups["label"].Value)</a>")
+    return "___PAGELINK$($pageLinks.Count-1)___"
+  })
+
   # 2. Gestion des liens progjava (ton code d'origine)
   $programPattern = '(?i)(?:[a-z]:[\\/]+Users[\\/]+[^\\/\r\n]+[\\/]+(?:OneDrive[\\/]+Documents[\\/]+)?PagePerso[\\/]+)?progjava[\\/]+([a-z0-9._-]+\.html)'
   foreach ($match in [Regex]::Matches($text, $programPattern)) {
@@ -43,6 +55,9 @@ function Convert-Paragraph([string]$text) {
   # 3. On restaure les formules LaTeX sans les encoder
   for ($i = 0; $i -lt $latexBlocks.Count; $i++) {
     $encoded = $encoded.Replace("___LATEX${i}___", $latexBlocks[$i])
+  }
+  for ($i = 0; $i -lt $pageLinks.Count; $i++) {
+    $encoded = $encoded.Replace("___PAGELINK${i}___", $pageLinks[$i])
   }
 
   return "<p>$encoded</p>"
@@ -83,6 +98,13 @@ function Convert-Markdown([string]$content) {
 
 foreach ($entry in $pages) {
   $title = [System.Net.WebUtility]::HtmlEncode($entry.Title)
+  $pagePath = Join-Path $root "pages\$($entry.Page)"
+  $pageDirectory = Split-Path -Parent $pagePath
+  if (-not (Test-Path -LiteralPath $pageDirectory -PathType Container)) {
+    New-Item -ItemType Directory -Path $pageDirectory -Force | Out-Null
+  }
+  $relativeRoot = "../" * (($entry.Page -split "[\\/]").Count)
+  $stylesheet = "${relativeRoot}styles.css"
   $content = "<p>Cette page est prête à accueillir un texte et une illustration.</p>"
   if ($entry.Text) {
     $textPath = Join-Path $root "textes\$($entry.Text)"
@@ -95,10 +117,25 @@ foreach ($entry in $pages) {
     if (-not (Test-Path -LiteralPath $photoPath)) { throw "Photo introuvable : $photoPath" }
     $media = @"
         <figure class="topic-figure">
-          <img class="topic-image" src="../photos/$($entry.Photo)" width="$($entry.Width)" height="$($entry.Height)" alt="Illustration de $title" loading="lazy">
+          <img class="topic-image" src="${relativeRoot}photos/$($entry.Photo)" width="$($entry.Width)" height="$($entry.Height)" alt="Illustration de $title" loading="lazy">
           <figcaption>Illustration de $title.</figcaption>
         </figure>
 "@
+  }
+  $returnHref = "../index.html"
+  $returnTitle = "Toute la Physique"
+  if ($entry.Parent) {
+    $returnHref = $entry.Parent
+    $returnTitle = $entry.ParentTitle
+  }
+  $returnTitle = [System.Net.WebUtility]::HtmlEncode($returnTitle)
+  $eyebrow = "Domaine de physique"
+  if ($entry.Parent) {
+    $eyebrow = "Exemple de calcul"
+  }
+  $indexMetadata = ""
+  if ($entry.Index -eq $false) {
+    $indexMetadata = "`n    <meta name=`"site-index`" content=`"false`">"
   }
   $output = @"
 <!doctype html>
@@ -106,9 +143,9 @@ foreach ($entry in $pages) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self'; base-uri 'none'">$indexMetadata
     <title>$title — Toute la Physique</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="$stylesheet">
     <script>
       window.MathJax = {
         tex: { inlineMath: [['`$','`$'], ['\\(','\\)']], displayMath: [['`$`$','`$`$'], ['\\[','\\]']] },
@@ -120,17 +157,17 @@ foreach ($entry in $pages) {
   <body>
     <main class="container">
       <section class="panel topic-page">
-        <p class="eyebrow">Domaine de physique</p>
+        <p class="eyebrow">$eyebrow</p>
         <h1>$title</h1>
         $media
         <div class="topic-content">$content</div>
-        <p><a href="../index.html">← Retour à Toute la Physique</a></p>
+        <p><a href="$returnHref">← Retour à $returnTitle</a></p>
       </section>
     </main>
   </body>
 </html>
 "@
-  [IO.File]::WriteAllText((Join-Path $root "pages\$($entry.Page)"), $output, [Text.UTF8Encoding]::new($false))
+  [IO.File]::WriteAllText($pagePath, $output, [Text.UTF8Encoding]::new($false))
 }
 
 Write-Host "Pages générées depuis les fichiers textes/*.md avec support LaTeX."

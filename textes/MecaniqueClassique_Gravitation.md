@@ -1,6 +1,6 @@
-# Exemple : trajectoire d'un satellite dans un champ gravitationnel
+# Exemple de calcul : trajectoire gravitationnelle à deux corps
 
-Ce document est un complément de travail pour la page de mécanique classique. Il présente le problème de Kepler dans l'approximation où la masse centrale $M$ est fixe. On pourra ensuite remplacer cette approximation par le problème exact à deux corps, qui fait intervenir la masse réduite.
+Ce complément détaille le calcul d'une orbite gravitationnelle. On commence par le cas où la masse centrale est fixe, puis on traite le problème exact à deux corps. Dans ce second cas, les deux objets se déplacent autour de leur centre d'inertie et le mouvement relatif s'écrit avec la masse réduite.
 
 ## Position et base polaire
 
@@ -155,6 +155,73 @@ Pour une orbite non circulaire et non radiale, le signe de l'énergie distingue 
 
 La parabole représente donc exactement le seuil d'échappement : l'objet peut atteindre une distance arbitrairement grande avec une vitesse qui tend vers zéro. Une trajectoire radiale ($C=0$) est un cas dégénéré qui ne se décrit pas par le changement de variable $t\leftrightarrow\theta$ utilisé ici.
 
-## Portée de l'approximation
+## Deux corps et centre d'inertie
 
-Ici, le centre de force est supposé fixe. Pour deux masses comparables, les deux corps se déplacent autour de leur centre de masse. Le problème se ramène alors à une équation de même forme en remplaçant $M$ par la masse totale $M+m$ dans le paramètre gravitationnel, et en décrivant le mouvement relatif ; la masse réduite intervient dans l'énergie et le moment cinétique du mouvement relatif. Cette généralisation pourra faire l'objet d'un complément séparé.
+Lorsque les deux masses ne sont pas supposées fixes, notons $m_1$ et $m_2$ leurs masses, et $\vec r_1$ et $\vec r_2$ leurs positions dans un référentiel galiléen. On définit la position du centre d'inertie $\vec R$ et le vecteur position relative $\vec r$ par
+
+$$
+\vec R=\frac{m_1\vec r_1+m_2\vec r_2}{m_1+m_2},
+\qquad
+\vec r=\vec r_2-\vec r_1.
+$$
+
+La distance entre les corps est $r=|\vec r|$. La gravitation est une interaction interne au système : les forces exercées par les deux corps sont opposées. En l'absence de force extérieure, le centre d'inertie suit donc un mouvement rectiligne uniforme, $\ddot{\vec R}=0$.
+
+Pour isoler le mouvement relatif, on introduit la masse réduite
+
+$$
+\mu=\frac{m_1m_2}{m_1+m_2}.
+$$
+
+La force gravitationnelle sur le corps 2 est dirigée vers le corps 1. En soustrayant les équations de Newton des deux corps, on obtient l'équation du mouvement relatif :
+
+$$
+\mu\ddot{\vec r}
+=-\frac{Gm_1m_2}{r^2}\,\vec e_r
+=-\frac{Gm_1m_2}{r^3}\,\vec r.
+$$
+
+C'est l'équation d'une particule fictive de masse $\mu$, attirée par un centre fixe avec une force de même forme. En divisant par $\mu$, on voit que l'accélération relative dépend de la somme des masses :
+
+$$
+\ddot{\vec r}
+=-\frac{G(m_1+m_2)}{r^2}\,\vec e_r.
+$$
+
+Ainsi, pour calculer la forme de l'orbite relative, on reprend les résultats précédents en remplaçant $GM$ par $G(m_1+m_2)$. En particulier, si $C=|\vec r\times\dot{\vec r}|$ est le moment cinétique relatif par unité de masse réduite, alors
+
+$$
+r(\theta)=\frac{p}{1+e\cos(\theta-\theta_0)},
+\qquad
+p=\frac{C^2}{G(m_1+m_2)}.
+$$
+
+La masse réduite apparaît explicitement dans l'énergie mécanique du mouvement relatif,
+
+$$
+E_{\mathrm{rel}}
+=\frac{1}{2}\mu|\dot{\vec r}|^2-\frac{Gm_1m_2}{r}
+=\mu\left(\frac{1}{2}|\dot{\vec r}|^2-\frac{G(m_1+m_2)}{r}\right).
+$$
+
+En posant $\varepsilon=E_{\mathrm{rel}}/\mu$, la relation entre énergie et excentricité prend la même forme que précédemment :
+
+$$
+e^2=1+\frac{2\varepsilon C^2}{G^2(m_1+m_2)^2}.
+$$
+
+Le mouvement relatif ne donne pas directement les trajectoires de chaque corps. Il faut revenir au centre d'inertie en inversant les définitions de $\vec R$ et $\vec r$ :
+
+$$
+\vec r_1=\vec R-\frac{m_2}{m_1+m_2}\,\vec r,
+\qquad
+\vec r_2=\vec R+\frac{m_1}{m_1+m_2}\,\vec r.
+$$
+
+Dans le référentiel du centre d'inertie, $\vec R=0$ : chaque corps décrit donc une conique autour de ce centre, avec la même période et la même excentricité que l'orbite relative. Leurs distances au centre d'inertie vérifient
+
+$$
+\frac{|\vec r_1|}{|\vec r_2|}=\frac{m_2}{m_1}.
+$$
+
+Le corps le plus massif décrit ainsi la plus petite orbite. Lorsque $m_1\gg m_2$, le centre d'inertie est très proche de $m_1$ et l'approximation d'un centre fixe utilisée au début devient pertinente.
