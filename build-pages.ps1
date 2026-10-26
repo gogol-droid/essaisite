@@ -66,6 +66,7 @@ function Convert-Paragraph([string]$text) {
 function Convert-Markdown([string]$content) {
   $result = [Collections.Generic.List[string]]::new()
   $paragraph = [Collections.Generic.List[string]]::new()
+  $listItems = [Collections.Generic.List[string]]::new()
   $content = [Regex]::Replace($content, '\\([#*_{}\[\]().])', {
     param($m)
     $m.Groups[1].Value
@@ -77,10 +78,24 @@ function Convert-Markdown([string]$content) {
     $paragraph.Clear()
   }
 
+  function Write-List {
+    if ($listItems.Count -eq 0) { return }
+    $items = foreach ($item in $listItems) {
+      "<li>$((Convert-Paragraph $item) -replace '^<p>|</p>$', '')</li>"
+    }
+    $result.Add("<ul>`n$($items -join "`n")`n</ul>")
+    $listItems.Clear()
+  }
+
   foreach ($line in ($content -split "`r?`n")) {
-    if ($line -match "^\s*#{1,3}\s*$") {
+    if ($line -match "^\s*-\s+(.+?)\s*$") {
+      Write-Paragraph
+      $listItems.Add($Matches[1])
+    } elseif ($line -match "^\s*#{1,3}\s*$") {
+      Write-List
       Write-Paragraph
     } elseif ($line -match "^\s*(#{1,3})\s+(.+?)\s*$") {
+      Write-List
       Write-Paragraph
       $level = [Math]::Min($Matches[1].Length + 1, 6)
       $heading = [System.Net.WebUtility]::HtmlEncode($Matches[2].Trim("* ").Trim())
@@ -89,9 +104,11 @@ function Convert-Markdown([string]$content) {
     } elseif ([string]::IsNullOrWhiteSpace($line)) {
       Write-Paragraph
     } else {
+      Write-List
       $paragraph.Add($line.Trim())
     }
   }
+  Write-List
   Write-Paragraph
   return ($result -join "`n")
 }

@@ -56,7 +56,7 @@ Les textes peuvent être écrits dans les fichiers Markdown du dossier `textes`.
 .\build-pages.ps1
 ```
 
-Ce script ne surveille pas les fichiers et ne lance aucune mise à jour automatique. Il transforme les titres Markdown (`#`, `##`, `###`), les paragraphes et le gras en HTML.
+Ce script ne surveille pas les fichiers et ne lance aucune mise à jour automatique. Il transforme les titres Markdown (`#`, `##`, `###`), les paragraphes, le gras et les listes non ordonnées introduites par `-` en HTML.
 
 ### Formules LaTeX
 
