@@ -1,6 +1,8 @@
+# Cadre du calcul
+
 Ce complément détaille le calcul d'une orbite gravitationnelle. On commence par le cas où la masse centrale est fixe, puis on traite le problème exact à deux corps. Dans ce second cas, les deux objets se déplacent autour de leur centre d'inertie et le mouvement relatif s'écrit avec la masse réduite.
 
-# Position et base polaire
+## Position et base polaire
 
 On place la masse centrale à l'origine $O$. Le satellite, de masse $m$, est au point $P$. Dans le plan de son mouvement, sa position s'écrit
 
@@ -20,7 +22,7 @@ $$
 
 Il faut tenir compte de ces dérivées lorsqu'on dérive le vecteur position.
 
-# Vitesse et accélération
+## Vitesse et accélération
 
 En dérivant $\overrightarrow{OP}=r\vec e_r$, on obtient la vitesse :
 
@@ -38,7 +40,7 @@ $$
 
 Le terme $-r\dot\theta^2$ est l'accélération radiale associée au changement de direction du mouvement. Le terme $2\dot r\dot\theta$ apparaît parce que la distance et la base polaire varient toutes deux avec le temps.
 
-# Deuxième loi de Newton
+## Deuxième loi de Newton
 
 La force gravitationnelle exercée par la masse centrale est dirigée vers $O$ :
 
@@ -70,7 +72,7 @@ $$
 
 Sa valeur absolue est le moment cinétique par unité de masse. Cette conservation exprime aussi la loi des aires : le rayon vecteur balaie des aires égales pendant des durées égales.
 
-# Changer la variable indépendante : de $t$ à $\theta$
+## Changer la variable indépendante : de $t$ à $\theta$
 
 Pour décrire la forme de l'orbite, on cherche $r$ en fonction de $\theta$ plutôt qu'en fonction du temps. Comme $\dot\theta=C/r^2$, la règle de dérivation en chaîne donne, pour toute fonction $f(\theta)$,
 
@@ -106,7 +108,7 @@ $$
 
 Cette transformation, appelée équation de Binet dans ce cas, a remplacé l'équation du mouvement temporel par une équation différentielle linéaire pour l'inverse du rayon.
 
-# Forme de la trajectoire
+## Forme de la trajectoire
 
 La solution générale est
 
@@ -129,7 +131,7 @@ Le signe devant le cosinus peut être absorbé dans un décalage de $\pi$ de $\t
 
 Le foyer de la conique est en $O$. Une ellipse décrit une orbite fermée ; une parabole et une hyperbole décrivent des trajectoires de passage qui repartent vers l'infini.
 
-# Relier la forme à l'énergie
+## Relier la forme à l'énergie
 
 L'énergie mécanique totale du satellite est conservée. En divisant par $m$, on définit l'énergie par unité de masse $\varepsilon$ :
 
@@ -153,7 +155,7 @@ Pour une orbite non circulaire et non radiale, le signe de l'énergie distingue 
 
 La parabole représente donc exactement le seuil d'échappement : l'objet peut atteindre une distance arbitrairement grande avec une vitesse qui tend vers zéro. Une trajectoire radiale ($C=0$) est un cas dégénéré qui ne se décrit pas par le changement de variable $t\leftrightarrow\theta$ utilisé ici.
 
-# Deux corps et centre d'inertie
+## Deux corps et centre d'inertie
 
 Lorsque les deux masses ne sont pas supposées fixes, notons $m_1$ et $m_2$ leurs masses, et $\vec r_1$ et $\vec r_2$ leurs positions dans un référentiel galiléen. On définit la position du centre d'inertie $\vec R$ et le vecteur position relative $\vec r$ par
 
