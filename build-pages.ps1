@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
 
 $pages = @(
-  @{ Page = "mecanique-classique-exemples-calculs.html"; Title = "Exemple de calcul : trajectoire gravitationnelle à deux corps"; Text = "MecaniqueClassique_Gravitation.md"; Parent = "mecanique-classique.html"; ParentTitle = "Mécanique classique"; Index = $false },
+  @{ Page = "mecanique-classique-exemples-calculs.html"; Title = "Exemple de mouvement à force centrale"; Text = "MecaniqueClassique_Gravitation.md"; Parent = "mecanique-classique.html"; ParentTitle = "Mécanique classique"; Index = $false },
   @{ Page = "mecanique-classique.html"; Title = "Mécanique classique"; Text = "MecaniqueClassique.md"; Photo = "illustMecaClass.png"; Width = 437; Height = 497 },
   @{ Page = "thermodynamique-classique.html"; Title = "Thermodynamique classique"; Text = "Thermodynamique.md"; Photo = "illustThermoClass.png"; Width = 446; Height = 431 },
   @{ Page = "thermodynamique-statistique.html"; Title = "Thermodynamique statistique"; Text = "ThermodynamiqueStatistique.md"; Photo = "illustThermoStat.png"; Width = 567; Height = 802 },
