@@ -54,7 +54,8 @@ function Convert-Paragraph([string]$text) {
 
   # 3. On restaure les formules LaTeX sans les encoder
   for ($i = 0; $i -lt $latexBlocks.Count; $i++) {
-    $encoded = $encoded.Replace("___LATEX${i}___", $latexBlocks[$i])
+    $formula = $latexBlocks[$i].Replace("<", "&lt;").Replace(">", "&gt;")
+    $encoded = $encoded.Replace("___LATEX${i}___", $formula)
   }
   for ($i = 0; $i -lt $pageLinks.Count; $i++) {
     $encoded = $encoded.Replace("___PAGELINK${i}___", $pageLinks[$i])
