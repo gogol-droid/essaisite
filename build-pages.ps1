@@ -3,6 +3,7 @@ $root = $PSScriptRoot
 
 $pages = @(
   @{ Page = "mecanique-classique-exemples-calculs.html"; Title = "Exemple de mouvement à force centrale"; Text = "MecaniqueClassique_Gravitation.md"; Parent = "mecanique-classique.html"; ParentTitle = "Mécanique classique"; Index = $false },
+  @{ Page = "mecanique-classique-exemples-oscillateur.html"; Title = "Oscillateur harmonique : oscillations libres et forcées"; Text = "MecaniqueClassique_Oscillateur.md"; Parent = "mecanique-classique.html"; ParentTitle = "Mécanique classique"; Index = $false },
   @{ Page = "mecanique-classique.html"; Title = "Mécanique classique"; Text = "MecaniqueClassique.md"; Photo = "illustMecaClass.png"; Width = 437; Height = 497 },
   @{ Page = "thermodynamique-classique.html"; Title = "Thermodynamique classique"; Text = "Thermodynamique.md"; Photo = "illustThermoClass.png"; Width = 446; Height = 431 },
   @{ Page = "thermodynamique-statistique.html"; Title = "Thermodynamique statistique"; Text = "ThermodynamiqueStatistique.md"; Photo = "illustThermoStat.png"; Width = 567; Height = 802 },
@@ -29,13 +30,23 @@ function Convert-Paragraph([string]$text) {
   $encoded = [Regex]::Replace($encoded, "\*\*(.+?)\*\*", "<strong>`$1</strong>")
 
   $pageLinks = [Collections.Generic.List[string]]::new()
-  $encoded = [Regex]::Replace($encoded, '\[(?<label>[^\]]+)\]\((?<path>mecanique-classique-exemples-calculs\.html)\)', {
+  $encoded = [Regex]::Replace($encoded, '\[(?<label>[^\]]+)\]\((?<path>[^)]+\.html)\)', {
     param($m)
     $route = $m.Groups["path"].Value
-    if (-not ($pages | Where-Object { $_.Page.Replace("\", "/") -eq $route })) {
+    $page = $pages | Where-Object { $_.Page.Replace("\", "/") -eq $route } | Select-Object -First 1
+    if ($page) {
+      $href = $route
+    } elseif ($route -match '^progjava[\\/](?<fileName>[a-z0-9._-]+\.html)$') {
+      $fileName = $Matches.fileName
+      $programPath = Join-Path $root "progjava\$fileName"
+      if (-not (Test-Path -LiteralPath $programPath -PathType Leaf)) {
+        throw "Programme mentionné mais introuvable : $programPath"
+      }
+      $href = "../progjava/$fileName"
+    } else {
       throw "Lien vers une page introuvable : $route"
     }
-    $pageLinks.Add("<a href=`"$route`">$($m.Groups["label"].Value)</a>")
+    $pageLinks.Add("<a href=`"$href`">$($m.Groups["label"].Value)</a>")
     return "___PAGELINK$($pageLinks.Count-1)___"
   })
 

@@ -78,6 +78,7 @@ Associations actuelles :
 
 - `pages/mecanique-classique.html` : `photos/illustMecaClass.png` et `textes/MecaniqueClassique.md`
 - `pages/mecanique-classique-exemples-calculs.html` : `textes/MecaniqueClassique_Gravitation.md` (sous-page liée depuis la page de mécanique classique et exclue de la liste des domaines)
+- `pages/mecanique-classique-exemples-oscillateur.html` : `textes/MecaniqueClassique_Oscillateur.md` (sous-page liée depuis la page de mécanique classique et exclue de la liste des domaines)
 - `pages/thermodynamique-classique.html` : `photos/illustThermoClass.png` et `textes/Thermodynamique.md`
 - `pages/thermodynamique-statistique.html` : `photos/illustThermoStat.png` et `textes/ThermodynamiqueStatistique.md`
 - `pages/mecanique-quantique.html` : `photos/illustMecaQ.png` et `textes/MecaniqueQuantique.md`

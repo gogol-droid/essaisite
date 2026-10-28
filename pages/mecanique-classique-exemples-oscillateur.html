@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self'; base-uri 'none'">
+    <meta name="site-index" content="false">
+    <title>Oscillateur harmonique : oscillations libres et forc&#233;es — Toute la Physique</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel topic-page">
+        <p class="eyebrow">Exemple de calcul</p>
+        <h1>Oscillateur harmonique : oscillations libres et forc&#233;es</h1>
+        
+        <div class="topic-content"><h2>Un mod&#232;le commun aux petites oscillations</h2>
+<p>Un m&#234;me type d&#39;&#233;quation d&#233;crit les petites oscillations de syst&#232;mes tr&#232;s diff&#233;rents. On commence par les oscillations libres, puis on &#233;tudie la r&#233;ponse d&#39;un oscillateur soumis &#224; une force p&#233;riodique et &#224; un faible frottement.</p>
+<h3>Oscillations libres : l&#39;&#233;quation universelle</h3>
+<p>On note $x(t)$ le d&#233;placement par rapport &#224; une position d&#39;&#233;quilibre stable. Si, pr&#232;s de cette position, la force de rappel est proportionnelle au d&#233;placement et oppos&#233;e &#224; celui-ci, elle s&#39;&#233;crit $F=-Kx$, avec $K&gt;0$. La deuxi&#232;me loi de Newton conduit alors &#224;</p>
+<p>$$ m\frac{d^2x}{dt^2}=-Kx, $$</p>
+<p>soit</p>
+<p>$$ \frac{d^2x}{dt^2}+\omega_0^2x=0, \qquad \omega_0=\sqrt{\frac{K}{m}}. $$</p>
+<p>La grandeur $\omega_0$ est la pulsation propre, en radians par seconde. La fr&#233;quence ordinaire vaut $f_0=\omega_0/(2\pi)$.</p>
+<p>La solution g&#233;n&#233;rale est</p>
+<p>$$ x(t)=A\cos(\omega_0t)+B\sin(\omega_0t) =X_0\cos(\omega_0t+\varphi), $$</p>
+<p>o&#249; l&#39;amplitude $X_0$ et la phase $\varphi$ sont d&#233;termin&#233;es par la position et la vitesse initiales. En l&#39;absence de frottement, l&#39;oscillation se poursuit &#224; amplitude constante.</p>
+<h3>Trois syst&#232;mes, une m&#234;me &#233;quation</h3>
+<h4>Masse attach&#233;e &#224; un ressort</h4>
+<p>Pour un ressort id&#233;al de raideur $k$, la loi de Hooke donne $F=-kx$. Ainsi,</p>
+<p>$$ m\ddot x+kx=0, \qquad \omega_0=\sqrt{\frac{k}{m}}. $$</p>
+<p>La masse et la raideur fixent la pulsation propre. La longueur au repos du ressort ne figure pas dans cette expression si $x$ est mesur&#233; depuis la position d&#39;&#233;quilibre.</p>
+<h4>Pendule aux faibles oscillations</h4>
+<p>Consid&#233;rons un pendule simple de longueur $L$ et de masse $m$. En notant $\theta$ l&#39;angle &#224; la verticale, le moment de la pesanteur donne</p>
+<p>$$ \ddot\theta+\frac{g}{L}\sin\theta=0. $$</p>
+<p>Pour de petits angles exprim&#233;s en radians, $\sin\theta\simeq\theta$. L&#39;&#233;quation devient alors</p>
+<p>$$ \ddot\theta+\omega_0^2\theta=0, \qquad \omega_0=\sqrt{\frac{g}{L}}. $$</p>
+<p>Le d&#233;placement le long de l&#39;arc est $x=L\theta$ ; il satisfait la m&#234;me &#233;quation avec la m&#234;me pulsation propre. Cette approximation cesse d&#39;&#234;tre pr&#233;cise lorsque l&#39;amplitude angulaire devient grande.</p>
+<h4>Un bouchon flottant qui monte et descend</h4>
+<p>On consid&#232;re un bouchon qui flotte, maintenu verticalement, et on note $x$ son petit d&#233;placement vertical vers le haut depuis l&#39;&#233;quilibre. Si la section horizontale &#224; la surface de l&#39;eau est approximativement constante et vaut $S$, un d&#233;placement vers le haut r&#233;duit le volume immerg&#233; de $Sx$. La variation de la pouss&#233;e d&#39;Archim&#232;de est donc une force de rappel $-\rho_{\mathrm{eau}}gSx$, o&#249; $\rho_{\mathrm{eau}}$ est la masse volumique de l&#39;eau. Dans le mod&#232;le simple o&#249; l&#39;on n&#233;glige la r&#233;sistance et le mouvement entra&#238;n&#233; de l&#39;eau,</p>
+<p>$$ m\ddot x+\rho_{\mathrm{eau}}gSx=0, \qquad \omega_0=\sqrt{\frac{\rho_{\mathrm{eau}}gS}{m}}. $$</p>
+<p>La forme de l&#39;&#233;quation est encore la m&#234;me. Pour une mesure pr&#233;cise, il faudrait notamment tenir compte de la forme r&#233;elle du bouchon, de la r&#233;sistance de l&#39;eau et de la masse d&#39;eau entra&#238;n&#233;e avec lui.</p>
+<p>Ces exemples partagent donc l&#39;&#233;quation $\ddot x+\omega_0^2x=0$, m&#234;me si la force de rappel et la valeur de $\omega_0$ ont des origines diff&#233;rentes. C&#39;est cette structure commune qui d&#233;finit l&#39;oscillateur harmonique.</p>
+<h3>Oscillations forc&#233;es avec frottement</h3>
+<p>Un oscillateur r&#233;el perd g&#233;n&#233;ralement de l&#39;&#233;nergie. On mod&#233;lise ici un faible frottement visqueux par une force $F_{\mathrm{f}}=-\alpha\dot x$, avec $\alpha&gt;0$. On applique en m&#234;me temps une force sinuso&#239;dale $F_{\mathrm{ext}}=F_0\cos(\omega t)$, de pulsation $\omega$. Pour une masse-ressort, la deuxi&#232;me loi de Newton s&#39;&#233;crit</p>
+<p>$$ m\ddot x+\alpha\dot x+kx=F_0\cos(\omega t). $$</p>
+<p>En divisant par $m$ et en posant $\omega_0^2=k/m$ et $2\gamma=\alpha/m$, on obtient</p>
+<p>$$ \ddot x+2\gamma\dot x+\omega_0^2x=\frac{F_0}{m}\cos(\omega t). $$</p>
+<p>La solution comporte un r&#233;gime transitoire, qui d&#233;cro&#238;t &#224; cause du frottement, et un r&#233;gime permanent &#224; la pulsation impos&#233;e $\omega$. Apr&#232;s disparition du transitoire, on peut &#233;crire</p>
+<p>$$ x(t)=X(\omega)\cos(\omega t-\delta), $$</p>
+<p>o&#249; $X(\omega)$ est l&#39;amplitude du r&#233;gime permanent et $\delta$ le d&#233;phasage par rapport &#224; la force. En injectant cette forme dans l&#39;&#233;quation (ou en s&#233;parant les composantes en cosinus et sinus), on trouve</p>
+<p>$$ X(\omega)=\frac{F_0/m}{\sqrt{(\omega_0^2-\omega^2)^2+(2\gamma\omega)^2}}, \qquad \tan\delta=\frac{2\gamma\omega}{\omega_0^2-\omega^2}. $$</p>
+<h3>La courbe de r&#233;sonance : l&#39;amplitude au carr&#233;</h3>
+<p>La quantit&#233; qui d&#233;pend seulement de la pulsation d&#39;excitation est l&#39;amplitude au carr&#233; $X^2(\omega)$, et non le d&#233;placement instantan&#233; $x(t)^2$, qui oscille aussi au cours du temps. &#192; partir de l&#39;expression de l&#39;amplitude,</p>
+<p>$$ X^2(\omega)=\frac{(F_0/m)^2}{(\omega_0^2-\omega^2)^2+4\gamma^2\omega^2} =\frac{(F_0/m)^2}{(\omega_0^2-\omega^2)^2+(\alpha\omega/m)^2}. $$</p>
+<p>Cette fonction est positive. &#192; fr&#233;quence nulle, l&#39;oscillateur se comporte comme un ressort d&#233;form&#233; par une force constante et $X(0)=F_0/k$. &#192; haute fr&#233;quence, l&#39;inertie limite le mouvement et $X(\omega)$ tend vers z&#233;ro. Entre ces deux r&#233;gimes, l&#39;amplitude pr&#233;sente un maximum de r&#233;sonance lorsque l&#39;amortissement est assez faible.</p>
+<p>Pour trouver ce maximum, on minimise le d&#233;nominateur</p>
+<p>$$ D(\omega)=(\omega_0^2-\omega^2)^2+4\gamma^2\omega^2. $$</p>
+<p>La d&#233;riv&#233;e s&#39;annule, pour le maximum non nul, &#224;</p>
+<p>$$ \omega_{\mathrm{r}}=\sqrt{\omega_0^2-2\gamma^2} =\sqrt{\omega_0^2-\frac{\alpha^2}{2m^2}}, $$</p>
+<p>si $\gamma&lt;\omega_0/\sqrt{2}$. Lorsque le frottement est faible, $\omega_{\mathrm{r}}$ est proche de $\omega_0$. Plus le frottement augmente, plus le pic s&#39;&#233;largit et s&#39;abaisse ; si l&#39;amortissement est trop fort, il n&#39;y a plus de maximum de r&#233;sonance &#224; fr&#233;quence non nulle.</p>
+<p>On peut visualiser cette r&#233;ponse dans la <a href="../progjava/resonance.html">simulation de r&#233;sonance</a>. La simulation aide &#224; lire la courbe, tandis que les expressions pr&#233;c&#233;dentes expliquent la position et la forme du pic.</p>
+<h3>&#192; retenir</h3>
+<ul>
+<li>Un syst&#232;me qui subit une force de rappel lin&#233;aire autour d&#39;un &#233;quilibre stable suit l&#39;&#233;quation de l&#39;oscillateur harmonique.</li>
+<li>La pulsation propre d&#233;pend des propri&#233;t&#233;s du syst&#232;me : $\sqrt{k/m}$ pour un ressort, $\sqrt{g/L}$ pour un pendule aux petits angles.</li>
+<li>Une force p&#233;riodique impose sa pulsation au r&#233;gime permanent ; l&#39;amplitude d&#233;pend de l&#39;&#233;cart entre cette pulsation et la r&#233;sonance ainsi que du frottement.</li>
+<li>Le frottement &#233;vite une amplitude infinie &#224; la r&#233;sonance et fixe la hauteur et la largeur du pic de $X^2(\omega)$.</li>
+</ul></div>
+        <p><a href="mecanique-classique.html">← Retour à M&#233;canique classique</a></p>
+      </section>
+    </main>
+  </body>
+</html>

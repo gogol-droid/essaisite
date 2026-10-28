@@ -12,6 +12,8 @@ Pour une visualisation du mouvement d'un satellite sous l'influence de la force 
 
 Pour un exemple de calcul détaillé, incluant le mouvement des deux corps autour de leur centre d'inertie et le rôle de la masse réduite, voir [l'orbite gravitationnelle à deux corps](mecanique-classique-exemples-calculs.html).
 
+Pour un autre exemple, consacré à l'oscillateur harmonique, aux oscillations forcées et à la résonance, voir [l'oscillateur harmonique](mecanique-classique-exemples-oscillateur.html).
+
 ## Les trois lois de Newton
 
 Le principe d'inertie affirme qu'un objet conserve son repos ou son mouvement rectiligne uniforme lorsque la somme des forces est nulle. La deuxième loi quantifie la réponse d'un objet à une force. Enfin, le principe d'action-réaction rappelle que toute interaction est réciproque : les forces ont même intensité et directions opposées, mais s'appliquent sur deux objets distincts.
