@@ -83,6 +83,12 @@ button:hover, button:focus-visible { background: var(--accent-dark); }
 .topic-content h2, .topic-content h3 { margin-top: 1.5rem; }
 .topic-content p { color: var(--muted); }
 .topic-content > p { max-width: 72ch; }
+.table-scroll { max-width: 100%; margin: 1.25rem 0; overflow-x: auto; }
+.table-scroll:focus-visible { outline: 3px solid #c9d7ff; outline-offset: 3px; }
+.topic-content table { width: 100%; border-collapse: collapse; }
+.topic-content th, .topic-content td { padding: .65rem .8rem; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+.topic-content th { background: var(--soft-accent); color: var(--ink); }
+.topic-content td p, .topic-content th p { margin: 0; }
 .topic-content mjx-container[display="true"],
 .intro-content mjx-container[display="true"] {
   max-width: 100%;

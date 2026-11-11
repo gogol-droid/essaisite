@@ -924,7 +924,7 @@ Un gradient de potentiel chimique peut provoquer un flux de matière, tout comme
 
 # 8. Synthèse : comment déterminer l'équilibre d'un système ?
 
-Voici le tableau que je te conseille de conserver comme référence.
+Voici le tableau à conserver comme référence:
 
 | Phénomène                       | Condition d'équilibre              |
 | ------------------------------- | ---------------------------------- |

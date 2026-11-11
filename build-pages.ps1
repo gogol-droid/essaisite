@@ -84,6 +84,7 @@ function Convert-Markdown([string]$content) {
     param($m)
     $m.Groups[1].Value
   })
+  $lines = $content -split "`r?`n"
 
   function Write-Paragraph {
     if ($paragraph.Count -eq 0) { return }
@@ -100,7 +101,52 @@ function Convert-Markdown([string]$content) {
     $listItems.Clear()
   }
 
-  foreach ($line in ($content -split "`r?`n")) {
+  function Convert-TableRow([string]$line) {
+    return @($line.Trim().Trim('|').Split('|') | ForEach-Object { $_.Trim() })
+  }
+
+  for ($lineIndex = 0; $lineIndex -lt $lines.Count; $lineIndex++) {
+    $line = $lines[$lineIndex]
+    if (
+      $line -match '^\s*\|.+\|\s*$' -and
+      $lineIndex + 1 -lt $lines.Count -and
+      $lines[$lineIndex + 1] -match '^\s*\|[\s:|-]+\|\s*$'
+    ) {
+      $headers = @(Convert-TableRow $line)
+      $separators = @(Convert-TableRow $lines[$lineIndex + 1])
+      if ($headers.Count -ne $separators.Count -or @($separators | Where-Object { $_ -notmatch '^:?-{3,}:?$' }).Count -gt 0) {
+        throw "Séparateur de tableau Markdown invalide à la ligne $($lineIndex + 2)."
+      }
+
+      Write-List
+      Write-Paragraph
+      $tableHtml = [Collections.Generic.List[string]]::new()
+      $tableHtml.Add('<div class="table-scroll" role="region" aria-label="Tableau" tabindex="0">')
+      $tableHtml.Add('<table><thead><tr>')
+      foreach ($header in $headers) {
+        $tableHtml.Add("<th scope=`"col`">$((Convert-Paragraph $header) -replace '^<p>|</p>$', '')</th>")
+      }
+      $tableHtml.Add('</tr></thead><tbody>')
+
+      $lineIndex += 2
+      while ($lineIndex -lt $lines.Count -and $lines[$lineIndex] -match '^\s*\|.+\|\s*$') {
+        $cells = @(Convert-TableRow $lines[$lineIndex])
+        if ($cells.Count -ne $headers.Count) {
+          throw "Nombre de cellules incorrect dans le tableau Markdown à la ligne $($lineIndex + 1)."
+        }
+        $tableHtml.Add('<tr>')
+        foreach ($cell in $cells) {
+          $tableHtml.Add("<td>$((Convert-Paragraph $cell) -replace '^<p>|</p>$', '')</td>")
+        }
+        $tableHtml.Add('</tr>')
+        $lineIndex++
+      }
+      $lineIndex--
+      $tableHtml.Add('</tbody></table></div>')
+      $result.Add(($tableHtml -join "`n"))
+      continue
+    }
+
     $imageMatch = [Regex]::Match($line.Trim(), '^!\[(?<alt>[^\]]+)\]\((?<path>\.\./photos/(?<file>[A-Za-z0-9._-]+\.png))\)$')
     if ($imageMatch.Success) {
       Write-List
