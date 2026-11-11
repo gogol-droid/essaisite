@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self'; base-uri 'none'">
+    <meta name="site-index" content="false">
+    <title>Potentiel chimique et &#233;quilibre thermodynamique — Toute la Physique</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel topic-page">
+        <p class="eyebrow">Approfondissement</p>
+        <h1>Potentiel chimique et &#233;quilibre thermodynamique</h1>
+        
+        <div class="topic-content"><h2>Cours de thermodynamique statistique : le potentiel chimique et l&#39;&#233;quilibre thermodynamique</h2>
+<p>L&#39;objectif est de comprendre non seulement les &#233;quations, mais surtout pourquoi le potentiel chimique est n&#233;cessaire, ce qu&#39;il repr&#233;sente physiquement et comment il permet de d&#233;crire l&#39;&#233;quilibre d&#39;un syst&#232;me.</p>
+<p>Nous allons notamment r&#233;pondre &#224; ces questions :</p>
+<p>1. Comment caract&#233;riser compl&#232;tement l&#39;&#233;tat thermodynamique d&#39;un syst&#232;me ?</p>
+<p>2. Pourquoi la temp&#233;rature et la pression ne suffisent-elles pas toujours ?</p>
+<p>3. Qu&#39;est-ce que le potentiel chimique ?</p>
+<p>4. Pourquoi deux syst&#232;mes en contact &#233;changent-ils de la mati&#232;re jusqu&#39;&#224; &#233;galisation de leurs potentiels chimiques ?</p>
+<p>5. Comment d&#233;crire l&#39;&#233;quilibre d&#39;un m&#233;lange de plusieurs esp&#232;ces chimiques ?</p>
+<p>6. Comment d&#233;terminer les conditions d&#39;&#233;quilibre lorsque des r&#233;actions chimiques sont possibles ?</p>
+<h2>1. D&#233;crire l&#39;&#233;tat thermodynamique d&#39;un syst&#232;me</h2>
+<p>Commen&#231;ons par un syst&#232;me simple : un gaz contenu dans un r&#233;cipient.</p>
+<p>On peut caract&#233;riser son &#233;tat macroscopique par plusieurs grandeurs :</p>
+<ul>
+<li>$T$ : temp&#233;rature ;</li>
+<li>$P$ : pression ;</li>
+<li>$V$ : volume ;</li>
+<li>$N$ : nombre de particules ;</li>
+<li>$U$ : &#233;nergie interne ;</li>
+<li>$S$ : entropie.</li>
+</ul>
+<p>Ces grandeurs ne sont cependant pas ind&#233;pendantes.</p>
+<p>Pour un gaz parfait classique, par exemple :</p>
+<p>$$ PV=Nk_BT $$</p>
+<p>Cette &#233;quation d&#39;&#233;tat relie quatre grandeurs.</p>
+<p>Si l&#39;on conna&#238;t $N,V,T$, on conna&#238;t automatiquement la pression.</p>
+<p>Mais attention : cette relation est particuli&#232;re au gaz parfait. Pour un fluide r&#233;el, il faut une &#233;quation d&#39;&#233;tat plus complexe.</p>
+<h3>1.1 Les variables extensives et intensives</h3>
+<p>Il est utile de distinguer deux cat&#233;gories de grandeurs.</p>
+<p>Grandeurs extensives :</p>
+<ul>
+<li>volume $V$ ;</li>
+<li>&#233;nergie $U$ ;</li>
+<li>entropie $S$ ;</li>
+<li>nombre de particules $N$.</li>
+</ul>
+<p>Elles sont proportionnelles &#224; la quantit&#233; de mati&#232;re lorsque l&#39;on reproduit un syst&#232;me dans les m&#234;mes conditions.</p>
+<p>Grandeurs intensives :</p>
+<ul>
+<li>temp&#233;rature $T$ ;</li>
+<li>pression $P$ ;</li>
+<li>potentiel chimique $\mu$ ;</li>
+<li>densit&#233; ;</li>
+<li>concentration.</li>
+</ul>
+<p>Elles ne d&#233;pendent pas directement de la taille du syst&#232;me.</p>
+<p>Par exemple, deux litres d&#39;eau &#224; 20 &#176;C et dix litres d&#39;eau &#224; 20 &#176;C ont la m&#234;me temp&#233;rature, mais pas la m&#234;me &#233;nergie interne ni la m&#234;me entropie.</p>
+<h3>1.2 L&#39;&#233;quation fondamentale de la thermodynamique</h3>
+<p>Voici une relation absolument centrale :</p>
+<p>$$ \boxed{ dU=T\,dS-P\,dV+\mu\,dN } $$</p>
+<p>Pour un syst&#232;me simple constitu&#233; d&#39;une seule esp&#232;ce chimique.</p>
+<p>Cette relation exprime comment varie l&#39;&#233;nergie interne lorsque l&#39;on modifie :</p>
+<ul>
+<li>l&#39;entropie ;</li>
+<li>le volume ;</li>
+<li>le nombre de particules.</li>
+</ul>
+<p>Elle permet d&#233;j&#224; de comprendre l&#39;origine du potentiel chimique.</p>
+<p>Les trois coefficients ont une signification analogue :</p>
+<p>$$ T=\left(\frac{\partial U}{\partial S}\right)_{V,N} $$</p>
+<p>$$ -P=\left(\frac{\partial U}{\partial V}\right)_{S,N} $$</p>
+<p>$$ \boxed{ \mu=\left(\frac{\partial U}{\partial N}\right)_{S,V} } $$</p>
+<p>Le potentiel chimique est donc, en quelque sorte, le co&#251;t &#233;nerg&#233;tique marginal de l&#39;ajout d&#39;une particule, lorsque l&#39;entropie et le volume sont maintenus constants.</p>
+<p>C&#39;est une premi&#232;re d&#233;finition fondamentale.</p>
+<p>Attention : ce n&#39;est pas simplement l&#39;&#233;nergie d&#39;une particule isol&#233;e. Le potentiel chimique tient compte de l&#39;ensemble du syst&#232;me et de ses interactions.</p>
+<h2>2. Pourquoi introduire le potentiel chimique ?</h2>
+<p>Imaginons deux r&#233;cipients contenant le m&#234;me gaz, s&#233;par&#233;s par une paroi mobile et perm&#233;able aux particules.</p>
+<p>Les deux r&#233;cipients peuvent &#233;changer de la mati&#232;re.</p>
+<p>Supposons que leur temp&#233;rature et leur pression soient identiques, mais que leurs densit&#233;s soient diff&#233;rentes.</p>
+<p>Il peut alors y avoir un transfert de particules.</p>
+<p>La question est : dans quel sens ?</p>
+<p>La temp&#233;rature nous renseigne sur les &#233;changes d&#39;&#233;nergie thermique.</p>
+<p>La pression nous renseigne sur les &#233;changes de volume et le travail m&#233;canique.</p>
+<p>Mais aucune de ces deux grandeurs ne permet, &#224; elle seule, de d&#233;terminer le sens d&#39;un transfert de mati&#232;re.</p>
+<p>Il nous faut une troisi&#232;me grandeur : le potentiel chimique.</p>
+<h3>2.1 D&#233;monstration de la condition d&#39;&#233;quilibre</h3>
+<p>Consid&#233;rons deux syst&#232;mes A et B qui peuvent &#233;changer des particules.</p>
+<p>L&#39;ensemble est isol&#233;, son &#233;nergie totale et son nombre total de particules sont conserv&#233;s :</p>
+<p>$$ U_A+U_B=U_{\mathrm{tot}} $$</p>
+<p>$$ N_A+N_B=N_{\mathrm{tot}} $$</p>
+<p>Supposons que les volumes soient fixes.</p>
+<p>La variation d&#39;&#233;nergie du syst&#232;me A est :</p>
+<p>$$ dU_A=T_A dS_A+\mu_A dN_A $$</p>
+<p>Pour B :</p>
+<p>$$ dU_B=T_B dS_B+\mu_B dN_B $$</p>
+<p>La conservation de l&#39;&#233;nergie et de la mati&#232;re donne :</p>
+<p>$$ dU_B=-dU_A,\qquad dN_B=-dN_A $$</p>
+<p>On peut alors &#233;crire :</p>
+<p>$$ dS_{\mathrm{tot}} = dS_A+dS_B $$</p>
+<p>En utilisant les relations pr&#233;c&#233;dentes :</p>
+<p>$$ dS_{\mathrm{tot}} = \left(\frac{1}{T_A}-\frac{1}{T_B}\right)dU_A + \left(-\frac{\mu_A}{T_A} +\frac{\mu_B}{T_B}\right)dN_A $$</p>
+<p>&#192; l&#39;&#233;quilibre, l&#39;entropie totale est maximale.</p>
+<p>Elle ne doit donc plus varier au premier ordre, quelle que soit la variation infinit&#233;simale autoris&#233;e.</p>
+<p>On obtient deux conditions :</p>
+<p>$$ \boxed{T_A=T_B} $$</p>
+<p>et</p>
+<p>$$ \boxed{\mu_A=\mu_B} $$</p>
+<p>Voil&#224; un r&#233;sultat fondamental.</p>
+<p>L&#39;&#233;quilibre thermique impose l&#39;&#233;galit&#233; des temp&#233;ratures. L&#39;&#233;quilibre de diffusion impose l&#39;&#233;galit&#233; des potentiels chimiques.</p>
+<p>Et si les deux syst&#232;mes peuvent &#233;galement &#233;changer du volume, une troisi&#232;me condition appara&#238;t :</p>
+<p>$$ \boxed{P_A=P_B} $$</p>
+<p>Nous retrouvons ainsi les trois grandes conditions d&#39;&#233;quilibre thermodynamique.</p>
+<h2>3. Le potentiel chimique en physique statistique</h2>
+<p>Nous allons maintenant retrouver le potentiel chimique &#224; partir de la m&#233;canique statistique.</p>
+<p>C&#39;est int&#233;ressant parce que cela donne une interpr&#233;tation microscopique &#224; cette grandeur.</p>
+<h3>3.1 L&#39;ensemble grand canonique</h3>
+<p>Jusqu&#39;ici, nous avons imagin&#233; un syst&#232;me dont le nombre de particules pouvait varier.</p>
+<p>C&#39;est pr&#233;cis&#233;ment ce que d&#233;crit l&#39;ensemble grand canonique.</p>
+<p>On consid&#232;re un syst&#232;me :</p>
+<ul>
+<li>en contact avec un thermostat &#224; temp&#233;rature $T$ ;</li>
+<li>en contact avec un r&#233;servoir de particules de potentiel chimique $\mu$ ;</li>
+<li>maintenu dans un volume $V$.</li>
+</ul>
+<p>Le syst&#232;me peut donc &#233;changer de l&#39;&#233;nergie et des particules avec son environnement.</p>
+<p>La probabilit&#233; d&#39;un micro-&#233;tat $i$, contenant $N$ particules et d&#39;&#233;nergie $E_i$, est :</p>
+<p>$$ \boxed{ p_i=\frac{1}{\mathcal Z} e^{-\beta(E_i-\mu N)} } $$</p>
+<p>avec :</p>
+<p>$$ \beta=\frac{1}{k_BT} $$</p>
+<p>et $\mathcal Z$ la fonction de partition grand canonique :</p>
+<p>$$ \boxed{ \mathcal Z= \sum_N\sum_i e^{-\beta(E_i-\mu N)} } $$</p>
+<p>Le terme essentiel est :</p>
+<p>$$ E_i-\mu N $$</p>
+<p>Il repr&#233;sente l&#39;&#233;nergie du syst&#232;me corrig&#233;e du co&#251;t associ&#233; &#224; la pr&#233;sence de ses particules.</p>
+<p>Le potentiel chimique joue donc le r&#244;le d&#39;un param&#232;tre qui contr&#244;le les &#233;changes de particules avec le r&#233;servoir.</p>
+<p>On peut d&#39;ailleurs retrouver le nombre moyen de particules par :</p>
+<p>$$ \boxed{ \langle N\rangle= \frac{1}{\beta} \frac{\partial \ln\mathcal Z}{\partial\mu} } $$</p>
+<p>Et r&#233;ciproquement :</p>
+<p>$$ \boxed{ \mu= -\left(\frac{\partial \Omega}{\partial N}\right)_{T,V} } $$</p>
+<p>o&#249; $\Omega$ est le grand potentiel thermodynamique :</p>
+<p>$$ \Omega=-k_BT\ln\mathcal Z $$</p>
+<p>Il s&#39;agit de l&#39;analogue du potentiel de Gibbs ou de Helmholtz, adapt&#233; &#224; un syst&#232;me dont le nombre de particules est variable.</p>
+<h3>3.2 Exemple : le gaz parfait classique</h3>
+<p>Prenons un gaz parfait monoatomique classique.</p>
+<p>On conna&#238;t sa fonction de partition canonique :</p>
+<p>$$ Z_N=\frac{1}{N!} \left(\frac{V}{\lambda_T^3}\right)^N $$</p>
+<p>o&#249; :</p>
+<p>$$ \lambda_T= \frac{h}{\sqrt{2\pi m k_BT}} $$</p>
+<p>est la longueur d&#39;onde thermique de de Broglie.</p>
+<p>La fonction de partition grand canonique devient :</p>
+<p>$$ \mathcal Z= \sum_{N=0}^{\infty}e^{\beta\mu N}Z_N $$</p>
+<p>En rempla&#231;ant :</p>
+<p>$$ \mathcal Z= \sum_{N=0}^{\infty} \frac{1}{N!} \left( \frac{Ve^{\beta\mu}}{\lambda_T^3} \right)^N $$</p>
+<p>On reconna&#238;t le d&#233;veloppement de l&#39;exponentielle :</p>
+<p>$$ \boxed{ \mathcal Z= \exp\left( \frac{Ve^{\beta\mu}}{\lambda_T^3} \right) } $$</p>
+<p>Le nombre moyen de particules vaut alors :</p>
+<p>$$ \langle N\rangle= \frac{Ve^{\beta\mu}}{\lambda_T^3} $$</p>
+<p>En introduisant la densit&#233; :</p>
+<p>$$ n=\frac{\langle N\rangle}{V} $$</p>
+<p>nous obtenons :</p>
+<p>$$ n=\frac{e^{\beta\mu}}{\lambda_T^3} $$</p>
+<p>Finalement :</p>
+<p>$$ \boxed{ \mu=k_BT\ln(n\lambda_T^3) } $$</p>
+<p>C&#39;est une formule particuli&#232;rement int&#233;ressante.</p>
+<p>Elle montre que, pour un gaz parfait classique, le potentiel chimique d&#233;pend de deux param&#232;tres :</p>
+<ul>
+<li>la temp&#233;rature ;</li>
+<li>la densit&#233; de particules.</li>
+</ul>
+<p>En utilisant l&#39;&#233;quation des gaz parfaits, $P=nk_BT$, on peut aussi &#233;crire :</p>
+<p>$$ \boxed{ \mu=k_BT\ln\left( \frac{P\lambda_T^3}{k_BT} \right) } $$</p>
+<p>R&#233;sultat important</p>
+<p>&#192; temp&#233;rature identique, le potentiel chimique augmente avec la densit&#233;.</p>
+<p>Deux gaz parfaits &#224; la m&#234;me temp&#233;rature mais de densit&#233;s diff&#233;rentes ne sont donc pas en &#233;quilibre de diffusion.</p>
+<p>Les particules tendent &#224; passer du milieu de potentiel chimique &#233;lev&#233; vers celui de potentiel chimique faible.</p>
+<p>Attention toutefois : cette derni&#232;re formulation suppose des conditions de temp&#233;rature identiques et l&#39;absence d&#39;autres forces agissant sur les particules.</p>
+<h2>4. Comment caract&#233;riser l&#39;&#233;quilibre d&#39;un syst&#232;me ?</h2>
+<p>Nous pouvons maintenant construire une description g&#233;n&#233;rale.</p>
+<p>Pour un syst&#232;me constitu&#233; d&#39;une seule esp&#232;ce, les variables thermodynamiques fondamentales sont :</p>
+<p>$$ \boxed{U,\ S,\ V,\ N} $$</p>
+<p>L&#39;&#233;nergie interne peut &#234;tre consid&#233;r&#233;e comme une fonction :</p>
+<p>$$ U=U(S,V,N) $$</p>
+<p>Les variables intensives sont alors obtenues par d&#233;rivation :</p>
+<p>$$ \boxed{ T=\left(\frac{\partial U}{\partial S}\right)_{V,N} } $$</p>
+<p>$$ \boxed{ P=-\left(\frac{\partial U}{\partial V}\right)_{S,N} } $$</p>
+<p>$$ \boxed{ \mu=\left(\frac{\partial U}{\partial N}\right)_{S,V} } $$</p>
+<p>Autrement dit, la fonction $U(S,V,N)$ contient toute l&#39;information thermodynamique du syst&#232;me.</p>
+<p>On peut aussi utiliser d&#39;autres potentiels thermodynamiques selon les contraintes impos&#233;es.</p>
+<h3>4.1 Les quatre grands potentiels thermodynamiques</h3>
+<p>| Potentiel       | D&#233;finition    | Variables naturelles | | --------------- | ------------- | -------------------- | | &#201;nergie interne | $U$         | $S,V,N$            | | Enthalpie       | $H=U+PV$    | $S,P,N$            | | Helmholtz       | $F=U-TS$    | $T,V,N$            | | Gibbs           | $G=U-TS+PV$ | $T,P,N$            |</p>
+<p>Ces transformations ne sont pas de simples changements de notation.</p>
+<p>Elles permettent de choisir le potentiel dont les variables correspondent aux conditions exp&#233;rimentales.</p>
+<p>Par exemple :</p>
+<ul>
+<li>syst&#232;me isol&#233; : on maximise l&#39;entropie $S$, &#224; &#233;nergie, volume et quantit&#233; de mati&#232;re fix&#233;s ;</li>
+<li>syst&#232;me &#224; temp&#233;rature et volume impos&#233;s : on minimise l&#39;&#233;nergie libre de Helmholtz $F$ ;</li>
+<li>syst&#232;me &#224; temp&#233;rature et pression impos&#233;es : on minimise l&#39;&#233;nergie libre de Gibbs $G$.</li>
+</ul>
+<p>Pour ce dernier cas :</p>
+<p>$$ \boxed{ dG=-S\,dT+V\,dP+\mu\,dN } $$</p>
+<p>Si la temp&#233;rature et la pression sont constantes :</p>
+<p>$$ \boxed{dG=\mu\,dN} $$</p>
+<p>Cette relation est particuli&#232;rement utile pour les r&#233;actions chimiques et les changements de phase.</p>
+<h3>4.2 Le cas de plusieurs esp&#232;ces chimiques</h3>
+<p>C&#39;est ici que les choses deviennent vraiment int&#233;ressantes.</p>
+<p>Imaginons un m&#233;lange contenant plusieurs esp&#232;ces :</p>
+<p>$$ A,\quad B,\quad C,\quad \ldots $$</p>
+<p>Chacune poss&#232;de son propre nombre de particules $N_i$ et son propre potentiel chimique $\mu_i$.</p>
+<p>L&#39;&#233;quation fondamentale devient :</p>
+<p>$$ \boxed{ dU=T\,dS-P\,dV+\sum_i\mu_i\,dN_i } $$</p>
+<p>Le potentiel chimique est donc une grandeur propre &#224; chaque esp&#232;ce chimique, dans un environnement donn&#233;.</p>
+<p>Il d&#233;pend notamment :</p>
+<ul>
+<li>de la temp&#233;rature ;</li>
+<li>de la pression ;</li>
+<li>de la concentration de cette esp&#232;ce ;</li>
+<li>de la nature des autres esp&#232;ces pr&#233;sentes ;</li>
+<li>des interactions entre les constituants.</li>
+</ul>
+<p>Pour un m&#233;lange id&#233;al de gaz parfaits :</p>
+<p>$$ \boxed{ \mu_i(T,P_i)= \mu_i^\circ(T)+ k_BT\ln\left(\frac{P_i}{P^\circ}\right) } $$</p>
+<p>Ici, $P_i$ est la pression partielle de l&#39;esp&#232;ce $i$, et $P^\circ$ une pression de r&#233;f&#233;rence.</p>
+<p>Pour une solution id&#233;ale, on utilise une expression analogue avec la fraction molaire ou l&#39;activit&#233;.</p>
+<p>Dans le cas g&#233;n&#233;ral, on &#233;crit :</p>
+<p>$$ \boxed{ \mu_i=\mu_i^\circ+RT\ln a_i } $$</p>
+<p>o&#249; $a_i$ est l&#39;activit&#233; thermodynamique, sans dimension.</p>
+<p>L&#39;activit&#233; est une concentration effective qui tient compte des &#233;carts &#224; l&#39;id&#233;alit&#233;.</p>
+<h2>5. &#201;quilibre d&#39;un m&#233;lange : les conditions &#224; satisfaire</h2>
+<p>Prenons deux compartiments A et B contenant un m&#233;lange de plusieurs esp&#232;ces chimiques.</p>
+<p>Ils peuvent &#233;changer de l&#39;&#233;nergie, du volume et des particules.</p>
+<p>&#192; l&#39;&#233;quilibre thermodynamique :</p>
+<p>&#201;quilibre thermique :</p>
+<p>$$ T_A=T_B $$</p>
+<p>&#201;quilibre m&#233;canique :</p>
+<p>$$ P_A=P_B $$</p>
+<p>&#201;quilibre chimique ou de diffusion :</p>
+<p>$$ \boxed{ \mu_{i,A}=\mu_{i,B} \qquad\forall i } $$</p>
+<p>C&#39;est cette derni&#232;re relation qui est la plus g&#233;n&#233;rale.</p>
+<p>Elle signifie que chaque esp&#232;ce chimique doit avoir le m&#234;me potentiel chimique de part et d&#39;autre de la s&#233;paration qui lui permet de diffuser.</p>
+<p>Attention : si une membrane est s&#233;lective et ne laisse passer que certaines esp&#232;ces, l&#39;&#233;galit&#233; ne concerne que ces esp&#232;ces perm&#233;antes.</p>
+<h3>5.1 Un exemple : deux gaz s&#233;par&#233;s par une membrane</h3>
+<p>Imaginons deux compartiments contenant un gaz parfait &#224; temp&#233;rature identique.</p>
+<figure class="topic-figure"><img class="topic-image" src="../photos/Schema1_ThStat_pot.png" alt="Deux compartiments s&#233;par&#233;s par une membrane perm&#233;able aux particules" loading="lazy"><figcaption>Deux compartiments s&#233;par&#233;s par une membrane perm&#233;able aux particules</figcaption></figure>
+<p>&#192; l&#39;&#233;quilibre de diffusion :</p>
+<p>$$ \mu_A=\mu_B $$</p>
+<p>Or :</p>
+<p>$$ \mu=k_BT\ln(n\lambda_T^3) $$</p>
+<p>La temp&#233;rature &#233;tant identique, la longueur d&#39;onde thermique est identique.</p>
+<p>Donc :</p>
+<p>$$ \ln(n_A\lambda_T^3) = \ln(n_B\lambda_T^3) $$</p>
+<p>D&#39;o&#249; :</p>
+<p>$$ \boxed{n_A=n_B} $$</p>
+<p>La densit&#233; est donc uniforme &#224; l&#39;&#233;quilibre.</p>
+<p>Mais attention : cela n&#39;implique pas n&#233;cessairement que les quantit&#233;s totales de gaz dans les deux compartiments soient identiques, car leurs volumes peuvent &#234;tre diff&#233;rents.</p>
+<h3>5.2 Osmose et &#233;quilibre du solvant</h3>
+<p>Consid&#233;rons deux solutions s&#233;par&#233;es par une membrane qui laisse passer le solvant, mais pas le solut&#233;. Le solvant diffuse vers la solution o&#249; son potentiel chimique est le plus faible, jusqu&#39;&#224; l&#39;&#233;galit&#233; de ses potentiels chimiques de part et d&#39;autre.</p>
+<figure class="topic-figure"><img class="topic-image" src="../photos/Schema2_ThStat_pot.png" alt="Osmose &#224; travers une membrane semi-perm&#233;able" loading="lazy"><figcaption>Osmose &#224; travers une membrane semi-perm&#233;able</figcaption></figure>
+<p>La pression hydrostatique dans la solution concentr&#233;e augmente au fur et &#224; mesure que le solvant y entre. &#192; l&#39;&#233;quilibre, cette diff&#233;rence de pression compense la diff&#233;rence de potentiel chimique due &#224; la concentration : aucun transfert net de solvant ne subsiste. Pour une solution dilu&#233;e id&#233;ale, la pression osmotique v&#233;rifie approximativement la loi de van &#39;t Hoff :</p>
+<p>$$ \Pi \simeq cRT $$</p>
+<p>o&#249; $c$ est la concentration molaire en solut&#233;. Cette relation montre que l&#39;osmose est une cons&#233;quence directe de l&#39;&#233;galit&#233; des potentiels chimiques, et non une force distincte.</p>
+<h3>5.3 Les changements de phase</h3>
+<p>Le potentiel chimique permet &#233;galement de comprendre pourquoi deux phases peuvent coexister.</p>
+<p>Prenons de l&#39;eau liquide en contact avec sa vapeur.</p>
+<figure class="topic-figure"><img class="topic-image" src="../photos/Schema3ThStat_pot.png" alt="&#201;quilibre dynamique entre &#233;vaporation et condensation" loading="lazy"><figcaption>&#201;quilibre dynamique entre &#233;vaporation et condensation</figcaption></figure>
+<p>&#192; l&#39;&#233;quilibre :</p>
+<p>$$ \boxed{ \mu_{\mathrm{liquide}}= \mu_{\mathrm{vapeur}} } $$</p>
+<p>Si les potentiels chimiques sont diff&#233;rents, des mol&#233;cules passent pr&#233;f&#233;rentiellement d&#39;une phase &#224; l&#39;autre.</p>
+<p>La temp&#233;rature et la pression d&#233;terminent les potentiels chimiques des deux phases.</p>
+<p>La coexistence devient possible lorsque ceux-ci sont &#233;gaux.</p>
+<p>C&#39;est ainsi que l&#39;on d&#233;crit thermodynamiquement l&#39;&#233;quilibre liquide-vapeur, mais aussi les &#233;quilibres solide-liquide et solide-vapeur.</p>
+<h2>6. &#201;quilibre des r&#233;actions chimiques</h2>
+<p>C&#39;est probablement l&#39;une des applications les plus importantes du potentiel chimique.</p>
+<p>Imaginons une r&#233;action :</p>
+<p>$$ A+B\rightleftharpoons C $$</p>
+<p>Les nombres de particules ne sont plus individuellement conserv&#233;s.</p>
+<p>En revanche, ils varient suivant les coefficients stœchiom&#233;triques de la r&#233;action.</p>
+<p>On peut introduire une variable $\xi$, appel&#233;e avancement de r&#233;action :</p>
+<p>$$ dN_A=-d\xi $$</p>
+<p>$$ dN_B=-d\xi $$</p>
+<p>$$ dN_C=+d\xi $$</p>
+<p>&#192; temp&#233;rature et pression constantes :</p>
+<p>$$ dG=\mu_A dN_A+\mu_B dN_B+\mu_C dN_C $$</p>
+<p>Donc :</p>
+<p>$$ dG=(-\mu_A-\mu_B+\mu_C)d\xi $$</p>
+<p>&#192; l&#39;&#233;quilibre, $G$ est minimal :</p>
+<p>$$ \boxed{ \mu_C-\mu_A-\mu_B=0 } $$</p>
+<p>Autrement dit :</p>
+<p>$$ \boxed{ \mu_C=\mu_A+\mu_B } $$</p>
+<p>Voil&#224; une condition g&#233;n&#233;rale d&#39;&#233;quilibre chimique.</p>
+<p>Pour une r&#233;action plus g&#233;n&#233;rale :</p>
+<p>$$ \sum_i\nu_i A_i=0 $$</p>
+<p>o&#249; les coefficients $\nu_i$ sont positifs pour les produits et n&#233;gatifs pour les r&#233;actifs :</p>
+<p>$$ \boxed{ \sum_i\nu_i\mu_i=0 } $$</p>
+<p>Cette formule est extr&#234;mement puissante.</p>
+<p>Elle permet de d&#233;terminer la composition d&#39;&#233;quilibre d&#39;un m&#233;lange chimique &#224; partir des potentiels chimiques des esp&#232;ces pr&#233;sentes.</p>
+<h3>6.1 Lien avec la constante d&#39;&#233;quilibre</h3>
+<p>Pour des esp&#232;ces id&#233;ales :</p>
+<p>$$ \mu_i=\mu_i^\circ+RT\ln a_i $$</p>
+<p>En introduisant cette expression dans la condition d&#39;&#233;quilibre :</p>
+<p>$$ \sum_i\nu_i\mu_i=0 $$</p>
+<p>on obtient :</p>
+<p>$$ \sum_i\nu_i\mu_i^\circ+ RT\sum_i\nu_i\ln a_i=0 $$</p>
+<p>Soit :</p>
+<p>$$ \Delta_rG^\circ+RT\ln Q=0 $$</p>
+<p>&#192; l&#39;&#233;quilibre, $Q=K$, d&#39;o&#249; :</p>
+<p>$$ \boxed{ K=\exp\left(-\frac{\Delta_rG^\circ}{RT}\right) } $$</p>
+<p>Nous retrouvons ainsi la relation entre l&#39;&#233;nergie libre de r&#233;action et la constante d&#39;&#233;quilibre chimique.</p>
+<p>Le potentiel chimique relie donc directement la thermodynamique, la physique statistique et la chimie.</p>
+<h2>7. &#201;quilibre thermodynamique dans un syst&#232;me spatialement &#233;tendu</h2>
+<p>J&#39;aimerais insister sur un point important, notamment pour les syst&#232;mes physiques dans lesquels les grandeurs thermodynamiques ne sont pas uniformes.</p>
+<p>Jusqu&#39;ici, nous avons consid&#233;r&#233; des compartiments homog&#232;nes, chacun caract&#233;ris&#233; par une temp&#233;rature, une pression et des potentiels chimiques.</p>
+<p>Mais dans un syst&#232;me &#233;tendu, ces grandeurs peuvent d&#233;pendre de la position :</p>
+<p>$$ T=T(\mathbf r) $$</p>
+<p>$$ P=P(\mathbf r) $$</p>
+<p>$$ \mu_i=\mu_i(\mathbf r) $$</p>
+<p>Il faut alors distinguer deux notions.</p>
+<h3>7.1 &#201;quilibre thermodynamique global</h3>
+<p>En l&#39;absence de forces ext&#233;rieures et &#224; l&#39;&#233;quilibre thermodynamique v&#233;ritable :</p>
+<p>$$ \boxed{T(\mathbf r)=T_0} $$</p>
+<p>La temp&#233;rature est uniforme.</p>
+<p>De m&#234;me, pour une esp&#232;ce qui peut diffuser librement :</p>
+<p>$$ \boxed{\mu_i(\mathbf r)=\mu_{i,0}} $$</p>
+<p>En revanche, la pression n&#39;est pas n&#233;cessairement uniforme lorsqu&#39;il existe des forces volumiques.</p>
+<h3>7.2 Exemple : un gaz dans un champ gravitationnel</h3>
+<p>Consid&#233;rons un gaz dans le champ de gravitation terrestre.</p>
+<p>&#192; l&#39;&#233;quilibre, les particules subissent leur poids, mais leur distribution spatiale doit &#233;galement tenir compte de l&#39;agitation thermique.</p>
+<p>Pour une particule de masse $m$, l&#39;&#233;nergie potentielle gravitationnelle est :</p>
+<p>$$ E_p(z)=mgz $$</p>
+<p>&#192; l&#39;&#233;quilibre, ce n&#39;est pas le potentiel chimique seul qui est uniforme, mais :</p>
+<p>$$ \boxed{ \mu(z)+mgz=\text{constante} } $$</p>
+<p>Pour un gaz parfait :</p>
+<p>$$ \mu(z)=k_BT\ln(n(z)\lambda_T^3) $$</p>
+<p>La temp&#233;rature &#233;tant uniforme, on obtient :</p>
+<p>$$ k_BT\ln(n(z)\lambda_T^3)+mgz =\text{constante} $$</p>
+<p>Donc :</p>
+<p>$$ \boxed{ n(z)=n(0)e^{-mgz/(k_BT)} } $$</p>
+<p>Nous retrouvons la distribution barom&#233;trique de l&#39;atmosph&#232;re.</p>
+<p>C&#39;est un r&#233;sultat remarquable : une densit&#233; non uniforme peut parfaitement correspondre &#224; un &#233;quilibre thermodynamique.</p>
+<p>La gravitation compense le gradient de potentiel chimique.</p>
+<p>La pression suit &#233;galement un gradient :</p>
+<p>$$ \boxed{ \frac{dP}{dz}=-\rho g } $$</p>
+<p>C&#39;est l&#39;&#233;quation hydrostatique.</p>
+<figure class="topic-figure"><img class="topic-image" src="../photos/Schema4_ThStat_pot.png" alt="&#201;quilibre hydrostatique et variation de la pression avec l&#39;altitude" loading="lazy"><figcaption>&#201;quilibre hydrostatique et variation de la pression avec l&#39;altitude</figcaption></figure>
+<p>Une remarque importante: dans un gaz soumis &#224; sa propre gravitation, il faudra remplacer $mgz$ par l&#39;&#233;nergie potentielle gravitationnelle locale $m\Phi(\mathbf r)$. &#192; l&#39;&#233;quilibre :</p>
+<p>$$ \mu(\mathbf r)+m\Phi(\mathbf r)=\text{constante} $$</p>
+<p>et le potentiel gravitationnel doit lui-m&#234;me satisfaire l&#39;&#233;quation de Poisson :</p>
+<p>$$ \boxed{ \nabla^2\Phi=4\pi G\rho } $$</p>
+<p>On obtient ainsi un probl&#232;me coupl&#233; entre distribution des particules et champ gravitationnel.</p>
+<p>C&#39;est pr&#233;cis&#233;ment le genre de syst&#232;me o&#249; le potentiel chimique devient tr&#232;s utile.</p>
+<p>Il faut n&#233;anmoins &#234;tre prudent : les syst&#232;mes autogravitants ont des propri&#233;t&#233;s particuli&#232;res, notamment des probl&#232;mes de stabilit&#233; et d&#39;&#233;quivalence des ensembles statistiques.</p>
+<h3>7.3 Et si la temp&#233;rature n&#39;est pas uniforme ?</h3>
+<p>Un gradient de temp&#233;rature signifie g&#233;n&#233;ralement que le syst&#232;me n&#39;est pas &#224; l&#39;&#233;quilibre thermique global.</p>
+<p>Il peut cependant &#234;tre dans un &#233;tat de quasi-&#233;quilibre local.</p>
+<p>On peut alors d&#233;finir localement :</p>
+<p>$$ T(\mathbf r),\quad P(\mathbf r),\quad \mu_i(\mathbf r) $$</p>
+<p>et utiliser les relations thermodynamiques locales, &#224; condition que les &#233;chelles de temps et de longueur permettent de d&#233;finir un &#233;tat thermodynamique local.</p>
+<p>C&#39;est le point de d&#233;part de la thermodynamique hors &#233;quilibre et des ph&#233;nom&#232;nes de transport :</p>
+<ul>
+<li>conduction thermique ;</li>
+<li>diffusion de mati&#232;re ;</li>
+<li>viscosit&#233; ;</li>
+<li>r&#233;actions chimiques ;</li>
+<li>rayonnement.</li>
+</ul>
+<p>Un gradient de potentiel chimique peut provoquer un flux de mati&#232;re, tout comme un gradient de temp&#233;rature peut provoquer un flux de chaleur.</p>
+<h2>8. Synth&#232;se : comment d&#233;terminer l&#39;&#233;quilibre d&#39;un syst&#232;me ?</h2>
+<p>Voici le tableau que je te conseille de conserver comme r&#233;f&#233;rence.</p>
+<p>| Ph&#233;nom&#232;ne                       | Condition d&#39;&#233;quilibre              | | ------------------------------- | ---------------------------------- | | &#201;change de chaleur              | $T_A=T_B$                        | | &#201;change de volume               | $P_A=P_B$                        | | Diffusion d&#39;une esp&#232;ce $i$    | $\mu_{i,A}=\mu_{i,B}$            | | Changement de phase             | $\mu_\alpha=\mu_\beta$           | | R&#233;action chimique               | $\sum_i\nu_i\mu_i=0$             | | Diffusion sous force ext&#233;rieure | $\mu_i+E_{p,i}=\text{constante}$ |</p>
+<p>Ces conditions sont &#224; appliquer en tenant compte des contraintes et des &#233;changes effectivement autoris&#233;s.</p>
+<h3>La vision g&#233;n&#233;rale</h3>
+<p>Les trois grandeurs fondamentales des &#233;changes thermodynamiques</p>
+<p>Temp&#233;rature $T$</p>
+<p>Contr&#244;le les &#233;changes d&#39;&#233;nergie thermique.</p>
+<p>Pression $P$</p>
+<p>Contr&#244;le les &#233;changes m&#233;caniques et les variations de volume.</p>
+<p>Potentiel chimique $\mu_i$</p>
+<p>Contr&#244;le les &#233;changes de mati&#232;re et les transformations chimiques.</p>
+<p>Une formulation encore plus g&#233;n&#233;rale consiste &#224; dire que l&#39;&#233;quilibre thermodynamique est atteint lorsque le potentiel thermodynamique appropri&#233; atteint son minimum, sous les contraintes impos&#233;es au syst&#232;me.</p>
+<p>C&#39;est finalement le principe unificateur derri&#232;re toutes les conditions que nous avons &#233;tablies.</p></div>
+        <p><a href="thermodynamique-statistique.html">← Retour à Thermodynamique statistique</a></p>
+      </section>
+    </main>
+  </body>
+</html>

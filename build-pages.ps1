@@ -7,6 +7,7 @@ $pages = @(
   @{ Page = "mecanique-classique.html"; Title = "Mécanique classique"; Text = "MecaniqueClassique.md"; Photo = "illustMecaClass.png"; Width = 437; Height = 497 },
   @{ Page = "thermodynamique-classique.html"; Title = "Thermodynamique classique"; Text = "Thermodynamique.md"; Photo = "illustThermoClass.png"; Width = 446; Height = 431 },
   @{ Page = "thermodynamique-statistique.html"; Title = "Thermodynamique statistique"; Text = "ThermodynamiqueStatistique.md"; Photo = "illustThermoStat.png"; Width = 567; Height = 802 },
+  @{ Page = "thermodynamique-statistique-exemples-potentiel.html"; Title = "Potentiel chimique et équilibre thermodynamique"; Text = "ThermoStat_potentielchimique.md"; Parent = "thermodynamique-statistique.html"; ParentTitle = "Thermodynamique statistique"; Index = $false; Eyebrow = "Approfondissement" },
   @{ Page = "mecanique-quantique.html"; Title = "Mécanique quantique"; Text = "MecaniqueQuantique.md"; Photo = "illustMecaQ.png"; Width = 1125; Height = 630 },
   @{ Page = "electromagnetisme.html"; Title = "Électromagnétisme"; Text = "Electromag.md"; Photo = "illustElectromag.png"; Width = 818; Height = 630 },
   @{ Page = "relativite-restreinte.html"; Title = "Relativité restreinte"; Text = "Relativite.md"; Photo = "illustRelatRest.png"; Width = 832; Height = 682 },
@@ -100,7 +101,18 @@ function Convert-Markdown([string]$content) {
   }
 
   foreach ($line in ($content -split "`r?`n")) {
-    if ($line -match "^\s*-\s+(.+?)\s*$") {
+    $imageMatch = [Regex]::Match($line.Trim(), '^!\[(?<alt>[^\]]+)\]\((?<path>\.\./photos/(?<file>[A-Za-z0-9._-]+\.png))\)$')
+    if ($imageMatch.Success) {
+      Write-List
+      Write-Paragraph
+      $imagePath = Join-Path $root "photos\$($imageMatch.Groups["file"].Value)"
+      if (-not (Test-Path -LiteralPath $imagePath -PathType Leaf)) {
+        throw "Image mentionnée mais introuvable : $imagePath"
+      }
+      $alt = [System.Net.WebUtility]::HtmlEncode($imageMatch.Groups["alt"].Value)
+      $path = $imageMatch.Groups["path"].Value
+      $result.Add("<figure class=`"topic-figure`"><img class=`"topic-image`" src=`"$path`" alt=`"$alt`" loading=`"lazy`"><figcaption>$alt</figcaption></figure>")
+    } elseif ($line -match "^\s*-\s+(.+?)\s*$") {
       Write-Paragraph
       $listItems.Add($Matches[1])
     } elseif ($line -match "^\s*#{1,3}\s*$") {
@@ -159,7 +171,9 @@ foreach ($entry in $pages) {
   }
   $returnTitle = [System.Net.WebUtility]::HtmlEncode($returnTitle)
   $eyebrow = "Domaine de physique"
-  if ($entry.Parent) {
+  if ($entry.Eyebrow) {
+    $eyebrow = $entry.Eyebrow
+  } elseif ($entry.Parent) {
     $eyebrow = "Exemple de calcul"
   }
   $indexMetadata = ""
