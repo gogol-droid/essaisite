@@ -16,7 +16,7 @@ Nous allons notamment répondre à ces questions :
 
 6. Comment déterminer les conditions d'équilibre lorsque des réactions chimiques sont possibles ?
 
-# 1. Décrire l'état thermodynamique d'un système
+## 1. Décrire l'état thermodynamique d'un système
 
 Commençons par un système simple : un gaz contenu dans un récipient.
 
@@ -124,7 +124,7 @@ C'est une première définition fondamentale.
 
 Attention : ce n'est pas simplement l'énergie d'une particule isolée. Le potentiel chimique tient compte de l'ensemble du système et de ses interactions.
 
-# 2. Pourquoi introduire le potentiel chimique ?
+## 2. Pourquoi introduire le potentiel chimique ?
 
 Imaginons deux récipients contenant le même gaz, séparés par une paroi mobile et perméable aux particules.
 
@@ -223,7 +223,7 @@ $$
 
 Nous retrouvons ainsi les trois grandes conditions d'équilibre thermodynamique.
 
-# 3. Le potentiel chimique en physique statistique
+## 3. Le potentiel chimique en physique statistique
 
 Nous allons maintenant retrouver le potentiel chimique à partir de la mécanique statistique.
 
@@ -410,7 +410,7 @@ Les particules tendent à passer du milieu de potentiel chimique élevé vers ce
 
 Attention toutefois : cette dernière formulation suppose des conditions de température identiques et l'absence d'autres forces agissant sur les particules.
 
-# 4. Comment caractériser l'équilibre d'un système ?
+## 4. Comment caractériser l'équilibre d'un système ?
 
 Nous pouvons maintenant construire une description générale.
 
@@ -549,7 +549,7 @@ Cette relation est écrite à l'échelle molaire. À l'échelle d'une particule,
 
 L'activité est une concentration effective qui tient compte des écarts à l'idéalité.
 
-# 5. Équilibre d'un mélange : les conditions à satisfaire
+## 5. Équilibre d'un mélange : les conditions à satisfaire
 
 Prenons deux compartiments A et B contenant un mélange de plusieurs espèces chimiques.
 
@@ -645,11 +645,11 @@ $$
 
 où $\mu_i^\circ$ est le potentiel chimique molaire standard et $a_i$ l'activité thermodynamique, sans dimension, qui dépend du modèle utilisé.
 
-| Système                        | Activité $a_i$ | Potentiel chimique molaire |
-| ------------------------------ | ---------------- | -------------------------- |
-| Gaz parfait                    | $P_i/P^\circ$  | $\mu_i^\circ+RT\ln(P_i/P^\circ)$ |
-| Soluté dilué idéal             | $c_i/c^\circ$  | $\mu_i^\circ+RT\ln(c_i/c^\circ)$ |
-| Constituant d'un liquide idéal | $x_i$          | $\mu_i^\circ+RT\ln x_i$ |
+| Système                        | Activité $a_i$  | Potentiel chimique molaire             |
+| ------------------------------ | --------------- | -------------------------------------- |
+| Gaz parfait                    | $P_i/P^\circ$   | $\mu_i^\circ+RT\ln(P_i/P^\circ)$       |
+| Soluté dilué idéal             | $c_i/c^\circ$   | $\mu_i^\circ+RT\ln(c_i/c^\circ)$       |
+| Constituant d'un liquide idéal | $x_i$           | $\mu_i^\circ+RT\ln x_i$                |
 
 Les pressions et concentrations de référence sont $P^\circ=1\,\mathrm{bar}$ et $c^\circ=1\,\mathrm{mol\,L^{-1}}$. Ce sont des états standards conventionnels ; les rapports dans les logarithmes sont ainsi sans dimension.
 
@@ -696,7 +696,7 @@ La coexistence devient possible lorsque ceux-ci sont égaux.
 
 C'est ainsi que l'on décrit thermodynamiquement l'équilibre liquide-vapeur, mais aussi les équilibres solide-liquide et solide-vapeur.
 
-# 6. Équilibre des réactions chimiques
+## 6. Équilibre des réactions chimiques
 
 C'est probablement l'une des applications les plus importantes du potentiel chimique.
 
@@ -811,7 +811,7 @@ Nous retrouvons ainsi la relation entre l'énergie libre de réaction et la cons
 
 Le potentiel chimique relie donc directement la thermodynamique, la physique statistique et la chimie.
 
-# 7. Équilibre thermodynamique dans un système spatialement étendu
+## 7. Équilibre thermodynamique dans un système spatialement étendu
 
 J'aimerais insister sur un point important, notamment pour les systèmes physiques dans lesquels les grandeurs thermodynamiques ne sont pas uniformes.
 
@@ -960,7 +960,7 @@ C'est le point de départ de la thermodynamique hors équilibre et des phénomè
 
 Un gradient de potentiel chimique peut provoquer un flux de matière, tout comme un gradient de température peut provoquer un flux de chaleur.
 
-# 8. Synthèse : comment déterminer l'équilibre d'un système ?
+## 8. Synthèse : comment déterminer l'équilibre d'un système ?
 
 Voici le tableau à conserver comme référence:
 
