@@ -545,6 +545,8 @@ $$
 
 où $a_i$ est l'activité thermodynamique, sans dimension.
 
+Cette relation est écrite à l'échelle molaire. À l'échelle d'une particule, on utilise $k_B T$ à la place de $RT$, avec $R=N_Ak_B$.
+
 L'activité est une concentration effective qui tient compte des écarts à l'idéalité.
 
 # 5. Équilibre d'un mélange : les conditions à satisfaire
@@ -637,36 +639,35 @@ où $c$ est la concentration molaire en soluté, si on a plusieurs solutés, il 
 
 En résumé, la formule générale est :
 
-µi=µoi+RT.ln(ai)
+$$
+\mu_i=\mu_i^\circ+RT\ln a_i
+$$
 
-où \(ai\) est l'activité, grandeur sans dimension qui dépend du modèle thermodynamique utilisé.
+où \(\mu_i^\circ\) est le potentiel chimique molaire standard et \(a_i\) l'activité thermodynamique, sans dimension, qui dépend du modèle utilisé.
 
-| Système                        | Activité \(ai\) | Potentiel chimique |
-| ------------------------------ | ---------------- | ------------------ |
-| Gaz parfait                    | \(Pi/Po)         | µio+RT.ln(Pi/Po)   |
-| Soluté dilué idéal             | \(ci/c)          | µio+RT.ln(ci/co)   |
-| Constituant d'un liquide idéal | \(xi\)           | µio+RT.ln(xi)      |
+| Système                        | Activité \(a_i\) | Potentiel chimique molaire |
+| ------------------------------ | ---------------- | -------------------------- |
+| Gaz parfait                    | \(P_i/P^\circ\)  | \(\mu_i^\circ+RT\ln(P_i/P^\circ)\) |
+| Soluté dilué idéal             | \(c_i/c^\circ\)  | \(\mu_i^\circ+RT\ln(c_i/c^\circ)\) |
+| Constituant d'un liquide idéal | \(x_i\)          | \(\mu_i^\circ+RT\ln x_i\) |
 
-Les trois µio ne désignent pas nécessairement le même état de référence :
+Les pressions et concentrations de référence sont \(P^\circ=1\,\mathrm{bar}\) et \(c^\circ=1\,\mathrm{mol\,L^{-1}}\). Ce sont des états standards conventionnels ; les rapports dans les logarithmes sont ainsi sans dimension.
 
-- gaz : état standard à la pression Po ;
+Les états standards associés à \(\mu_i^\circ\) dépendent du modèle :
 
-- soluté : état standard défini par convention, généralement lié à la dilution infinie ;
+- gaz : état standard à la pression \(P^\circ\) ;
 
-- liquide : constituant pur à la température et à la pression considérées.
+- soluté : état standard défini par convention, souvent extrapolé à dilution infinie ;
 
-- 
+- liquide idéal : constituant pur à la température et à la pression considérées.
 
-Quelques précisions importantes :
+Pour un mélange de gaz parfaits, la pression partielle vérifie \(P_i=x_iP\). Donc :
 
-1. Pour un gaz parfait en mélange :
+$$
+\mu_i=\mu_i^\circ(T)+RT\ln x_i+RT\ln\left(\frac{P}{P^\circ}\right)
+$$
 
-Pi=xi.P
-
-Donc :
-µi=µio+RT.ln xi+RT.ln(P/Po)
-
-À pression totale constante, le dernier terme peut être incorporé dans le potentiel chimique standard défini à cette pression.
+À température et pression totales fixées, le dernier terme peut être incorporé dans un potentiel chimique standard défini à cette pression.
 
 ****************************************************************************
 
