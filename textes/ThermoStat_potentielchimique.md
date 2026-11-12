@@ -643,25 +643,25 @@ $$
 \mu_i=\mu_i^\circ+RT\ln a_i
 $$
 
-où \(\mu_i^\circ\) est le potentiel chimique molaire standard et \(a_i\) l'activité thermodynamique, sans dimension, qui dépend du modèle utilisé.
+où $\mu_i^\circ$ est le potentiel chimique molaire standard et $a_i$ l'activité thermodynamique, sans dimension, qui dépend du modèle utilisé.
 
-| Système                        | Activité \(a_i\) | Potentiel chimique molaire |
+| Système                        | Activité $a_i$ | Potentiel chimique molaire |
 | ------------------------------ | ---------------- | -------------------------- |
-| Gaz parfait                    | \(P_i/P^\circ\)  | \(\mu_i^\circ+RT\ln(P_i/P^\circ)\) |
-| Soluté dilué idéal             | \(c_i/c^\circ\)  | \(\mu_i^\circ+RT\ln(c_i/c^\circ)\) |
-| Constituant d'un liquide idéal | \(x_i\)          | \(\mu_i^\circ+RT\ln x_i\) |
+| Gaz parfait                    | $P_i/P^\circ$  | $\mu_i^\circ+RT\ln(P_i/P^\circ)$ |
+| Soluté dilué idéal             | $c_i/c^\circ$  | $\mu_i^\circ+RT\ln(c_i/c^\circ)$ |
+| Constituant d'un liquide idéal | $x_i$          | $\mu_i^\circ+RT\ln x_i$ |
 
-Les pressions et concentrations de référence sont \(P^\circ=1\,\mathrm{bar}\) et \(c^\circ=1\,\mathrm{mol\,L^{-1}}\). Ce sont des états standards conventionnels ; les rapports dans les logarithmes sont ainsi sans dimension.
+Les pressions et concentrations de référence sont $P^\circ=1\,\mathrm{bar}$ et $c^\circ=1\,\mathrm{mol\,L^{-1}}$. Ce sont des états standards conventionnels ; les rapports dans les logarithmes sont ainsi sans dimension.
 
-Les états standards associés à \(\mu_i^\circ\) dépendent du modèle :
+Les états standards associés à $\mu_i^\circ$ dépendent du modèle :
 
-- gaz : état standard à la pression \(P^\circ\) ;
+- gaz : état standard à la pression $P^\circ$ ;
 
 - soluté : état standard défini par convention, souvent extrapolé à dilution infinie ;
 
 - liquide idéal : constituant pur à la température et à la pression considérées.
 
-Pour un mélange de gaz parfaits, la pression partielle vérifie \(P_i=x_iP\). Donc :
+Pour un mélange de gaz parfaits, la pression partielle vérifie $P_i=x_iP$. Donc :
 
 $$
 \mu_i=\mu_i^\circ(T)+RT\ln x_i+RT\ln\left(\frac{P}{P^\circ}\right)
