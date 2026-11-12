@@ -452,12 +452,12 @@ On peut aussi utiliser d'autres potentiels thermodynamiques selon les contrainte
 
 ## 4.1 Les quatre grands potentiels thermodynamiques
 
-| Potentiel       | Définition    | Variables naturelles |
-| --------------- | ------------- | -------------------- |
-| Énergie interne | $U$         | $S,V,N$            |
-| Enthalpie       | $H=U+PV$    | $S,P,N$            |
-| Helmholtz       | $F=U-TS$    | $T,V,N$            |
-| Gibbs           | $G=U-TS+PV$ | $T,P,N$            |
+| Potentiel       | Définition  | Variables naturelles |
+| --------------- | ----------- | -------------------- |
+| Énergie interne | $U$         | $S,V,N$              |
+| Enthalpie       | $H=U+PV$    | $S,P,N$              |
+| Helmholtz       | $F=U-TS$    | $T,V,N$              |
+| Gibbs           | $G=U-TS+PV$ | $T,P,N$              |
 
 Ces transformations ne sont pas de simples changements de notation.
 
@@ -631,7 +631,44 @@ $$
 \Pi \simeq cRT
 $$
 
-où $c$ est la concentration molaire en soluté. Cette relation montre que l'osmose est une conséquence directe de l'égalité des potentiels chimiques, et non une force distincte.
+où $c$ est la concentration molaire en soluté, si on a plusieurs solutés, il faudra faire la somme des ci.RT, par exemple le sel NaCl se dissocie en Na+ et Cl- de même concentration c et la pression osmotique resultante sera 2.c.R.T. Cette relation montre que l'osmose est une conséquence directe de l'égalité des potentiels chimiques, et non une force distincte.
+
+****************************************************************************
+
+En résumé, la formule générale est :
+
+µi=µoi+RT.ln(ai)
+
+où \(ai\) est l'activité, grandeur sans dimension qui dépend du modèle thermodynamique utilisé.
+
+| Système                        | Activité \(ai\) | Potentiel chimique |
+| ------------------------------ | ---------------- | ------------------ |
+| Gaz parfait                    | \(Pi/Po)         | µio+RT.ln(Pi/Po)   |
+| Soluté dilué idéal             | \(ci/c)          | µio+RT.ln(ci/co)   |
+| Constituant d'un liquide idéal | \(xi\)           | µio+RT.ln(xi)      |
+
+Les trois µio ne désignent pas nécessairement le même état de référence :
+
+- gaz : état standard à la pression Po ;
+
+- soluté : état standard défini par convention, généralement lié à la dilution infinie ;
+
+- liquide : constituant pur à la température et à la pression considérées.
+
+- 
+
+Quelques précisions importantes :
+
+1. Pour un gaz parfait en mélange :
+
+Pi=xi.P
+
+Donc :
+µi=µio+RT.ln xi+RT.ln(P/Po)
+
+À pression totale constante, le dernier terme peut être incorporé dans le potentiel chimique standard défini à cette pression.
+
+****************************************************************************
 
 ## 5.3 Les changements de phase
 
@@ -926,11 +963,11 @@ Un gradient de potentiel chimique peut provoquer un flux de matière, tout comme
 
 Voici le tableau à conserver comme référence:
 
-| Phénomène                       | Condition d'équilibre              |
-| ------------------------------- | ---------------------------------- |
+| Phénomène                       | Condition d'équilibre            |
+| ------------------------------- | -------------------------------- |
 | Échange de chaleur              | $T_A=T_B$                        |
 | Échange de volume               | $P_A=P_B$                        |
-| Diffusion d'une espèce $i$    | $\mu_{i,A}=\mu_{i,B}$            |
+| Diffusion d'une espèce $i$      | $\mu_{i,A}=\mu_{i,B}$            |
 | Changement de phase             | $\mu_\alpha=\mu_\beta$           |
 | Réaction chimique               | $\sum_i\nu_i\mu_i=0$             |
 | Diffusion sous force extérieure | $\mu_i+E_{p,i}=\text{constante}$ |
