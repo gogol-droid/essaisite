@@ -627,13 +627,60 @@ Considérons deux solutions séparées par une membrane qui laisse passer le sol
 
 ![Osmose à travers une membrane semi-perméable](../photos/Schema2_ThStat_pot.png)
 
-La pression hydrostatique dans la solution concentrée augmente au fur et à mesure que le solvant y entre. À l'équilibre, cette différence de pression compense la différence de potentiel chimique due à la concentration : aucun transfert net de solvant ne subsiste. Pour une solution diluée idéale, la pression osmotique vérifie approximativement la loi de van 't Hoff :
+La pression hydrostatique dans la solution concentrée augmente au fur et à mesure que le solvant y entre. À l'équilibre, cette différence de pression compense la différence de potentiel chimique due à la concentration.
+
+Prenons de l'eau pure dans le compartiment A et une solution aqueuse de chlorure de sodium dans le compartiment B. À température fixée, l'équilibre des potentiels chimiques de l'eau s'écrit :
 
 $$
-\Pi \simeq cRT
+\mu_{\mathrm{eau}}(T,P)
+=
+\mu_{\mathrm{eau}}(T,P+\Delta P)+RT\ln x_{\mathrm{eau}}
 $$
 
-où $c$ est la concentration molaire en soluté, si on a plusieurs solutés, il faudra faire la somme des ci.RT, par exemple le sel NaCl se dissocie en Na+ et Cl- de même concentration c et la pression osmotique resultante sera 2.c.R.T. Cette relation montre que l'osmose est une conséquence directe de l'égalité des potentiels chimiques, et non une force distincte.
+où $P$ est la pression dans le compartiment A et $P+\Delta P$ celle dans le compartiment B. La fraction molaire de l'eau dans la solution vaut
+
+$$
+x_{\mathrm{eau}}
+=\frac{n_{\mathrm{eau}}}{n_{\mathrm{eau}}+n_{\mathrm{sel}}}
+=\frac{1}{1+n_{\mathrm{sel}}/n_{\mathrm{eau}}}
+$$
+
+Ici, $n_{\mathrm{sel}}=n_{\mathrm{Na^+}}+n_{\mathrm{Cl^-}}$ est la quantité de matière totale d'ions dissous. Dans la limite diluée, $n_{\mathrm{sel}}/n_{\mathrm{eau}}\ll 1$, donc
+
+$$
+\ln x_{\mathrm{eau}}
+=-\ln\left(1+\frac{n_{\mathrm{sel}}}{n_{\mathrm{eau}}}\right)
+\simeq -\frac{n_{\mathrm{sel}}}{n_{\mathrm{eau}}}
+$$
+
+Pour une faible différence de pression, le potentiel chimique de l'eau varie selon
+
+$$
+\mu_{\mathrm{eau}}(T,P+\Delta P)
+\simeq
+\mu_{\mathrm{eau}}(T,P)+\bar V_{\mathrm{eau}}\,\Delta P
+$$
+
+où $\bar V_{\mathrm{eau}}\simeq V/n_{\mathrm{eau}}$ est le volume molaire de l'eau, et $V$ le volume de la solution. En reportant ces approximations dans la condition d'équilibre, on obtient
+
+$$
+\Delta P
+\simeq
+RT\,\frac{n_{\mathrm{sel}}}{n_{\mathrm{eau}}}\,
+\frac{n_{\mathrm{eau}}}{V}
+=RT\,\frac{n_{\mathrm{sel}}}{V}
+=2cRT
+$$
+
+où $c=n_{\mathrm{Na^+}}/V=n_{\mathrm{Cl^-}}/V$ est la concentration molaire de chaque ion. La différence de pression $\Delta P$ correspond à la pression osmotique $\Pi$.
+
+Pour une solution diluée idéale, la pression osmotique vérifie la loi de van 't Hoff :
+
+$$
+\Pi \simeq RT\sum_i c_i
+$$
+
+où $c_i$ est la concentration molaire de chaque espèce dissoute. Pour une seule espèce, on retrouve $\Pi\simeq cRT$. Si le chlorure de sodium est complètement dissocié, les ions $\mathrm{Na^+}$ et $\mathrm{Cl^-}$ contribuent chacun à la pression osmotique, d'où $\Pi\simeq 2cRT$. Cette relation montre que l'osmose est une conséquence directe de l'égalité des potentiels chimiques, et non une force distincte.
 
 ****************************************************************************
 
@@ -645,11 +692,11 @@ $$
 
 où $\mu_i^\circ$ est le potentiel chimique molaire standard et $a_i$ l'activité thermodynamique, sans dimension, qui dépend du modèle utilisé.
 
-| Système                        | Activité $a_i$  | Potentiel chimique molaire             |
-| ------------------------------ | --------------- | -------------------------------------- |
-| Gaz parfait                    | $P_i/P^\circ$   | $\mu_i^\circ+RT\ln(P_i/P^\circ)$       |
-| Soluté dilué idéal             | $c_i/c^\circ$   | $\mu_i^\circ+RT\ln(c_i/c^\circ)$       |
-| Constituant d'un liquide idéal | $x_i$           | $\mu_i^\circ+RT\ln x_i$                |
+| Système                        | Activité $a_i$ | Potentiel chimique molaire       |
+| ------------------------------ | -------------- | -------------------------------- |
+| Gaz parfait                    | $P_i/P^\circ$  | $\mu_i^\circ+RT\ln(P_i/P^\circ)$ |
+| Soluté dilué idéal             | $c_i/c^\circ$  | $\mu_i^\circ+RT\ln(c_i/c^\circ)$ |
+| Constituant d'un liquide idéal | $x_i$          | $\mu_i^\circ+RT\ln x_i$          |
 
 Les pressions et concentrations de référence sont $P^\circ=1\,\mathrm{bar}$ et $c^\circ=1\,\mathrm{mol\,L^{-1}}$. Ce sont des états standards conventionnels ; les rapports dans les logarithmes sont ainsi sans dimension.
 
